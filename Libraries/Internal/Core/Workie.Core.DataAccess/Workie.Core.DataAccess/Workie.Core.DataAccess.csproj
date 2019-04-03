@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Ahmad Chatila</Authors>
+    <Company>Distic</Company>
+    <Copyright>Copyright (c) 2019 Distic. All rights reserved.</Copyright>
+  </PropertyGroup>
+
+</Project>

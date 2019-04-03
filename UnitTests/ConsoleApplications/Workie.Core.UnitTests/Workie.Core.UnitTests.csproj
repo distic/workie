@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <Authors>Ahmad Chatila</Authors>
+    <Company>Distic</Company>
+    <Copyright>Copyright (c) 2019 Distic. All rights reserved.</Copyright>
+  </PropertyGroup>
+
+</Project>
