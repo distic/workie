@@ -1,3 +1,3 @@
 # Workie
 
-An open source project management tool for the web.
+An open source project management tool for everyone.
