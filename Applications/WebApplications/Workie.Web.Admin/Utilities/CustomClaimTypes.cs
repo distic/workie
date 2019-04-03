@@ -2,9 +2,9 @@
 {
     public class CustomClaimTypes
     {
-        public const string CustomerId = "CustomerId";
+        public const string UserId = "UserId";
 
-        public const string PrimaryEmailAddress = "PrimaryEmailAddress";
+        public const string EmailAddress = "EmailAddress";
 
         public const string FirstName = "FirstName";
 

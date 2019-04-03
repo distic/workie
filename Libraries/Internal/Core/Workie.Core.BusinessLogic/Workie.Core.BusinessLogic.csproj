@@ -7,4 +7,9 @@
     <Copyright>Copyright (c) 2019 Distic. All rights reserved.</Copyright>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Workie.Core.DataAccess\Workie.Core.DataAccess\Workie.Core.DataAccess.csproj" />
+    <ProjectReference Include="..\Workie.Core.Entities\Workie.Core.Entities.csproj" />
+  </ItemGroup>
+
 </Project>

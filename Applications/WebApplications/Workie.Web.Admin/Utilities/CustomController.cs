@@ -5,17 +5,17 @@ namespace Workie.Web.Admin.Utilities
 {
     public class CustomController : Controller
     {
-        public Guid CustomerId
+        public Guid UserId
         {
             get
             {
-                Guid.TryParse(HttpContext.User.FindFirst(CustomClaimTypes.CustomerId).Value, out Guid customerId);
+                Guid.TryParse(HttpContext.User.FindFirst(CustomClaimTypes.UserId).Value, out Guid customerId);
 
                 return customerId;
             }
         }
 
-        public string CustomerFirstName
+        public string UserFirstName
         {
             get
             {
@@ -23,7 +23,7 @@ namespace Workie.Web.Admin.Utilities
             }
         }
 
-        public string CustomerLastName
+        public string UserLastName
         {
             get
             {
@@ -31,11 +31,11 @@ namespace Workie.Web.Admin.Utilities
             }
         }
 
-        public string CustomerPrimaryEmailAddress
+        public string UserEmailAddress
         {
             get
             {
-                return HttpContext.User.FindFirst(CustomClaimTypes.PrimaryEmailAddress).Value;
+                return HttpContext.User.FindFirst(CustomClaimTypes.EmailAddress).Value;
             }
         }
     }

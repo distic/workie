@@ -46,7 +46,7 @@ namespace Workie.Web.Admin
                 .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme,
                 options =>
                 {
-                    options.LoginPath = new PathString("/");
+                    options.LoginPath = new PathString("/Login");
                     options.AccessDeniedPath = new PathString("/Errors/Unauthorised");
                 });
 

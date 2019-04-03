@@ -1,0 +1,70 @@
+﻿@inject IViewLocalizer Localizer
+
+@model LoginViewModel
+
+<!-- Body Content Wrapper -->
+<div class="ms-content-wrapper ms-auth">
+
+    <div class="ms-auth-container">
+        <div class="ms-auth-col">
+            <div class="ms-auth-bg"></div>
+        </div>
+        <div class="ms-auth-col">
+            <div class="ms-auth-form">
+                <form asp-action="LoginAsync" asp-controller="Home" asp-area=""
+                      method="POST"
+                      class="needs-validation" novalidate="">
+                    <h1>
+                        @Localizer["Login to Workie"]
+                    </h1>
+                    <p>
+                        @Localizer["Please enter your email and password to continue"]
+                    </p>
+                    <div class="mb-3">
+                        <label for="validationCustom08">
+                            @Localizer["Email Address"]
+                        </label>
+                        <div class="input-group">
+                            <input name="EmailAddress" type="email" class="form-control" id="validationCustom08" placeholder="@Localizer["Email"]" required="">
+                            <div class="invalid-feedback">
+                                @Localizer["Please provide a valid email."]
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <label for="validationCustom09">
+                            @Localizer["Your Password"]
+                        </label>
+                        <div class="input-group">
+                            <input name="Password" type="password" class="form-control" id="validationCustom09" placeholder="@Localizer["Password"]" required="">
+                            <div class="invalid-feedback">
+                                @Localizer["Please provide a password."]
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="ms-checkbox-wrap">
+                            <input class="form-check-input" type="checkbox" value="">
+                            <i class="ms-checkbox-check"></i>
+                        </label>
+                        <span>
+                            @Localizer["Remember Me"]
+                        </span>
+                        <label class="d-block mt-3">
+                            <a href="#" class="btn-link" data-toggle="modal" data-target="#modal-12">
+                                @Localizer["Forgot Password?"]
+                            </a>
+                        </label>
+                    </div>
+                    <button class="btn btn-primary mt-4 d-block w-100" type="submit">
+                        @Localizer["Sign In"]
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<partial name="UserControls/_ForgotPassword_EnterEmail" />

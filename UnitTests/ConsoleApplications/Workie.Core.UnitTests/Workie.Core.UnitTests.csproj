@@ -8,4 +8,13 @@
     <Copyright>Copyright (c) 2019 Distic. All rights reserved.</Copyright>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Libraries\Internal\Core\Workie.Core.BusinessLogic\Workie.Core.BusinessLogic.csproj" />
+    <ProjectReference Include="..\..\..\Libraries\Internal\Core\Workie.Core.Entities\Workie.Core.Entities.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Tests\" />
+  </ItemGroup>
+
 </Project>
