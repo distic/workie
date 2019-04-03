@@ -10,7 +10,7 @@ Tired of paying monthly/annually for a project management subscription service? 
 I deeply appreciate the help of the following people.
 
 - [Ahmad Chatila](https://github.com/ahmadnchatila) backend developer and testing.
-- [Abed Shatila](https://github.com/AbedShatila) giving away the [HTML template](https://themeforest.net/item/mystic-multipurpose-bootstrap-4-admin-dashboard/23392606) for free.
+- [Abed Shatila](https://github.com/AbedShatila) permitting us the use of [Mystic, a dashboard template](https://themeforest.net/item/mystic-multipurpose-bootstrap-4-admin-dashboard/23392606).
 - [Shereen Akoum](https://github.com/ShereenAkoum) backend developer and testing.
 
 
