@@ -1,6 +1,6 @@
 # Workie
 
-An open source project management tool for everyone.
+An open source project management tool made for everyone.
 
 Tired of paying monthly/annually for a project management subscription service? Fear not, this project strives to help you make better use of your resources.
 
