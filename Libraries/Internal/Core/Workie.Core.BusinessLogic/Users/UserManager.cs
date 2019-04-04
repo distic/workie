@@ -1,5 +1,6 @@
 ﻿using Workie.Core.Entities.Users;
 using Workie.Core.DataAccess.Database.Mongo.Users;
+using System;
 
 namespace Workie.Core.BusinessLogic.Users
 {
@@ -13,6 +14,16 @@ namespace Workie.Core.BusinessLogic.Users
         public UserEntity SelectByEmailAndPassword(string email, string password)
         {
             return new UserDB().SelectByEmailAndPassword(email, password);
+        }
+
+        public UserEntity Select(string id)
+        {
+            return new UserDB().Select(id);
+        }
+
+        public void Delete(string id)
+        {
+            new UserDB().Delete(id);
         }
     }
 }

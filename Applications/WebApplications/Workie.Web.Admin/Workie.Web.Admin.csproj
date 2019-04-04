@@ -13,11 +13,41 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\Account\Models\Settings\" />
+    <Folder Include="Areas\Account\Models\Profile\" />
+    <Folder Include="Areas\Account\Views\Profile\UserControls\" />
+    <Folder Include="Areas\Account\Views\Settings\UserControls\" />
     <Folder Include="wwwroot\mystic-kernel\dark\" />
+    <Folder Include="wwwroot\app\" />
+    <Folder Include="wwwroot\img\" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Libraries\Internal\Core\Workie.Core.BusinessLogic\Workie.Core.BusinessLogic.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Areas\Account\Views\_ViewImports.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Account\Views\_ViewStart.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Auth\Views\Login\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Auth\Views\Login\UserControls\_ForgotPassword_EnterEmail.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Auth\Views\Shared\_Layout.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Auth\Views\_ViewImports.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Auth\Views\_ViewStart.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
   </ItemGroup>
 
 </Project>

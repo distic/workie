@@ -11,10 +11,22 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\Libraries\Internal\Core\Workie.Core.BusinessLogic\Workie.Core.BusinessLogic.csproj" />
     <ProjectReference Include="..\..\..\Libraries\Internal\Core\Workie.Core.Entities\Workie.Core.Entities.csproj" />
+    <ProjectReference Include="..\..\..\Libraries\Internal\Utilities\Utilities.Console\Utilities.Console.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Tests\" />
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

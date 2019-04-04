@@ -4,7 +4,7 @@ using Utilities.Console.Data.Enum;
 
 namespace Utilities.Console
 {
-    internal class Outputter
+    public class Outputter
     {
         #region --- Private Methods ---
 
@@ -86,10 +86,20 @@ namespace Utilities.Console
         /// Prints the message prior to starting the process.
         /// </summary>
         /// <param name="withTimer"></param>
-        public static void PrintNoInterruptionNotice(bool withTimer = true)
+        public static void PrintNoInterruptionNotice(string preDescription = "", bool preDescriptionNewLineAfter = false, bool withTimer = true)
         {
             System.Console.ForegroundColor = ConsoleColor.Yellow;
-            System.Console.WriteLine("Unit testing is about to start.");
+
+            if (!string.IsNullOrEmpty(preDescription))
+            {
+                System.Console.WriteLine(preDescription);
+
+                if (preDescriptionNewLineAfter)
+                {
+                    System.Console.WriteLine();
+                }
+            }
+
             System.Console.WriteLine("It is strongly recommended that you do not interrupt this operation until its finished.");
             System.Console.WriteLine();
             System.Console.WriteLine();

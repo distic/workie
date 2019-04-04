@@ -9,7 +9,7 @@ namespace Utilities.Console
         /// <summary>
         /// Gets the Application Name
         /// </summary>
-        internal static string GetApplicationName
+        public static string GetApplicationName
         {
             get
             {
@@ -18,7 +18,7 @@ namespace Utilities.Console
         }
 
         [MethodImpl(MethodImplOptions.NoInlining)]
-        internal static string GetCurrentMethod(string className = "")
+        public static string GetCurrentMethod(string className = "")
         {
             var st = new StackTrace();
             var sf = st.GetFrame(1);

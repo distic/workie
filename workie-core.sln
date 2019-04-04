@@ -33,6 +33,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utilities", "Utilities", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utilities.Console", "Libraries\Internal\Utilities\Utilities.Console\Utilities.Console.csproj", "{9E614C6A-6261-42DC-8B1F-016146333716}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ConsoleApplications", "ConsoleApplications", "{A94A14D2-8670-4905-BA97-E8D8C37F2EC5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workie.DeployHelper", "Applications\ConsoleApplications\Workie.DeployHelper\Workie.DeployHelper.csproj", "{D9A60D16-3487-4C17-B43D-46737FE318C0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +67,10 @@ Global
 		{9E614C6A-6261-42DC-8B1F-016146333716}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E614C6A-6261-42DC-8B1F-016146333716}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E614C6A-6261-42DC-8B1F-016146333716}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9A60D16-3487-4C17-B43D-46737FE318C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9A60D16-3487-4C17-B43D-46737FE318C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9A60D16-3487-4C17-B43D-46737FE318C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9A60D16-3487-4C17-B43D-46737FE318C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -80,6 +88,8 @@ Global
 		{829D65CF-E261-4222-A219-D95CDD29FB96} = {2D4656E1-61B9-42E4-B533-43DAFB4C2167}
 		{0BACD01D-D47D-4330-8CE0-7D71AC293C07} = {9CEC78C2-E0C1-4630-864D-BCFF663A57DB}
 		{9E614C6A-6261-42DC-8B1F-016146333716} = {0BACD01D-D47D-4330-8CE0-7D71AC293C07}
+		{A94A14D2-8670-4905-BA97-E8D8C37F2EC5} = {CF65B681-0ACF-461E-AF33-6F1035916EFF}
+		{D9A60D16-3487-4C17-B43D-46737FE318C0} = {A94A14D2-8670-4905-BA97-E8D8C37F2EC5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2C2FFAC7-9AE4-4757-8DE7-E72D40457F1D}

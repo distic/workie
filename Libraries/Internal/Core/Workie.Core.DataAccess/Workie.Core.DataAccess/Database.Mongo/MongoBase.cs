@@ -1,4 +1,4 @@
-﻿//using MongoDB.Driver;
+﻿using MongoDB.Driver;
 
 namespace Workie.Core.DataAccess.Database.Mongo
 {
@@ -8,8 +8,8 @@ namespace Workie.Core.DataAccess.Database.Mongo
 
         #region Properties
 
-     //   internal readonly MongoClient mongoClient;
-    //    internal readonly IMongoDatabase mongoDatabase;
+        internal readonly MongoClient mongoClient;
+        internal readonly IMongoDatabase mongoDatabase;
 
         #endregion
 
@@ -17,10 +17,10 @@ namespace Workie.Core.DataAccess.Database.Mongo
 
         internal MongoBase()
         {
-      //      mongoClient = new MongoClient();
+            mongoClient = new MongoClient();
 
             // TODO: figure out a way to connect to the MongoDB using IP and credentials, even if it takes 127.0.0.1 (localhost) to do so.
-      //      mongoDatabase = mongoClient.GetDatabase(databaseName);
+            mongoDatabase = mongoClient.GetDatabase(databaseName);
         }
 
         #endregion

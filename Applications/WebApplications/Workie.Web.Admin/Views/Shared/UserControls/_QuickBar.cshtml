@@ -1,0 +1,430 @@
+﻿@inject IViewLocalizer Localizer
+
+<aside id="ms-quick-bar" class="ms-quick-bar fixed ms-d-block-lg">
+
+    <ul class="nav nav-tabs ms-quick-bar-list ui-sortable ui-sortable-disabled" role="tablist">
+        <li class="ms-quick-bar-item ms-has-qa ui-sortable-handle ui-draggable ui-draggable-handle ui-draggable-disabled" role="presentation" data-toggle="tooltip" data-placement="left" title="@Localizer["Launch To-do-list"]" data-title="@Localizer["To-do-list"]">
+            <a href="#qa-toDo" aria-controls="qa-toDo" role="tab" data-toggle="tab">
+                <i class="flaticon-list"></i>
+                <span class="ms-quick-bar-label">
+                    @Localizer["To-do"]
+                </span>
+            </a>
+        </li>
+        <li class="ms-quick-bar-item ms-has-qa ui-sortable-handle ui-draggable ui-draggable-handle ui-draggable-disabled" role="presentation" data-toggle="tooltip" data-placement="left" title="" data-title="@Localizer["Reminders"]" data-original-title="@Localizer["Launch Reminders"]">
+            <a href="#qa-reminder" aria-controls="qa-reminder" role="tab" data-toggle="tab">
+                <i class="flaticon-bell"></i>
+                <span class="ms-quick-bar-label">
+                    @Localizer["Reminder"]
+                </span>
+            </a>
+        </li>
+        <li class="ms-quick-bar-item ms-has-qa ui-sortable-handle ui-draggable ui-draggable-handle ui-draggable-disabled" role="presentation" data-toggle="tooltip" data-placement="left" title="@Localizer["Launch Notes"]" data-title="@Localizer["Notes"]">
+            <a href="#qa-notes" aria-controls="qa-notes" role="tab" data-toggle="tab">
+                <i class="flaticon-pencil"></i>
+                <span class="ms-quick-bar-label">
+                    @Localizer["Notes"]
+                </span>
+            </a>
+        </li>
+        <li class="ms-quick-bar-item ms-has-qa ui-sortable-handle ui-draggable ui-draggable-handle ui-draggable-disabled" role="presentation" data-toggle="tooltip" data-placement="left" title="" data-title="@Localizer["Invite Members"]" data-original-title="@Localizer["Invite Members"]">
+            <a href="#qa-invite" aria-controls="qa-invite" role="tab" data-toggle="tab">
+                <i class="flaticon-share-1"></i>
+                <span class="ms-quick-bar-label">
+                    @Localizer["Invite"]
+                </span>
+            </a>
+        </li>
+    </ul>
+
+    <div class="ms-configure-qa" data-toggle="tooltip" data-placement="left" title="" data-original-title="@Localizer["Configure Quick Access"]">
+        <a href="#">
+            <i class="flaticon-hammer"></i>
+            <span class="ms-quick-bar-label">
+                @Localizer["Configure"]
+            </span>
+        </a>
+    </div>
+
+    <!-- Quick bar Content -->
+    <div class="ms-quick-bar-content">
+        <div class="ms-quick-bar-header clearfix">
+            <h5 class="ms-quick-bar-title float-left">
+                @Localizer["Title"]
+            </h5>
+            <button type="button" class="close ms-toggler" data-target="#ms-quick-bar" data-toggle="hideQuickBar" aria-label="@Localizer["Close"]">
+                <span aria-hidden="true">
+                    ×
+                </span>
+            </button>
+        </div>
+
+        <div class="ms-quick-bar-body tab-content">
+
+            <div role="tabpanel" class="tab-pane" id="qa-toDo">
+                <div class="ms-quickbar-container ms-todo-list-container ms-scrollable ps">
+
+                    <form class="ms-add-task-block">
+                        <div class="form-group mx-3 mt-0  fs-14 clearfix">
+                            <input type="text" class="form-control fs-14 float-left" id="task-block" name="todo-block" placeholder="@Localizer["Add Task Block"]" value="">
+                            <button type="submit" class="ms-btn-icon bg-primary float-right">
+                                <i class="material-icons text-disabled">
+                                    @Localizer["add"]
+                                </i>
+                            </button>
+                        </div>
+                    </form>
+
+                    <ul class="ms-todo-list">
+                        <li class="ms-card ms-qa-card ms-deletable">
+
+                            <div class="ms-card-header clearfix">
+                                <h6 class="ms-card-title">
+                                    @Localizer["Task Block Title"]
+                                </h6>
+                                <button data-toggle="tooltip" data-placement="left" title="@Localizer["Add a Task to this block"]" class="ms-add-task-to-block ms-btn-icon float-right">
+                                    <i class="material-icons text-disabled">
+                                        @Localizer["add"]
+                                    </i>
+                                </button>
+                            </div>
+
+                            <div class="ms-card-body">
+                                <ul class="ms-list ms-task-block">
+                                    <li class="ms-list-item ms-to-do-task ms-deletable">
+                                        <label class="ms-checkbox-wrap ms-todo-complete">
+                                            <input type="checkbox" value="">
+                                            <i class="ms-checkbox-check"></i>
+                                        </label>
+                                        <span>
+                                            @Localizer["Task to do"]
+                                        </span>
+                                        <button type="submit" class="close">
+                                            <i class="flaticon-trash ms-delete-trigger">
+                                            </i>
+                                        </button>
+                                    </li>
+                                    <li class="ms-list-item ms-to-do-task ms-deletable">
+                                        <label class="ms-checkbox-wrap ms-todo-complete">
+                                            <input type="checkbox" value="">
+                                            <i class="ms-checkbox-check"></i>
+                                        </label>
+                                        <span>
+                                            @Localizer["Task to do"]
+                                        </span>
+                                        <button type="submit" class="close">
+                                            <i class="flaticon-trash ms-delete-trigger">
+                                            </i>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="ms-card-footer clearfix">
+                                <a href="#" class="text-disabled mr-2">
+                                    <i class="flaticon-archive"> </i>
+                                    @Localizer["Archive"]
+                                </a>
+                                <a href="#" class="text-disabled  ms-delete-trigger float-right">
+                                    <i class="flaticon-trash"> </i>
+                                    @Localizer["Delete"]
+                                </a>
+                            </div>
+
+                        </li>
+                    </ul>
+                    <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+                        <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+                    </div><div class="ps__rail-y" style="top: 0px; right: 0px;">
+                        <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div role="tabpanel" class="tab-pane" id="qa-reminder">
+                <div class="ms-quickbar-container ms-reminders">
+
+                    <ul class="ms-qa-options">
+                        <li> <a href="#" data-toggle="modal" data-target="#reminder-modal"> <i class="flaticon-bell"></i> New Reminder </a> </li>
+                    </ul>
+
+                    <div class="ms-quickbar-container ms-scrollable ps">
+
+                        <div class="ms-card ms-qa-card ms-deletable">
+                            <div class="ms-card-body">
+                                <p> Developer Meeting in Block B </p>
+                                <span class="text-disabled fs-12"><i class="material-icons fs-14">access_time</i> Today - 3:45 pm</span>
+                            </div>
+                            <div class="ms-card-footer clearfix">
+
+                                <div class="ms-note-editor float-right">
+                                    <a href="#" class="text-disabled mr-2" data-toggle="modal" data-target="#reminder-modal">
+                                        <i class="flaticon-pencil"> </i>
+                                        @Localizer["Edit"]
+                                    </a>
+                                    <a href="#" class="text-disabled  ms-delete-trigger">
+                                        <i class="flaticon-trash"> </i>
+                                        @Localizer["Delete"]
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="ms-card ms-qa-card ms-deletable">
+                            <div class="ms-card-body">
+                                <p> Start adding change log to version 2 </p>
+                                <span class="text-disabled fs-12">
+                                    <i class="material-icons fs-14">access_time</i>
+                                    @Localizer["Tomorrow - 12:00 pm"]
+                                </span>
+                            </div>
+                            <div class="ms-card-footer clearfix">
+
+                                <div class="ms-note-editor float-right">
+                                    <a href="#" class="text-disabled mr-2" data-toggle="modal" data-target="#reminder-modal">
+                                        <i class="flaticon-pencil"> </i>
+                                        @Localizer["Edit"]
+                                    </a>
+                                    <a href="#" class="text-disabled  ms-delete-trigger">
+                                        <i class="flaticon-trash"> </i>
+                                        @Localizer["Delete"]
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+                            <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+                        </div><div class="ps__rail-y" style="top: 0px; right: 0px;">
+                            <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div role="tabpanel" class="tab-pane" id="qa-notes">
+
+                <ul class="ms-qa-options">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#notes-modal">
+                            <i class="flaticon-sticky-note"></i>
+                            @Localizer["New Note"]
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="flaticon-excel"></i>
+                            @Localizer["Export to Excel"]
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="ms-quickbar-container ms-scrollable ps">
+
+                    <div class="ms-card ms-qa-card ms-deletable">
+                        <div class="ms-card-header">
+                            <h6 class="ms-card-title">
+                                @Localizer["Don't forget to check with the designer"]
+                            </h6>
+                        </div>
+                        <div class="ms-card-body">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vulputate urna in faucibus venenatis. Etiam at dapibus neque,
+                                vel varius metus. Pellentesque eget orci malesuada, venenatis magna et
+                            </p>
+                            <ul class="ms-note-members clearfix mb-0">
+                                <li class="ms-deletable">
+                                    <img src="~/mystic-kernel/img/people/people-3.jpg" alt="member">
+                                </li>
+                                <li class="ms-deletable">
+                                    <img src="~/mystic-kernel/img/people/people-5.jpg" alt="member">
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="ms-card-footer clearfix">
+
+                            <div class="dropdown float-left">
+                                <a href="#" class="text-disabled" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="flaticon-share-1"></i>
+                                    @Localizer["Share"]
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="dropdown-menu-header">
+                                        <h6 class="dropdown-header ms-inline m-0">
+                                            <span class="text-disabled">
+                                                @Localizer["Share With"]
+                                            </span>
+                                        </h6>
+                                    </li>
+                                    <li class="dropdown-divider"></li>
+                                    <li class="ms-scrollable ms-dropdown-list ms-members-list ps">
+                                        <a class="media p-2" href="#">
+                                            <div class="mr-2 align-self-center">
+                                                <img src="~/mystic-kernel/img/people/people-10.jpg" class="ms-img-round" alt="people">
+                                            </div>
+                                            <div class="media-body">
+                                                <span>
+                                                    John Doe
+                                                </span>
+                                            </div>
+                                        </a>
+                                        <a class="media p-2" href="#">
+                                            <div class="mr-2 align-self-center">
+                                                <img src="~/mystic-kernel/img/people/people-9.jpg" class="ms-img-round" alt="people">
+                                            </div>
+                                            <div class="media-body">
+                                                <span>
+                                                    Raymart Sandiago
+                                                </span>
+                                            </div>
+                                        </a>
+                                        <a class="media p-2" href="#">
+                                            <div class="mr-2 align-self-center">
+                                                <img src="~/mystic-kernel/img/people/people-7.jpg" class="ms-img-round" alt="people">
+                                            </div>
+                                            <div class="media-body">
+                                                <span>
+                                                    Heather Brown
+                                                </span>
+                                            </div>
+                                        </a>
+                                        <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+                                            <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+                                        </div><div class="ps__rail-y" style="top: 0px; right: 0px;">
+                                            <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="ms-note-editor float-right">
+                                <a href="#" class="text-disabled mr-2" data-toggle="modal" data-target="#notes-modal">
+                                    <i class="flaticon-pencil"> </i>
+                                    @Localizer["Edit"]
+                                </a>
+                                <a href="#" class="text-disabled  ms-delete-trigger">
+                                    <i class="flaticon-trash"> </i>
+                                    @Localizer["Delete"]
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="ms-card ms-qa-card ms-deletable">
+                        <div class="ms-card-header">
+                            <h6 class="ms-card-title">Perform the required unit tests</h6>
+                        </div>
+                        <div class="ms-card-body">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vulputate urna in faucibus venenatis. Etiam at dapibus neque,
+                                vel varius metus. Pellentesque eget orci malesuada, venenatis magna et
+                            </p>
+                            <ul class="ms-note-members clearfix mb-0">
+                                <li class="ms-deletable"> <img src="~/mystic-kernel/img/people/people-9.jpg" alt="member"> </li>
+                            </ul>
+                        </div>
+                        <div class="ms-card-footer clearfix">
+
+                            <div class="dropdown float-left">
+                                <a href="#" class="text-disabled" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="flaticon-share-1"></i>
+                                    @Localizer["Share"]
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="dropdown-menu-header">
+                                        <h6 class="dropdown-header ms-inline m-0">
+                                            <span class="text-disabled">
+                                                @Localizer["Share With"]
+                                            </span>
+                                        </h6>
+                                    </li>
+                                    <li class="dropdown-divider"></li>
+                                    <li class="ms-scrollable ms-dropdown-list ms-members-list ps">
+                                        <a class="media p-2" href="#">
+                                            <div class="mr-2 align-self-center">
+                                                <img src="~/mystic-kernel/img/people/people-10.jpg" class="ms-img-round" alt="people">
+                                            </div>
+                                            <div class="media-body">
+                                                <span>
+                                                    John Doe
+                                                </span>
+                                            </div>
+                                        </a>
+                                        <a class="media p-2" href="#">
+                                            <div class="mr-2 align-self-center">
+                                                <img src="~/mystic-kernel/img/people/people-9.jpg" class="ms-img-round" alt="people">
+                                            </div>
+                                            <div class="media-body">
+                                                <span>
+                                                    Raymart Sandiago
+                                                </span>
+                                            </div>
+                                        </a>
+                                        <a class="media p-2" href="#">
+                                            <div class="mr-2 align-self-center">
+                                                <img src="~/mystic-kernel/img/people/people-7.jpg" class="ms-img-round" alt="people">
+                                            </div>
+                                            <div class="media-body">
+                                                <span>
+                                                    Heather Brown
+                                                </span>
+                                            </div>
+                                        </a>
+                                        <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+                                            <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+                                        </div><div class="ps__rail-y" style="top: 0px; right: 0px;">
+                                            <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;">
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="ms-note-editor float-right">
+                                <a href="#" class="text-disabled mr-2" data-toggle="modal" data-target="#notes-modal">
+                                    <i class="flaticon-pencil"> </i>
+                                    @Localizer["Edit"]
+                                </a>
+                                <a href="#" class="text-disabled  ms-delete-trigger">
+                                    <i class="flaticon-trash"> </i>
+                                    @Localizer["Delete"]
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+                        <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+                    </div>
+                    <div class="ps__rail-y" style="top: 0px; right: 0px;">
+                        <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div role="tabpanel" class="tab-pane" id="qa-invite">
+
+                <div class="ms-quickbar-container text-center ms-invite-member">
+                    <i class="flaticon-network"></i>
+                    <p>@Localizer["Invite Team Members"]</p>
+                    <form>
+                        <div class="ms-form-group">
+                            <input type="text" placeholder="@Localizer["Member Email"]" class="form-control" name="invite-email" value="">
+                        </div>
+                        <div class="ms-form-group">
+                            <button type="submit" name="invite-member" class="btn btn-primary w-100">
+                                @Localizer["Invite"]
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</aside>

@@ -1,1 +1,122 @@
-﻿
+﻿@inject IViewLocalizer Localizer
+
+@{
+    var firstName = User.FindFirst(CustomClaimTypes.FirstName).Value;
+    var lastName = User.FindFirst(CustomClaimTypes.LastName).Value;
+
+    // Temporary mockups...
+    var notificationCount = 2;
+}
+<nav class="navbar ms-navbar">
+
+    <div class="ms-aside-toggler ms-toggler pl-0" data-target="#ms-side-nav" data-toggle="slideLeft">
+        <span class="ms-toggler-bar bg-primary"></span>
+        <span class="ms-toggler-bar bg-primary"></span>
+        <span class="ms-toggler-bar bg-primary"></span>
+    </div>
+
+    <div class="logo-sn logo-sm ms-d-block-sm">
+        <a asp-area="" asp-controller="home" asp-action="" class="pl-0 ml-0 text-center navbar-brand mr-0">
+            <img src="~/mystic-kernel/img/logo-sm-dark.png" alt="@Localizer["Workie"]">
+        </a>
+    </div>
+
+    <ul class="ms-nav-list ms-inline mb-0" id="ms-nav-options">
+
+
+        <li class="ms-nav-item dropdown">
+            <a href="#" class="text-disabled ms-has-notification" id="notificationDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="flaticon-bell"></i></a>
+            <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="notificationDropdown">
+                <li class="dropdown-menu-header">
+                    <h6 class="dropdown-header ms-inline m-0">
+                        <span class="text-disabled">
+                            @Localizer["Notifications"]
+                        </span>
+                    </h6><span class="badge badge-pill badge-info">
+                        @notificationCount @Localizer["New"]
+                    </span>
+                </li>
+                <li class="dropdown-divider"></li>
+                <li class="ms-scrollable ms-dropdown-list ps">
+                    <a class="media p-2" href="#">
+                        <div class="media-body">
+                            <span>
+                                Millions of ways to improve your workspace
+                            </span>
+                            <p class="fs-10 my-1 text-disabled">
+                                <i class="material-icons">access_time</i>
+                                30 seconds ago
+                            </p>
+                        </div>
+                    </a>
+                    <a class="media p-2" href="#">
+                        <div class="media-body">
+                            <span>
+                                Ensure user satisfaction
+                            </span>
+                            <p class="fs-10 my-1 text-disabled">
+                                <i class="material-icons">access_time</i>
+                                1 day ago
+                            </p>
+                        </div>
+                    </a>
+                    <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; right: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div></div>
+                </li>
+                <li class="dropdown-divider"></li>
+                <li class="dropdown-menu-footer text-center">
+                    <a href="#">
+                        @Localizer["View all notifications"]
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="ms-nav-item">
+            <a href="#" class="text-disabled ms-toggler" data-target="#ms-recent-activity" data-toggle="slideRight"><i class="flaticon-menu"></i></a>
+        </li>
+        <li class="ms-nav-item ms-nav-user dropdown">
+            <a href="#" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img class="ms-user-img ms-img-round float-right" src="~/mystic-kernel/light/img/people/people-5.jpg" alt="people">
+            </a>
+            <ul class="dropdown-menu dropdown-menu-right user-dropdown" aria-labelledby="userDropdown">
+                <li class="dropdown-menu-header">
+                    <h6 class="dropdown-header ms-inline m-0">
+                        <span class="text-disabled">
+                            @string.Format("{0}, {1} {2}", Localizer["Welcome"].Value, firstName, lastName)
+                        </span>
+                    </h6>
+                </li>
+                <li class="dropdown-divider"></li>
+                <li class="ms-dropdown-list">
+                    <a asp-area="account" asp-controller="profile" asp-action="" class="media fs-14 p-2">
+                        <span>
+                            <i class="flaticon-user mr-2"></i>
+                            @Localizer["Profile"]
+                        </span>
+                    </a>
+                    <a asp-area="account" asp-controller="settings" asp-action="" class="media fs-14 p-2">
+                        <span>
+                            <i class="flaticon-gear mr-2"></i>
+                            @Localizer["Account Settings"]
+                        </span>
+                    </a>
+                </li>
+                <li class="dropdown-divider"></li>
+                <li class="dropdown-menu-footer">
+                    <a asp-area="auth" asp-controller="logout" asp-action="" class="media fs-14 p-2">
+                        <span>
+                            <i class="flaticon-shut-down mr-2"></i>
+                            @Localizer["Logout"]
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <div class="ms-toggler ms-d-block-sm pr-0 ms-nav-toggler" data-toggle="slideDown" data-target="#ms-nav-options">
+        <span class="ms-toggler-bar bg-primary"></span>
+        <span class="ms-toggler-bar bg-primary"></span>
+        <span class="ms-toggler-bar bg-primary"></span>
+    </div>
+
+</nav>

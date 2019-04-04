@@ -46,8 +46,8 @@ namespace Workie.Web.Admin
                 .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme,
                 options =>
                 {
-                    options.LoginPath = new PathString("/Login");
-                    options.AccessDeniedPath = new PathString("/Errors/Unauthorised");
+                    options.LoginPath = new PathString("/auth/login");
+                    options.AccessDeniedPath = new PathString("/errors/unauthorised");
                 });
 
 
@@ -69,7 +69,7 @@ namespace Workie.Web.Admin
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/home/error");
                 app.UseHsts();
             }
 
