@@ -8,6 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Areas\Welcome\**" />
+    <Content Remove="Areas\Welcome\**" />
+    <EmbeddedResource Remove="Areas\Welcome\**" />
+    <None Remove="Areas\Welcome\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
   </ItemGroup>
@@ -16,7 +23,6 @@
     <Folder Include="Areas\Account\Models\Settings\" />
     <Folder Include="Areas\Account\Models\Profile\" />
     <Folder Include="Areas\Account\Views\Profile\UserControls\" />
-    <Folder Include="Areas\Account\Views\Settings\UserControls\" />
     <Folder Include="wwwroot\mystic-kernel\dark\" />
     <Folder Include="wwwroot\app\" />
     <Folder Include="wwwroot\img\" />
@@ -27,6 +33,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="Areas\Account\Views\Settings\UserControls\_NavBar.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Account\Views\Settings\UserControls\_SideBar.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Account\Views\Shared\UserControls\_NavBar.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Areas\Account\Views\_ViewImports.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>

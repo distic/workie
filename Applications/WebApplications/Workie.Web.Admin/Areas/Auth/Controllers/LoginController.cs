@@ -44,7 +44,8 @@ namespace Workie.Web.Admin.Areas.Auth.Controllers
                     new Claim(CustomClaimTypes.EmailAddress, userEntity.EmailAddress),
                     new Claim(CustomClaimTypes.FirstName, userEntity.FirstName),
                     new Claim(CustomClaimTypes.LastName, userEntity.LastName),
-                    new Claim(CustomClaimTypes.SupportPin, string.Empty)
+                    new Claim(CustomClaimTypes.SupportPin, string.Empty),
+                    new Claim(CustomClaimTypes.IsFirstLogin, userEntity.IsFirstLogin.ToString())
                 }, CookieAuthenticationDefaults.AuthenticationScheme);
 
                 var principal = new ClaimsPrincipal(identity);

@@ -5,7 +5,7 @@ namespace Workie.Web.Admin.Utilities
 {
     public class CustomController : Controller
     {
-        public Guid UserId
+        internal Guid UserId
         {
             get
             {
@@ -15,7 +15,7 @@ namespace Workie.Web.Admin.Utilities
             }
         }
 
-        public string UserFirstName
+        internal string UserFirstName
         {
             get
             {
@@ -23,7 +23,7 @@ namespace Workie.Web.Admin.Utilities
             }
         }
 
-        public string UserLastName
+        internal string UserLastName
         {
             get
             {
@@ -31,11 +31,19 @@ namespace Workie.Web.Admin.Utilities
             }
         }
 
-        public string UserEmailAddress
+        internal string UserEmailAddress
         {
             get
             {
                 return HttpContext.User.FindFirst(CustomClaimTypes.EmailAddress).Value;
+            }
+        }
+
+        internal bool IsFirstLogin
+        {
+            get
+            {
+                return Convert.ToBoolean(HttpContext.User.FindFirst(CustomClaimTypes.IsFirstLogin).Value);
             }
         }
     }

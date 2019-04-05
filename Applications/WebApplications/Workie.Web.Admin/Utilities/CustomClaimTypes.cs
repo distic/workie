@@ -11,5 +11,7 @@
         public const string LastName = "LastName";
 
         public const string SupportPin = "SupportPin";
+
+        public const string IsFirstLogin = "IsFirstLogin";
     }
 }

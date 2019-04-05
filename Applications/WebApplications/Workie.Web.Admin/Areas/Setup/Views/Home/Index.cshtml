@@ -1,0 +1,172 @@
+﻿@inject IViewLocalizer Localizer
+
+<!-- Body Content Wrapper -->
+<div class="ms-content-wrapper">
+    <div class="row">
+        <div class="col-md-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb pl-0">
+                    <li class="breadcrumb-item">
+                        <a class="disabled">
+                            <i class="material-icons">
+                            </i> @Localizer["Please follow instructions to finish setup."]
+                        </a>
+                    </li>
+                </ol>
+            </nav>
+        </div>
+        <div class="col-xl-10 col-md-12">
+            <div class="ms-panel ms-panel-fh">
+                <div class="ms-panel-header">
+                    <h6>Wizard Style 2</h6>
+                </div>
+                <div class="ms-panel-body">
+                    <form class="ms-form-wizard ms-wizard-pill style2-wizard wizard clearfix" role="application" id="steps-uid-1">
+                        <div class="steps clearfix"><ul role="tablist"><li role="tab" class="first current" aria-disabled="false" aria-selected="true"><a id="steps-uid-1-t-0" href="#steps-uid-1-h-0" aria-controls="steps-uid-1-p-0"><span class="current-info audible"> </span><span class="number">1</span> Application</a></li><li role="tab" class="disabled" aria-disabled="true"><a id="steps-uid-1-t-1" href="#steps-uid-1-h-1" aria-controls="steps-uid-1-p-1"><span class="number">2</span> Payment</a></li><li role="tab" class="disabled last" aria-disabled="true"><a id="steps-uid-1-t-2" href="#steps-uid-1-h-2" aria-controls="steps-uid-1-p-2"><span class="number">3</span> Proceed</a></li></ul></div><div class="content clearfix">
+
+                            <div class="ms-wizard-step body current" id="steps-uid-1-p-0" role="tabpanel" aria-labelledby="steps-uid-1-h-0" aria-hidden="false">
+                                <div class="form-row">
+                                    <div class="col-md-6 mb-3">
+                                        <label>First name</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" placeholder="First name" value="John">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label>Last name</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" placeholder="Last name" value="Doe">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-12 mb-3">
+                                        <label>Email Address</label>
+                                        <div class="input-group">
+                                            <input type="email" class="form-control" placeholder="Email Address">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-2">
+                                        <label>Password</label>
+                                        <div class="input-group">
+                                            <input type="password" class="form-control" placeholder="Password">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <h3 id="steps-uid-1-h-1" tabindex="-1" class="title">Payment</h3>
+                            <div class="ms-wizard-step body" id="steps-uid-1-p-1" role="tabpanel" aria-labelledby="steps-uid-1-h-1" style="display: none;" aria-hidden="true">
+                                <div class="form-row">
+                                    <div class="col-md-12">
+                                        <label>Payment Method</label>
+                                        <ul class="ms-payment-container">
+                                            <li>
+                                                <div class="ms-radio-img">
+                                                    <input type="radio" name="payment-method" value="">
+                                                    <div class="ms-payment-img">
+                                                        <img src="../../assets/img/payment/payment-payoneer.png" alt="payment">
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="ms-radio-img">
+                                                    <input type="radio" name="payment-method" value="">
+                                                    <div class="ms-payment-img">
+                                                        <img src="../../assets/img/payment/payment-visa.png" alt="payment">
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="ms-radio-img">
+                                                    <input type="radio" name="payment-method" value="">
+                                                    <div class="ms-payment-img">
+                                                        <img src="../../assets/img/payment/payment-paypal.png" alt="payment">
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="ms-radio-img">
+                                                    <input type="radio" name="payment-method" value="">
+                                                    <div class="ms-payment-img">
+                                                        <img src="../../assets/img/payment/payment-master.png" alt="payment">
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-xl-6 col-md-12 mb-3">
+                                        <label>Card Holder Name</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" placeholder="Card Holder Name">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-md-12">
+                                        <label>Card Number</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" placeholder="Card Number">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-4 col-md-12">
+                                        <label>Month</label>
+                                        <div class="input-group">
+                                            <select class="form-control">
+                                                <option value="">01</option>
+                                                <option value="">02</option>
+                                                <option value="">03</option>
+                                                <option value="">04</option>
+                                                <option value="">05</option>
+                                                <option value="">06</option>
+                                                <option value="">07</option>
+                                                <option value="">08</option>
+                                                <option value="">09</option>
+                                                <option value="">10</option>
+                                                <option value="">11</option>
+                                                <option value="">12</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-4 col-md-12">
+                                        <label>Year</label>
+                                        <div class="input-group">
+                                            <select class="form-control">
+                                                <option value="">2020</option>
+                                                <option value="">2021</option>
+                                                <option value="">2022</option>
+                                                <option value="">2023</option>
+                                                <option value="">2024</option>
+                                                <option value="">2025</option>
+                                                <option value="">2026</option>
+                                                <option value="">2027</option>
+                                                <option value="">2028</option>
+                                                <option value="">2029</option>
+                                                <option value="">2030</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-4 col-md-12">
+                                        <label data-toggle="tooltip" data-placement="left" title="3 digit number at the back of your card">CVV <i class="material-icons">info_outline</i> </label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" placeholder="CVV">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ms-wizard-step body" id="steps-uid-1-p-2" role="tabpanel" aria-labelledby="steps-uid-1-h-2" style="display: none;" aria-hidden="true">
+                                <p>
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever
+                                    since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,
+                                    but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever
+                                    since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,
+                                    but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
+                                </p>
+                            </div>
+                        </div><div class="actions clearfix"><ul role="menu" aria-label="Pagination"><li class="disabled" aria-disabled="true"><a href="#previous" role="menuitem">Back</a></li><li aria-hidden="false" aria-disabled="false"><a href="#next" role="menuitem">Next</a></li><li style="display: none;" aria-hidden="true"><a href="#finish" role="menuitem">Submit</a></li></ul></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

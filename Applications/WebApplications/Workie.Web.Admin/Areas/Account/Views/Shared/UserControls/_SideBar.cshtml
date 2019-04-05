@@ -1,0 +1,46 @@
+﻿@inject IViewLocalizer Localizer
+<!-- Sidebar Navigation Left -->
+<aside id="ms-side-nav" class="side-nav fixed ms-aside-scrollable ms-aside-left">
+    <!-- Logo -->
+    <div class="logo-sn ms-d-block-lg">
+        <a asp-area="" asp-controller="home" asp-action="" class="pl-0 ml-0 text-center">
+            <img src="~/mystic-kernel/light/assets/img/logo.png" alt="logo">
+        </a>
+    </div>
+    <!-- Navigation -->
+    <ul class="accordion ms-main-aside fs-14" id="side-nav-accordion">
+        <li class="menu-item">
+            <a href="#">
+                <span>
+                    <i class="material-icons fs-16">widgets</i>
+                    @Localizer["Setting 1"]
+                </span>
+            </a>
+        </li>
+        <!-- Dashboard -->
+        <li class="menu-item">
+            <a href="#" class="has-chevron" data-toggle="collapse" data-target="#dashboard" aria-expanded="false" aria-controls="dashboard">
+                <span>
+                    <i class="material-icons fs-16">dashboard</i>
+                    @Localizer["Setting 2"]
+                </span>
+            </a>
+            <ul id="dashboard" class="collapse" aria-labelledby="dashboard" data-parent="#side-nav-accordion">
+                <li>
+                    <a href="#">
+                        @Localizer[""]
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <!-- /Dashboard -->
+        <li class="menu-item">
+            <a href="#">
+                <span>
+                    <i class="material-icons fs-16">widgets</i>
+                    @Localizer["Setting 3"]
+                </span>
+            </a>
+        </li>
+    </ul>
+</aside>

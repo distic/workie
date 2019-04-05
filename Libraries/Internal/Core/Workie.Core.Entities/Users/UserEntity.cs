@@ -26,5 +26,10 @@
         /// Gets or sets the Password value.
         /// </summary>
         public string Password { get; set; }
+
+        /// <summary>
+        /// Gets or sets the IsFirstLogin value.
+        /// </summary>
+        public bool IsFirstLogin { get; set; }
     }
 }

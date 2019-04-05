@@ -1,1 +1,64 @@
-﻿
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Workie</title>
+
+    <!-- Iconic Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="~/mystic-kernel/light/vendors/iconic-fonts/font-awesome/css/all.min.css">
+    <link rel="stylesheet" href="~/mystic-kernel/light/vendors/iconic-fonts/flat-icons/flaticon.css">
+    <link rel="stylesheet" href="~/mystic-kernel/light/vendors/iconic-fonts/cryptocoins/cryptocoins.css">
+    <link rel="stylesheet" href="~/mystic-kernel/light/vendors/iconic-fonts/cryptocoins/cryptocoins-colors.css">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="~/mystic-kernel/light/assets/css/bootstrap.min.css">
+    <!-- jQuery UI -->
+    <link rel="stylesheet" href="~/mystic-kernel/light/assets/css/jquery-ui.min.css">
+    <!-- Page Specific CSS (Slick Slider.css) -->
+    <link rel="stylesheet" href="~/mystic-kernel/light/assets/css/slick.css">
+    <!-- Mystic styles -->
+    <link rel="stylesheet" href="~/mystic-kernel/light/assets/css/style.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="~/mystic-kernel/light/assets/favicon.ico">
+</head>
+
+<body class="ms-body ms-aside-left-open ms-primary-theme">
+
+    <partial name="UserControls/_PreLoader" />
+    <partial name="UserControls/_SideBar" />
+
+    <!-- Main Content -->
+    <main class="body-content">
+
+        <partial name="UserControls/_NavBar" />
+
+        <!-- Body Content Wrapper -->
+        <div class="ms-content-wrapper">
+            @RenderBody()
+        </div>
+    </main>
+
+    <!-- SCRIPTS -->
+    <!-- Global Required Scripts Start -->
+    <script src="~/mystic-kernel/light/assets/js/jquery-3.3.1.min.js"></script>
+    <script src="~/mystic-kernel/light/assets/js/popper.min.js"></script>
+    <script src="~/mystic-kernel/light/assets/js/bootstrap.min.js"></script>
+    <script src="~/mystic-kernel/light/assets/js/perfect-scrollbar.js"></script>
+    <script src="~/mystic-kernel/light/assets/js/jquery-ui.min.js"></script>
+    <!-- Global Required Scripts End -->
+    <!-- Page Specific Scripts Start -->
+    <script src="~/mystic-kernel/light/assets/js/slick.min.js"></script>
+    <script src="~/mystic-kernel/light/assets/js/moment.js"></script>
+    <script src="~/mystic-kernel/light/assets/js/jquery.webticker.min.js"></script>
+    <!-- Page Specific Scripts Finish -->
+    <!-- Mystic core JavaScript -->
+    <script src="~/mystic-kernel/light/assets/js/framework.js"></script>
+    <!-- Settings -->
+    <script src="~/mystic-kernel/light/assets/js/settings.js"></script>
+</body>
+
+</html>

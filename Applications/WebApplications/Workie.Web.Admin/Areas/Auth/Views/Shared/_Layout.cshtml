@@ -9,11 +9,11 @@
     <!-- Iconic Fonts -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Bootstrap core CSS -->
-    <link href="~/mystic-kernel/light/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/mystic-kernel/light/assets/css/bootstrap.min.css">
     <!-- Mystic styles -->
-    <link href="~/mystic-kernel/light/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/mystic-kernel/light/assets/css/style.css">
     <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="~/mystic-kernel/light/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/mystic-kernel/light/assets/favicon.ico">
 </head>
 <body class="ms-body ms-primary-theme ms-logged-out">
 
@@ -41,26 +41,24 @@
 
     <!-- Main Content -->
     <main class="body-content">
-
         <div>
             @RenderBody()
         </div>
-    
     </main>
 
         <!-- SCRIPTS -->
         <!-- Global Required Scripts Start -->
-        <script src="~/mystic-kernel/light/js/jquery-3.3.1.min.js"></script>
-        <script src="~/mystic-kernel/light/js/popper.min.js"></script>
-        <script src="~/mystic-kernel/light/js/bootstrap.min.js"></script>
-        <script src="~/mystic-kernel/light/js/perfect-scrollbar.js"></script>
-        <script src="~/mystic-kernel/light/js/jquery-ui.min.js"></script>
+        <script src="~/mystic-kernel/light/assets/js/jquery-3.3.1.min.js"></script>
+        <script src="~/mystic-kernel/light/assets/js/popper.min.js"></script>
+        <script src="~/mystic-kernel/light/assets/js/bootstrap.min.js"></script>
+        <script src="~/mystic-kernel/light/assets/js/perfect-scrollbar.js"></script>
+        <script src="~/mystic-kernel/light/assets/js/jquery-ui.min.js"></script>
         <!-- Global Required Scripts End -->
         <!-- Mystic core JavaScript -->
-        <script src="~/mystic-kernel/light/js/framework.js"></script>
+        <script src="~/mystic-kernel/light/assets/js/framework.js"></script>
 
         <!-- Settings -->
-        <script src="~/mystic-kernel/light/js/settings.js"></script>
+        <script src="~/mystic-kernel/light/assets/js/settings.js"></script>
 
         @RenderSection("Scripts", required: false)
 </body>

@@ -1,12 +1,15 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using Workie.Web.Admin.Filters;
 using Workie.Web.Admin.Models;
+using Workie.Web.Admin.Utilities;
 
 namespace Workie.Web.Admin.Controllers
 {
     [Authorize]
-    public class HomeController : Controller
+    [AuthorizeCurrentUser]
+    public class HomeController : CustomController
     {
         public IActionResult Index()
         {
