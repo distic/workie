@@ -46,6 +46,21 @@ namespace Workie.Core.DataAccess.Database.Mongo.Users
                 return string.Empty;
             }
 
+            if (userEntity._companyId == 0)
+            {
+                return string.Empty;
+            }
+
+            if (userEntity._countryId == 0)
+            {
+                return string.Empty;
+            }
+
+            if (string.IsNullOrEmpty(userEntity._termsAndConditionId))
+            {
+                return string.Empty;
+            }
+
             #endregion
 
             // Manually set the known variables...

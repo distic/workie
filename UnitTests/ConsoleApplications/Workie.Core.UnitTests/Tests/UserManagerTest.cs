@@ -28,11 +28,15 @@ namespace Workie.Core.UnitTests.Tests
 
         internal TestResultType Insert()
         {
+            //TODO: Add real values here!
             _id = _userManager.Insert(new UserEntity
             {
                 FirstName = "Ahmad",
                 LastName = "Chatila",
-                EmailAddress = "sample@hotmail.com"
+                EmailAddress = "sample@hotmail.com",
+                _countryId = 1,
+                _companyId = 1,
+                _termsAndConditionId = "fawokfwifej"
             });
 
             if (string.IsNullOrEmpty(_id))

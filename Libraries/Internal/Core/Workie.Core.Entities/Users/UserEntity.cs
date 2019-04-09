@@ -1,4 +1,6 @@
-﻿namespace Workie.Core.Entities.Users
+﻿using Workie.Core.Entities.Login;
+
+namespace Workie.Core.Entities.Users
 {
     public class UserEntity
     {
@@ -28,8 +30,28 @@
         public string Password { get; set; }
 
         /// <summary>
-        /// Gets or sets the IsFirstLogin value.
+        /// Gets or Sets the _languageId
         /// </summary>
-        public bool IsFirstLogin { get; set; }
+        public int _languageId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the _termsAndConditionId .
+        /// </summary>
+        public string _termsAndConditionId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the _countryId.
+        /// </summary>
+        public int _countryId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the _companyId.
+        /// </summary>
+        public int _companyId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Attention.
+        /// </summary>
+        public Attention Attention { get; set; }
     }
 }

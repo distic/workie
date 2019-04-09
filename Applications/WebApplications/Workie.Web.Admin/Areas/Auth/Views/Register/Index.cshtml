@@ -1,0 +1,36 @@
+﻿@inject IViewLocalizer Localizer
+
+@model Workie.Web.Admin.Areas.Auth.Models.Register.RegisterViewModel
+
+<div class="ms-panel">
+    <div class="ms-panel-header">
+        <h6>Basic Form Elements</h6>
+    </div>
+    <div class="ms-panel-body">
+        <form>
+            <div class="form-group">
+                <label for="exampleEmail">Email address</label>
+                <input type="email" class="form-control" id="exampleEmail" placeholder="name@example.com">
+            </div>
+            <div class="form-group">
+                <label for="examplePassword">Password</label>
+                <input name="EmailAddress" type="password" class="form-control" id="examplePassword" placeholder="@Localizer["Password"]">
+            </div>
+            <div class="form-group">
+                <label for="exampleSelect">Example select</label>
+                <select class="form-control" id="exampleSelect">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="exampleTextarea">Example textarea</label>
+                <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+            </div>
+        </form>
+        <button class="btn btn-primary">OK</button>
+    </div>
+</div>
