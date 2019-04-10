@@ -1,1 +1,37 @@
-﻿
+﻿@inject IViewLocalizer Localizer
+
+<div class="col-md-12">
+    <div class="ms-panel ms-panel-fh">
+        <div class="ms-panel-body clearfix">
+            <ul class="nav nav-tabs tabs-bordered left-tabs nav-justified" role="tablist" aria-orientation="vertical">
+                <li role="presentation">
+                    <a href="#tab7" aria-controls="tab7" class="active show" role="tab" data-toggle="tab" aria-selected="true">
+                        @Localizer["Security"]
+                    </a>
+                </li>
+
+            </ul>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade in active show" id="tab7">
+
+                    <p>
+                        @Localizer["For this build, we only provide changing password at the moment."]
+                    </p>
+                    <div class="body">
+                        <form>
+                            <div class="form-group">
+                                <label for="exampleEmail">
+                                    @Localizer["Last Change Date"]
+                                </label>
+                                <input name="LastChangePasswordDate" id="LastChangePasswordDate" class="form-control" readonly="readonly">
+                            </div>
+                            <button class="btn btn-primary" type="button">
+                                @Localizer["Change"]
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
