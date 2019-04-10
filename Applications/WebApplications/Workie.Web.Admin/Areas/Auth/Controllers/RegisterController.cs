@@ -23,18 +23,5 @@ namespace Workie.Web.Admin.Areas.Auth.Controllers
                 return Content("An error was encountered. Please handle me!");
             }
         }
-
-        public IActionResult ViewRegister()
-        {
-            try
-            {
-                return PartialView("UserControls/_UserControls_RegisterView");
-            }
-            catch (Exception ex)
-            {
-                // TODO: Will better handle this error, but for now this is fine.
-                return Content("An error was encountered. Please handle me!");
-            }
-        }
     }
 }

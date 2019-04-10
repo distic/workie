@@ -4,15 +4,6 @@
     ViewBag.Title = Localizer["Registration Form"];
 }
 
-<form action="@Url.Action("Register", "Register" , new { Area="Auth" } )"
-      data-ajax-mode="replace"
-      data-ajax="true"
-      data-ajax-begin="RegisterResultModule.onViewRegisterSubmitBegin"
-      data-ajax-success="RegisterResultModule.onViewRegisterSubmitSuccess"
-      data-ajax-failure="RegisterResultModule.onViewRegisterSubmitFailure"
-      id="ViewRegisterTableForm"
-      data-ajax-update="#RegisterResult"></form>
-
 <form action="@Url.Action("VerifyEmail", "Register" , new { Area="Auth" } )"
       data-ajax-mode="replace"
       data-ajax="true"
@@ -23,11 +14,7 @@
       data-ajax-update="#RegisterResult"></form>
 
 <div id="RegisterResult">
-    <div class="container text-muted">
-        <p class="text-muted small">
-            @Localizer["Please wait..."]
-        </p>
-    </div>
+    <partial name="UserControls/_UserControls_Register" />
 </div>
 
 @section Scripts {
