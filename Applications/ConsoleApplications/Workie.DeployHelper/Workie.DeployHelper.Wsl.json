@@ -1,0 +1,19 @@
+{
+  "Localhost": {
+    "WorkieWebAdminDirectory": "C:\\Users\\ahmad.shatila\\Desktop\\Publish\\Websites\\Workie.Web.Admin",
+    "DefaultZipFilename": "C:\\Users\\ahmad.shatila\\Desktop\\Publish\\temp.zip"
+  },
+  "RemoteHost": {
+    "WorkieWebAdminDirectory": "/var/aspnetcore/webapps/Workie.Web.Admin",
+    "HttpdConfDirectory": "/etc/httpd/conf.d",
+    "SystemdSystemDirectory": "/etc/systemd/system",
+    "DefaultZipFilename": "/var/aspnetcore/setup.zip"
+  },
+  "Security": {
+    "UseSsl": true
+  },
+  "Common": {
+    "ServerConfigurationDirectoryName": "_ServerConfiguration"
+  },
+  "ServerList": [ "192.168.241.129", "148.72.23.197" ]
+}

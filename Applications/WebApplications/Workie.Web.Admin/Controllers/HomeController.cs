@@ -14,13 +14,6 @@ namespace Workie.Web.Admin.Controllers
     {
         public IActionResult Index()
         {
-            var x = new UserManager().Insert(new Core.Entities.Users.UserEntity
-            {
-                EmailAddress = ""
-            });
-
-            
-
             return View();
         }
 
