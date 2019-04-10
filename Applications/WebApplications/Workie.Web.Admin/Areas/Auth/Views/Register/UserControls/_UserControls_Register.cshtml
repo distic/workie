@@ -116,7 +116,7 @@
                         </div>
                         <button onclick="RegisterResultModule.verifyEmail()" class="btn btn-primary mt-4 d-block w-100" type="submit">@Localizer["Create Account"]</button>
                     </form>
-                    <p class="mb-0 mt-3">@Localizer["Already Have an account?"]<a class="btn-link" href="#">@Localizer[" Login to Account"]</a> </p>
+                    <p class="mb-0 mt-3">@Localizer["Already Have an account?"]<a asp-controller="login" asp-action="" asp-area="Auth" class="btn-link">@Localizer[" Login to Account"]</a> </p>
                 </div>
             </div>
         </div>
