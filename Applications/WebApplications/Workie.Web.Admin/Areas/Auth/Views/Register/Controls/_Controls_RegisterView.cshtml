@@ -1,0 +1,124 @@
+﻿@inject IViewLocalizer Localizer
+
+@model Workie.Web.Admin.Areas.Auth.Models.Register.RegisterViewModel
+
+<div class="ms-content-wrapper">
+    <div class="row justify-content-around">
+        <div class="col-xl-6 col-md-12 ">
+            <div class="ms-panel ms-panel-fh">
+                <div class="ms-panel-header">
+                    <h6>@Localizer["Signup Form"]</h6>
+                </div>
+                <div class="ms-panel-body">
+                    <form class="needs-validation clearfix" novalidate="">
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label for="validationCustom18">@Localizer["First name"]</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="validationCustom18" placeholder="First name" required="">
+                                    <div class="valid-feedback">
+                                        @Localizer["Looks good!"]
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="validationCustom19">
+                                    @Localizer["Last name"]
+                                </label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="validationCustom19" placeholder="Last name" required="">
+                                    <div class="valid-feedback">
+                                        @Localizer["Looks good!"]
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label for="validationCustom20">
+                                    @Localizer["Email Address"]
+                                </label>
+                                <div class="input-group">
+                                    <input type="email" name="EmailAddress" class="form-control" id="validationCustom20" placeholder="Email Address" required="">
+                                    <div class="invalid-feedback">
+                                        @Localizer["Please provide a valid email."]
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="validationCustom21">
+                                    @Localizer["Password"]
+                                </label>
+                                <div class="input-group">
+                                    <input type="password" name="Password" class="form-control" id="validationCustom21" placeholder="Phone Number" required="">
+                                    <div class="invalid-feedback">
+                                        @Localizer["Please provide a number."]
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="validationCustom22">
+                                    @Localizer["Country"]
+                                </label>
+                                <div class="input-group">
+                                    <select class="form-control" id="validationCustom22" required="">
+                                        <option value="">01</option>
+                                        <option value="">02</option>
+                                        <option value="">03</option>
+                                        <option value="">04</option>
+                                        <option value="">05</option>
+                                        <option value="">06</option>
+                                        <option value="">07</option>
+                                        <option value="">08</option>
+                                        <option value="">09</option>
+                                        <option value="">10</option>
+                                        <option value="">11</option>
+                                        <option value="">12</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        @Localizer["Please select a Country."]
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="validationCustom23">
+                                    @Localizer["Company"]
+                                </label>
+                                <div class="input-group">
+                                    <select class="form-control" id="validationCustom23" required="">
+                                        <option value="">2020</option>
+                                        <option value="">2021</option>
+                                        <option value="">2022</option>
+                                        <option value="">2023</option>
+                                        <option value="">2024</option>
+                                        <option value="">2025</option>
+                                        <option value="">2026</option>
+                                        <option value="">2027</option>
+                                        <option value="">2028</option>
+                                        <option value="">2029</option>
+                                        <option value="">2030</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        @Localizer["Please select a Company"]
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-check pl-0">
+                                <label class="ms-checkbox-wrap">
+                                    <input name="_termsAndConditionId" class="form-check-input" type="checkbox" value="" id="invalidCheck">
+                                    <i class="ms-checkbox-check"></i>
+                                </label>
+                                <span>@Localizer["Agree to terms and conditions"]</span>
+
+                            </div>
+                        </div>
+                        <button onclick="RegisterResultModule.verifyEmail()" class="btn btn-primary mt-4 d-block w-100" type="submit">@Localizer["Create Account"]</button>
+                    </form>
+                    <p class="mb-0 mt-3">@Localizer["Already Have an account?"]<a class="btn-link" href="#">@Localizer[" Login to Account"]</a> </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

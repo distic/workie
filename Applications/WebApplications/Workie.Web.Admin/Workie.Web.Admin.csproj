@@ -24,7 +24,6 @@
     <Folder Include="Areas\Account\Models\Profile\" />
     <Folder Include="Areas\Account\Views\Profile\UserControls\" />
     <Folder Include="wwwroot\mystic-kernel\dark\" />
-    <Folder Include="wwwroot\app\" />
     <Folder Include="wwwroot\img\" />
   </ItemGroup>
 
