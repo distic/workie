@@ -1,5 +1,6 @@
 ﻿using Workie.Core.DataAccess.Database.Mongo.Users;
 using Workie.Core.Entities.Users;
+using Workie.Core.Entities.Login;
 
 namespace Workie.Core.BusinessLogic.Users
 {
@@ -7,7 +8,7 @@ namespace Workie.Core.BusinessLogic.Users
     {
         public string Insert(UserEntity userEntity)
         {
-            userEntity.Attention = new Entities.Login.Attention
+            userEntity.Attention = new Attention
             {
                 // Since we're inserting for the first time, we will default the IsFirstLogin value to true.
                 IsFirstLogin = true,

@@ -5,7 +5,7 @@
         /// <summary>
         /// Gets or sets the _id.
         /// </summary>
-        public int _id { get; set; }
+        public string _id { get; set; }
 
         /// <summary>
         /// Gets or sets the Name.
