@@ -15,7 +15,7 @@ namespace Workie.Web.Admin.Areas.Auth.Controllers
         {
             try
             {     
-                return PartialView("Controls/_Controls_VerifyEmail");
+                return PartialView("UserControls/_UserControls_VerifyEmail");
             }
             catch (Exception ex)
             {
@@ -28,7 +28,7 @@ namespace Workie.Web.Admin.Areas.Auth.Controllers
         {
             try
             {
-                return PartialView("Controls/_Controls_RegisterView");
+                return PartialView("UserControls/_UserControls_RegisterView");
             }
             catch (Exception ex)
             {

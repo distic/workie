@@ -4,7 +4,7 @@
     ViewBag.Title = Localizer["Registration Form"];
 }
 
-<form action="@Url.Action(" ViewRegister", "Register" , new { Area="Auth" } )"
+<form action="@Url.Action("Register", "Register" , new { Area="Auth" } )"
       data-ajax-mode="replace"
       data-ajax="true"
       data-ajax-begin="RegisterResultModule.onViewRegisterSubmitBegin"
@@ -13,7 +13,7 @@
       id="ViewRegisterTableForm"
       data-ajax-update="#RegisterResult"></form>
 
-<form action="@Url.Action(" VerifyEmail", "Register" , new { Area="Auth" } )"
+<form action="@Url.Action("VerifyEmail", "Register" , new { Area="Auth" } )"
       data-ajax-mode="replace"
       data-ajax="true"
       data-ajax-begin="RegisterResultModule.onVerifyEmailSubmitBegin"
