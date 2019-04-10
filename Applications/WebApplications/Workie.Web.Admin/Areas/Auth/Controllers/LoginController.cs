@@ -17,6 +17,23 @@ namespace Workie.Web.Admin.Areas.Auth.Controllers
             return View();
         }
 
+        public IActionResult ResetPassword()
+        {
+            try
+            {
+                //TODO: Logic for reset password should execute at this point...
+
+                return Json(new
+                {
+                    result = true
+                });
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
         [HttpPost]
         public async Task<IActionResult> LoginAsync(string emailAddress, string password)
         {

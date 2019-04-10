@@ -1,7 +1,6 @@
 ﻿@inject IViewLocalizer Localizer
 
 @model LoginViewModel
-
 <!-- Body Content Wrapper -->
 <div class="ms-content-wrapper ms-auth">
 
@@ -25,7 +24,7 @@
                             @Localizer["Email Address"]
                         </label>
                         <div class="input-group">
-                            <input name="EmailAddress" type="email" class="form-control" id="validationCustom08" placeholder="@Localizer[" Email"]" required="">
+                            <input name="EmailAddress" type="email" class="form-control" id="validationCustom08" placeholder="@Localizer["Email"]" required="">
                             <div class="invalid-feedback">
                                 @Localizer["Please provide a valid email."]
                             </div>
@@ -36,7 +35,7 @@
                             @Localizer["Your Password"]
                         </label>
                         <div class="input-group">
-                            <input name="Password" type="password" class="form-control" id="validationCustom09" placeholder="@Localizer[" Password"]" required="">
+                            <input name="Password" type="password" class="form-control" id="validationCustom09" placeholder="@Localizer["Password"]" required="">
                             <div class="invalid-feedback">
                                 @Localizer["Please provide a password."]
 
@@ -57,7 +56,7 @@
                             </a>
                         </label>
                     </div>
-                    <button class="btn btn-primary mt-4 d-block w-100" type="submit">
+                    <button type="button" name="button" class="btn btn-primary trigger-swal" data-swal="basic">
                         @Localizer["Sign In"]
                     </button>
                     <p class="mb-0 mt-3">Don't have an account? <a asp-controller="register" asp-action="" asp-area="Auth" class="btn-link">Create an Account</a> </p>
@@ -68,3 +67,9 @@
 </div>
 
 <partial name="UserControls/_ForgotPassword_EnterEmail" />
+
+
+
+@section Scripts  {
+    <script src="~/app/areas/auth/views/login/index.js"></script>
+}
