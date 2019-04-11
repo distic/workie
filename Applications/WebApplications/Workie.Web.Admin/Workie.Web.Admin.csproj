@@ -36,9 +36,6 @@
     <Content Update="Areas\Account\Views\Settings\UserControls\_NavBar.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
-    <Content Update="Areas\Account\Views\Settings\UserControls\_SideBar.cshtml">
-      <Pack>$(IncludeRazorContentInPack)</Pack>
-    </Content>
     <Content Update="Areas\Account\Views\Shared\UserControls\_NavBar.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
