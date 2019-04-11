@@ -1,44 +1,18 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using Utilities.Console;
+using Workie.DeployHelper.Enums;
 using Workie.DeployHelper.Models;
+using Workie.DeployHelper.Utilities;
 
 namespace Workie.DeployHelper
 {
     class Program
     {
-        private static ApplicationViewModel gApplicationViewModel;
+        #region --- Properties ---
 
-        #region --- Output ---
-
-        private static List<int> PrintMenu()
-        {
-            var choiceList = new List<int>();
-
-            Console.WriteLine("Is SSL Enabled: {0}\n", gApplicationViewModel.Security.UseSsl ? "YES" : "NO");
-
-            Console.WriteLine("What do you want to do?");
-            Console.WriteLine("");
-
-            // Print choice
-            Console.WriteLine("\t1) Setup environment...");
-            Console.WriteLine("\t2) Install or update packages...");
-            Console.WriteLine("\t3) Deploy Workie.Web.Admin...");
-            Console.WriteLine("\t4) Deploy Workie.Web.Admin without config...");
-            Console.WriteLine("\t5) Update Kestrel for Workie.Web.Admin...");
-
-            choiceList.Add(1);
-            choiceList.Add(2);
-            choiceList.Add(3);
-            choiceList.Add(4);
-            choiceList.Add(5);
-
-            Console.WriteLine("");
-
-            return choiceList;
-        }
+        internal static ApplicationViewModel gApplicationViewModel;
 
         #endregion
 
@@ -46,12 +20,14 @@ namespace Workie.DeployHelper
         {
             const string jsonFile = "C:\\Users\\ahmad\\source\\repos\\workie-core\\Applications\\ConsoleApplications\\Workie.DeployHelper\\Workie.DeployHelper.Linux.json";
 
-            Outputter.PrintTitle(Properties.Resources.AppTitle, withUnderline: true);
+            Outputter.PrintLicenseNotice();
 
             Outputter.PrintNoInterruptionNotice(
                 preDescription: Properties.Resources.PreDescription,
                 withTimer: true,
                 preDescriptionNewLineAfter: true);
+
+            Outputter.PrintTitle(Properties.Resources.AppTitle, withUnderline: true);
 
             using (StreamReader streamReader = new StreamReader(jsonFile))
             {
@@ -59,36 +35,41 @@ namespace Workie.DeployHelper
                 gApplicationViewModel = JsonConvert.DeserializeObject<ApplicationViewModel>(fileContent);
             }
 
-            var choice = 0;
-            var choiceList = PrintMenu();
+            Console.WriteLine("[ INFO ] {0}: {1}\n", Properties.Resources.IsSslEnabled, gApplicationViewModel.Security.UseSsl ? 
+                Properties.Resources.Yes : Properties.Resources.No);
 
-            while (true)
+            var userChoice = (MainMenuResult)Menu.MultipleChoice(withNumbering: true, canCancel: true,
+                description: string.Empty,
+                Properties.Resources.SetupEnvironment,
+                Properties.Resources.InstallOrUpdatePackages,
+                Properties.Resources.DeployWorkieWebAdmin,
+                Properties.Resources.DeployWorkieWebAdminWithoutConfig,
+                Properties.Resources.UpdateKestrelForWorkieWebAdmin);
+
+            ModuleReport moduleReport = null;
+
+            switch (userChoice)
             {
-                choice = Convert.ToInt32(Console.ReadLine().Trim());
+                case MainMenuResult.SetupEnvironment:
+                    moduleReport = new Modules.SetupEnvironmentModule().Run();
+                    break;
 
-                if (!choiceList.Contains(choice))
-                {
-                    choice = 0;
-                    continue;
-                }
+                case MainMenuResult.InstallOrUpdatePackages:
+                    moduleReport = new Modules.InstallOrUpdatePackagesModule().Run();
+                    break;
 
-                switch (choice)
-                {
-                    case 1:
-                        break;
+                case MainMenuResult.DeployWorkieWebAdmin:
+                    moduleReport = new Modules.DeployWorkieWebAdminModule().Run();
+                    break;
 
-                    case 2:
-                        break;
+                case MainMenuResult.DeployWorkieWebAdminWithoutConfig:
+                    moduleReport = new Modules.DeployWorkieWebAdminWithoutConfigModule().Run();
+                    break;
 
-                    case 3:
-                        break;
-
-                    case 4:
-                        break;
-                }
+                case MainMenuResult.UpdateKestrelForWorkieWebAdmin:
+                    moduleReport = new Modules.UpdateKestrelForWorkieWebAdminModule().Run();
+                    break;
             }
-
-            throw new NotImplementedException();
         }
     }
 }

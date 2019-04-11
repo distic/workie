@@ -12,6 +12,6 @@ namespace Workie.DeployHelper.Models
 
         public CommonViewModel Common { get; set; }
 
-        public List<string> ServerList { get; set; }
+        public List<ServerInfoViewModel> ServerInfoList { get; set; }
     }
 }

@@ -19,7 +19,7 @@ namespace Workie.DeployHelper.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -61,11 +61,92 @@ namespace Workie.DeployHelper.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Workie Setup Program.
+        ///   Looks up a localized string similar to Workie Deploy Helper Program.
         /// </summary>
         internal static string AppTitle {
             get {
                 return ResourceManager.GetString("AppTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose remote host to deploy Workie.Web.Admin.
+        /// </summary>
+        internal static string ChooseRemoteHostToDeployWorkieWebAdmin {
+            get {
+                return ResourceManager.GetString("ChooseRemoteHostToDeployWorkieWebAdmin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deploy Workie.Web.Admin.
+        /// </summary>
+        internal static string DeployWorkieWebAdmin {
+            get {
+                return ResourceManager.GetString("DeployWorkieWebAdmin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deploy Workie.Web.Admin without config.
+        /// </summary>
+        internal static string DeployWorkieWebAdminWithoutConfig {
+            get {
+                return ResourceManager.GetString("DeployWorkieWebAdminWithoutConfig", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter PASSWORD.
+        /// </summary>
+        internal static string EnterPassword {
+            get {
+                return ResourceManager.GetString("EnterPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter USERNAME.
+        /// </summary>
+        internal static string EnterUsername {
+            get {
+                return ResourceManager.GetString("EnterUsername", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Install or update packages.
+        /// </summary>
+        internal static string InstallOrUpdatePackages {
+            get {
+                return ResourceManager.GetString("InstallOrUpdatePackages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Is SSL Enabled.
+        /// </summary>
+        internal static string IsSslEnabled {
+            get {
+                return ResourceManager.GetString("IsSslEnabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NO.
+        /// </summary>
+        internal static string No {
+            get {
+                return ResourceManager.GetString("No", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter the remote host login credentials.
+        /// </summary>
+        internal static string PleaseEnterTheRemoteHostLoginCredentials {
+            get {
+                return ResourceManager.GetString("PleaseEnterTheRemoteHostLoginCredentials", resourceCulture);
             }
         }
         
@@ -75,6 +156,33 @@ namespace Workie.DeployHelper.Properties {
         internal static string PreDescription {
             get {
                 return ResourceManager.GetString("PreDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Setup environment.
+        /// </summary>
+        internal static string SetupEnvironment {
+            get {
+                return ResourceManager.GetString("SetupEnvironment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update Kestrel for Workie.Web.Admin.
+        /// </summary>
+        internal static string UpdateKestrelForWorkieWebAdmin {
+            get {
+                return ResourceManager.GetString("UpdateKestrelForWorkieWebAdmin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to YES.
+        /// </summary>
+        internal static string Yes {
+            get {
+                return ResourceManager.GetString("Yes", resourceCulture);
             }
         }
     }

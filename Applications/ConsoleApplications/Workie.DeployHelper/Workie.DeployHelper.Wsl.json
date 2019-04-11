@@ -15,5 +15,16 @@
   "Common": {
     "ServerConfigurationDirectoryName": "_ServerConfiguration"
   },
-  "ServerList": [ "192.168.241.129", "148.72.23.197" ]
+  "ServerInfoList": [
+    {
+      "IpAddress": "192.168.1.1",
+      "Username": "toor",
+      "Password": "12345"
+    },
+    {
+      "IpAddress": "148.72.23.197",
+      "Username": "root",
+      "Password": "12345"
+    }
+  ]
 }

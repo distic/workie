@@ -118,9 +118,45 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AppTitle" xml:space="preserve">
-    <value>Workie Setup Program</value>
+    <value>Workie Deploy Helper Program</value>
+  </data>
+  <data name="ChooseRemoteHostToDeployWorkieWebAdmin" xml:space="preserve">
+    <value>Choose remote host to deploy Workie.Web.Admin</value>
+  </data>
+  <data name="DeployWorkieWebAdmin" xml:space="preserve">
+    <value>Deploy Workie.Web.Admin</value>
+  </data>
+  <data name="DeployWorkieWebAdminWithoutConfig" xml:space="preserve">
+    <value>Deploy Workie.Web.Admin without config</value>
+  </data>
+  <data name="EnterPassword" xml:space="preserve">
+    <value>Enter PASSWORD</value>
+  </data>
+  <data name="EnterUsername" xml:space="preserve">
+    <value>Enter USERNAME</value>
+  </data>
+  <data name="InstallOrUpdatePackages" xml:space="preserve">
+    <value>Install or update packages</value>
+  </data>
+  <data name="IsSslEnabled" xml:space="preserve">
+    <value>Is SSL Enabled</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>NO</value>
+  </data>
+  <data name="PleaseEnterTheRemoteHostLoginCredentials" xml:space="preserve">
+    <value>Please enter the remote host login credentials</value>
   </data>
   <data name="PreDescription" xml:space="preserve">
     <value>Starting Workie...</value>
+  </data>
+  <data name="SetupEnvironment" xml:space="preserve">
+    <value>Setup environment</value>
+  </data>
+  <data name="UpdateKestrelForWorkieWebAdmin" xml:space="preserve">
+    <value>Update Kestrel for Workie.Web.Admin</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>YES</value>
   </data>
 </root>

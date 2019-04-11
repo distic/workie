@@ -111,6 +111,24 @@ namespace Utilities.Console
         }
 
         /// <summary>
+        /// Prints the license notice.
+        /// </summary>
+        /// <param name="withTimer"></param>
+        public static void PrintLicenseNotice(bool withTimer = true)
+        {
+            System.Console.WriteLine("\nCopyright (C) 2019 Distic. All rights reserved.\n");
+
+            System.Console.WriteLine("Copyright (C) 1989, 1991 Free Software Foundation, Inc.,\n" +
+                "\t51 Franklin Street, Fifth Floor, Boston, MA 02110 - 1301 USA\n" +
+                "\tEveryone is permitted to copy and distribute verbatim copies\n" +
+                "\tof this license document, but changing it is not allowed.\n");
+
+            // OPTIONAL, give the user some time to read...
+            if (withTimer)
+                Thread.Sleep(2000);
+        }
+
+        /// <summary>
         /// Prints the final result of the test.
         /// </summary>
         /// <param name="faultCount"></param>
