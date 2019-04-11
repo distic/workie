@@ -14,7 +14,6 @@ namespace Workie.Web.Admin.Controllers
     {
         public IActionResult Index()
         {
-
             return View();
         }
 

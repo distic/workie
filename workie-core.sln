@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.168
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28729.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Applications", "Applications", "{CF65B681-0ACF-461E-AF33-6F1035916EFF}"
 EndProject
@@ -23,11 +23,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Internal", "Internal", "{9C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{2D4656E1-61B9-42E4-B533-43DAFB4C2167}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workie.Core.Entities", "Libraries\Internal\Core\Workie.Core.Entities\Workie.Core.Entities.csproj", "{61F2EC66-83E4-4257-AB11-E78B56789737}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Workie.Core.Entities", "Libraries\Internal\Core\Workie.Core.Entities\Workie.Core.Entities.csproj", "{61F2EC66-83E4-4257-AB11-E78B56789737}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workie.Core.BusinessLogic", "Libraries\Internal\Core\Workie.Core.BusinessLogic\Workie.Core.BusinessLogic.csproj", "{22677ABD-47A8-4FAB-8980-B19BBCB91CBC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Workie.Core.BusinessLogic", "Libraries\Internal\Core\Workie.Core.BusinessLogic\Workie.Core.BusinessLogic.csproj", "{22677ABD-47A8-4FAB-8980-B19BBCB91CBC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workie.Core.DataAccess", "Libraries\Internal\Core\Workie.Core.DataAccess\Workie.Core.DataAccess\Workie.Core.DataAccess.csproj", "{829D65CF-E261-4222-A219-D95CDD29FB96}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Workie.Core.DataAccess", "Libraries\Internal\Core\Workie.Core.DataAccess\Workie.Core.DataAccess\Workie.Core.DataAccess.csproj", "{829D65CF-E261-4222-A219-D95CDD29FB96}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utilities", "Utilities", "{0BACD01D-D47D-4330-8CE0-7D71AC293C07}"
 EndProject
@@ -35,7 +35,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utilities.Console", "Librar
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ConsoleApplications", "ConsoleApplications", "{A94A14D2-8670-4905-BA97-E8D8C37F2EC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workie.DeployHelper", "Applications\ConsoleApplications\Workie.DeployHelper\Workie.DeployHelper.csproj", "{D9A60D16-3487-4C17-B43D-46737FE318C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Workie.DeployHelper", "Applications\ConsoleApplications\Workie.DeployHelper\Workie.DeployHelper.csproj", "{D9A60D16-3487-4C17-B43D-46737FE318C0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utilities.Linux.Shell", "Libraries\Internal\Utilities\Utilities.Linux.Shell\Utilities.Linux.Shell.csproj", "{7A382726-2C56-4C48-8568-DC5EB78AF477}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,6 +73,10 @@ Global
 		{D9A60D16-3487-4C17-B43D-46737FE318C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9A60D16-3487-4C17-B43D-46737FE318C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9A60D16-3487-4C17-B43D-46737FE318C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A382726-2C56-4C48-8568-DC5EB78AF477}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A382726-2C56-4C48-8568-DC5EB78AF477}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A382726-2C56-4C48-8568-DC5EB78AF477}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A382726-2C56-4C48-8568-DC5EB78AF477}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -90,6 +96,7 @@ Global
 		{9E614C6A-6261-42DC-8B1F-016146333716} = {0BACD01D-D47D-4330-8CE0-7D71AC293C07}
 		{A94A14D2-8670-4905-BA97-E8D8C37F2EC5} = {CF65B681-0ACF-461E-AF33-6F1035916EFF}
 		{D9A60D16-3487-4C17-B43D-46737FE318C0} = {A94A14D2-8670-4905-BA97-E8D8C37F2EC5}
+		{7A382726-2C56-4C48-8568-DC5EB78AF477} = {0BACD01D-D47D-4330-8CE0-7D71AC293C07}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2C2FFAC7-9AE4-4757-8DE7-E72D40457F1D}
