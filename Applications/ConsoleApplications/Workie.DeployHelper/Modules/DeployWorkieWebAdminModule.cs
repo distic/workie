@@ -1,44 +1,35 @@
-﻿using System;
-using Utilities.Logger;
-using Workie.DeployHelper.Enums;
-using Workie.DeployHelper.Exceptions;
+﻿using Workie.DeployHelper.Data;
+using static Workie.DeployHelper.Delegates.ModuleDelegates;
 using Workie.DeployHelper.Utilities;
 
 namespace Workie.DeployHelper.Modules
 {
     internal class DeployWorkieWebAdminModule : ModuleBase
     {
-        public override ModuleReport Run()
+        /// <summary>
+        /// Entry point of the routine.
+        /// </summary>
+        /// <returns></returns>
+        internal ModuleReport Run()
         {
-            var result = base.Run();
-            if (result != null) { return result; }
-
-            try
+            var doWorkData = new DoWorkData
             {
-                LogOutputter.PrintInfo("Attempting to authenticate, please wait...");
+                DeployMessage = Properties.Resources.ChooseRemoteHostToDeployWorkieWebAdmin,
+                OnSshAuthenticateSuccess = new OnSshAuthenticateSuccess(OnSshAuthenticateSuccess),
+                OnSshAuthenticateFailure = new OnSshAuthenticateFailure(OnSshAuthenticateFailure)
+            };
 
-                using (var remoteHost = new SshClientEx(ServerInfo.IpAddress, ServerInfo.Username, ServerInfo.Password))
-                {
-                    remoteHost.Connect();
+            return DoWork(doWorkData);
+        }
 
-                    if (!remoteHost.IsConnected)
-                    {
-                        LogOutputter.PrintError("Failed to connect to the remote host!");
-                        throw new DeployWorkieWebAdminException();
-                    }
+        public override void OnSshAuthenticateSuccess(SshClientEx remoteHost)
+        {
 
-                    LogOutputter.PrintSuccess($"Logged in as '{ServerInfo.Username}' on remote host '{ServerInfo.IpAddress}'");
+        }
 
+        public override void OnSshAuthenticateFailure()
+        {
 
-                }
-            }
-            catch (Exception ex)
-            {
-                LogOutputter.PrintFatal(ex.Message);
-                return new ModuleReport(ExecutionResult.Failure, isCompleted: false);
-            }
-
-            return new ModuleReport(ExecutionResult.Success, isCompleted: true);
         }
 
         #region --- Validation Functions ---

@@ -1,5 +1,7 @@
 ﻿using System;
 using Utilities.Logger;
+using Utilities.Logger.Base;
+using Workie.DeployHelper.Data;
 using Workie.DeployHelper.Enums;
 using Workie.DeployHelper.Interfaces;
 using Workie.DeployHelper.Models;
@@ -30,15 +32,29 @@ namespace Workie.DeployHelper.Utilities
 
         #endregion
 
+        #region --- Module Main Processor ---
+
+        public virtual void OnSshAuthenticateSuccess(SshClientEx remoteHost)
+        {
+            // do nothing
+        }
+
+        public virtual void OnSshAuthenticateFailure()
+        {
+            // do nothing
+        }
+
+        #endregion
+
         /// <summary>
         /// Main routine.
         /// </summary>
         /// <returns></returns>
-        public virtual ModuleReport Run()
+        public ModuleReport DoWork(DoWorkData doWorkData)
         {
             Console.Clear();
 
-            GetRemoteHostStringFromUserInput(Properties.Resources.ChooseRemoteHostToDeployWorkieWebAdmin);
+            GetRemoteHostStringFromUserInput(doWorkData.DeployMessage);
 
             if (string.IsNullOrEmpty(ServerInfo.IpAddress))
             {
@@ -52,7 +68,32 @@ namespace Workie.DeployHelper.Utilities
                 return new ModuleReport(ExecutionResult.Failure, isCompleted: false);
             }
 
-            return null;
+            try
+            {
+                LogOutputter.PrintInfo("Attempting to authenticate, please wait...");
+
+                using (var remoteHost = new SshClientEx(ServerInfo.IpAddress, ServerInfo.Username, ServerInfo.Password))
+                {
+                    remoteHost.Connect();
+
+                    if (!remoteHost.IsConnected)
+                    {
+                        LogOutputter.PrintError("Failed to connect to the remote host!");
+                        doWorkData.OnSshAuthenticateFailure();
+                    }
+
+                    LogOutputter.PrintSuccess($"Logged in as '{ServerInfo.Username}' on remote host '{ServerInfo.IpAddress}'");
+
+                    doWorkData.OnSshAuthenticateSuccess(remoteHost);
+                }
+            }
+            catch (Exception ex)
+            {
+                LogOutputter.PrintFatal(ex.Message);
+                return new ModuleReport(ExecutionResult.Failure, isCompleted: false);
+            }
+
+            return new ModuleReport(ExecutionResult.Success, isCompleted: true);
         }
 
         /// <summary>
@@ -68,10 +109,10 @@ namespace Workie.DeployHelper.Utilities
 
             for (int i = 0; i < serverInfoList.Count; i++)
             {
-                serverArray[i] = serverInfoList[i].IpAddress;
+                serverArray[i] = serverInfoList[i].ListName;
             }
 
-            var index = ConsoleMenuHelper.MultipleChoice(
+            var index = ConsoleEx.MultipleChoice(
                 withNumbering: false,
                 canCancel: true,
                 description: description,
@@ -127,5 +168,7 @@ namespace Workie.DeployHelper.Utilities
 
             return true;
         }
+
+
     }
 }

@@ -1,8 +1,8 @@
 ﻿using Workie.DeployHelper.Enums;
 
-namespace Workie.DeployHelper.Utilities
+namespace Workie.DeployHelper.Data
 {
-    internal class DependencyReport
+    internal class ConflictReport
     {
         #region --- Private Properties ---
 
@@ -20,7 +20,7 @@ namespace Workie.DeployHelper.Utilities
 
         #endregion
 
-        internal DependencyReport(ExecutionResult executionResult = ExecutionResult.Unknown, bool isCompleted = true)
+        internal ConflictReport(ExecutionResult executionResult = ExecutionResult.Unknown, bool isCompleted = true)
         {
             gExecutionResult = executionResult;
             gIsCompleted = isCompleted;

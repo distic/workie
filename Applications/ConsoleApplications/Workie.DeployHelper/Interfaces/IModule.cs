@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using Workie.DeployHelper.Data;
 using Workie.DeployHelper.Utilities;
 
 namespace Workie.DeployHelper.Interfaces
@@ -9,7 +9,7 @@ namespace Workie.DeployHelper.Interfaces
         /// Runs the routine.
         /// </summary>
         /// <returns>The reported result of the operation.</returns>
-        ModuleReport Run();
+        ModuleReport DoWork(DoWorkData doWorkData);
 
         /// <summary>
         /// Checks for any occurring conflicts.
@@ -22,5 +22,15 @@ namespace Workie.DeployHelper.Interfaces
         /// </summary>
         /// <returns>The reported result of the operation.</returns>
         DependencyReport GetDependencyReport();
+
+        /// <summary>
+        /// Event occurs when the authentication to the remote host succeeds.
+        /// </summary>
+        void OnSshAuthenticateSuccess(SshClientEx remoteHost);
+
+        /// <summary>
+        /// Event occurs when authentication to the remote host fails.
+        /// </summary>
+        void OnSshAuthenticateFailure();
     }
 }

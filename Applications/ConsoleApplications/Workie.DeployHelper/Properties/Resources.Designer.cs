@@ -79,6 +79,42 @@ namespace Workie.DeployHelper.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Choose remote host to deploy Workie.Web.Admin without config.
+        /// </summary>
+        internal static string ChooseRemoteHostToDeployWorkieWebAdminWithoutConfig {
+            get {
+                return ResourceManager.GetString("ChooseRemoteHostToDeployWorkieWebAdminWithoutConfig", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose remote host to install or update packages.
+        /// </summary>
+        internal static string ChooseRemoteHostToInstallOrUpdatePackages {
+            get {
+                return ResourceManager.GetString("ChooseRemoteHostToInstallOrUpdatePackages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose remote host to setup environment.
+        /// </summary>
+        internal static string ChooseRemoteHostToSetupEnvironment {
+            get {
+                return ResourceManager.GetString("ChooseRemoteHostToSetupEnvironment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose remote host to update Kestrel for Workie.Web.Admin.
+        /// </summary>
+        internal static string ChooseRemoteHostToUpdateKestrelForWorkieWebAdmin {
+            get {
+                return ResourceManager.GetString("ChooseRemoteHostToUpdateKestrelForWorkieWebAdmin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deploy Workie.Web.Admin.
         /// </summary>
         internal static string DeployWorkieWebAdmin {

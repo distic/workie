@@ -1,11 +1,10 @@
 ﻿using Newtonsoft.Json;
-using System;
 using System.IO;
 using Utilities.Logger;
 using Utilities.Logger.Base;
+using Workie.DeployHelper.Data;
 using Workie.DeployHelper.Enums;
 using Workie.DeployHelper.Models;
-using Workie.DeployHelper.Utilities;
 
 namespace Workie.DeployHelper
 {
@@ -17,14 +16,12 @@ namespace Workie.DeployHelper
 
         #endregion
 
+        const string jsonFile = @"C:\Users\ahmad\source\repos\workie-core\Applications\ConsoleApplications\Workie.DeployHelper\Workie.DeployHelper.Linux.json";
+
         static void Main(string[] args)
         {
-            const string jsonFile = "C:\\Users\\ahmad\\source\\repos\\workie-core\\Applications\\ConsoleApplications\\Workie.DeployHelper\\Workie.DeployHelper.Linux.json";
-
             ConsoleEx.PrintLicenseNotice();
-
             ConsoleEx.PrintNoInterruptionNotice();
-
             ConsoleEx.PrintTitle(Properties.Resources.AppTitle, withUnderline: true);
 
             using (StreamReader streamReader = new StreamReader(jsonFile))
@@ -35,9 +32,9 @@ namespace Workie.DeployHelper
 
             var isSslEnabledString = gApplicationViewModel.Security.UseSsl ? Properties.Resources.Yes : Properties.Resources.No;
 
-            LogOutputter.PrintInfo($"{Properties.Resources.IsSslEnabled} {isSslEnabledString}", newLineAfter: 1);
+            LogOutputter.PrintInfo($"{Properties.Resources.IsSslEnabled} {isSslEnabledString}", newLineAfter: 1, greyScale: true);
 
-            var userChoice = (MainMenuResult)ConsoleMenuHelper.MultipleChoice(withNumbering: true, canCancel: true,
+            var userChoice = (MainMenuResult)ConsoleEx.MultipleChoice(withNumbering: true, canCancel: true,
                 description: string.Empty,
                 Properties.Resources.SetupEnvironment,
                 Properties.Resources.InstallOrUpdatePackages,

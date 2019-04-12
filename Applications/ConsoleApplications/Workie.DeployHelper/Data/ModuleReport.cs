@@ -1,6 +1,6 @@
 ﻿using Workie.DeployHelper.Enums;
 
-namespace Workie.DeployHelper.Utilities
+namespace Workie.DeployHelper.Data
 {
     internal class ModuleReport
     {

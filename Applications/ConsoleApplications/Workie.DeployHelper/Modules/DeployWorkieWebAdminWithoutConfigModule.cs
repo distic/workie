@@ -1,15 +1,35 @@
-﻿using Workie.DeployHelper.Utilities;
+﻿using Workie.DeployHelper.Data;
+using Workie.DeployHelper.Utilities;
+using static Workie.DeployHelper.Delegates.ModuleDelegates;
 
 namespace Workie.DeployHelper.Modules
 {
     internal class DeployWorkieWebAdminWithoutConfigModule : ModuleBase
     {
-        public override ModuleReport Run()
+        /// <summary>
+        /// Entry point of the routine.
+        /// </summary>
+        /// <returns></returns>
+        internal ModuleReport Run()
         {
-            var result = base.Run();
-            if (result != null) { return result; }
+            var doWorkData = new DoWorkData
+            {
+                DeployMessage = Properties.Resources.ChooseRemoteHostToDeployWorkieWebAdminWithoutConfig,
+                OnSshAuthenticateSuccess = new OnSshAuthenticateSuccess(OnSshAuthenticateSuccess),
+                OnSshAuthenticateFailure = new OnSshAuthenticateFailure(OnSshAuthenticateFailure)
+            };
 
-            return null;
+            return DoWork(doWorkData);
+        }
+
+        public override void OnSshAuthenticateSuccess(SshClientEx remoteHost)
+        {
+            
+        }
+
+        public override void OnSshAuthenticateFailure()
+        {
+
         }
 
         #region --- Validation Functions ---

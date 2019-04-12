@@ -123,6 +123,18 @@
   <data name="ChooseRemoteHostToDeployWorkieWebAdmin" xml:space="preserve">
     <value>Choose remote host to deploy Workie.Web.Admin</value>
   </data>
+  <data name="ChooseRemoteHostToDeployWorkieWebAdminWithoutConfig" xml:space="preserve">
+    <value>Choose remote host to deploy Workie.Web.Admin without config</value>
+  </data>
+  <data name="ChooseRemoteHostToInstallOrUpdatePackages" xml:space="preserve">
+    <value>Choose remote host to install or update packages</value>
+  </data>
+  <data name="ChooseRemoteHostToSetupEnvironment" xml:space="preserve">
+    <value>Choose remote host to setup environment</value>
+  </data>
+  <data name="ChooseRemoteHostToUpdateKestrelForWorkieWebAdmin" xml:space="preserve">
+    <value>Choose remote host to update Kestrel for Workie.Web.Admin</value>
+  </data>
   <data name="DeployWorkieWebAdmin" xml:space="preserve">
     <value>Deploy Workie.Web.Admin</value>
   </data>

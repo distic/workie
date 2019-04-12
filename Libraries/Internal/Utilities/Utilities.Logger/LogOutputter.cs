@@ -11,22 +11,22 @@ namespace Utilities.Logger
             Console.WriteLine(description);
         }
 
-        public static void PrintSuccess(string description)
+        public static void PrintSuccess(string description, int newLineAfter = 0, bool greyScale = false)
         {
             CommonFunctions.PrintOutputterType(OutputterPrintType.Success);
-            Console.WriteLine(description);
+            ConsoleEx.WriteLine(description, newLineAfter: newLineAfter, greyScale: greyScale);
         }
 
-        public static void PrintWarning(string description)
+        public static void PrintWarning(string description, int newLineAfter = 0, bool greyScale = false)
         {
             CommonFunctions.PrintOutputterType(OutputterPrintType.Warning);
-            Console.WriteLine(description);
+            ConsoleEx.WriteLine(description, newLineAfter: newLineAfter, greyScale: greyScale);
         }
 
-        public static void PrintError(string description)
+        public static void PrintError(string description, int newLineAfter = 0, bool greyScale = false)
         {
             CommonFunctions.PrintOutputterType(OutputterPrintType.Error);
-            Console.WriteLine(description);
+            ConsoleEx.WriteLine(description, newLineAfter: newLineAfter, greyScale: greyScale);
         }
 
         public static void PrintFatal(string description)
@@ -36,9 +36,9 @@ namespace Utilities.Logger
             ConsoleEx.WriteLine(description, foregroundColor: ConsoleExColor.White, newLineAfter: 2);
         }
 
-        public static void PrintInfo(string description, int newLineAfter = 0)
+        public static void PrintInfo(string description, int newLineAfter = 0, bool greyScale = false)
         {
-            CommonFunctions.PrintOutputterType(OutputterPrintType.Information);
+            CommonFunctions.PrintOutputterType(OutputterPrintType.Information, greyScale: greyScale);
             ConsoleEx.WriteLine(description, newLineAfter: newLineAfter);
         }
     }
