@@ -29,7 +29,7 @@ namespace Workie.Core.UnitTests.Tests
         {
             _id = _osPlatformManager.Insert(new OSPlatformEntity
             {
-                Name = "Windows 10"
+                Name = "Samsung Galaxy Note9"
             });
 
             if (_id == 0)

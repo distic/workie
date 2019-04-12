@@ -5,13 +5,12 @@ namespace Workie.Web.Admin.Utilities
 {
     public class CustomController : Controller
     {
-        internal Guid UserId
+        internal string UserId
         {
             get
             {
-                Guid.TryParse(HttpContext.User.FindFirst(CustomClaimTypes.UserId).Value, out Guid customerId);
+                return HttpContext.User.FindFirst(CustomClaimTypes.UserId).Value.ToString();
 
-                return customerId;
             }
         }
 
