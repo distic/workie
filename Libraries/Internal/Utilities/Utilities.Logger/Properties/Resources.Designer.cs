@@ -61,6 +61,15 @@ namespace Utilities.Logger.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to [ ... ].
+        /// </summary>
+        internal static string BusyPrefix {
+            get {
+                return ResourceManager.GetString("BusyPrefix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to [ ERR ].
         /// </summary>
         internal static string ErrorPrefix {

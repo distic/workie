@@ -31,6 +31,10 @@ namespace Utilities.Logger.Base
                 case OutputterPrintType.Information:
                     ConsoleEx.Write(Properties.Resources.InformationPrefix, backgroundColor: ConsoleExColor.DarkBlue, foregroundColor: ConsoleExColor.White, spaceAfter: 1, greyScale: greyScale);
                     break;
+
+                case OutputterPrintType.Busy:
+                    ConsoleEx.Write(Properties.Resources.BusyPrefix, spaceAfter: 1, greyScale: greyScale);
+                    break;
             }
         }
 

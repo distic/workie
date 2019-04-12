@@ -11,22 +11,43 @@ namespace Utilities.Logger
             Console.WriteLine(description);
         }
 
-        public static void PrintSuccess(string description, int newLineAfter = 0, bool greyScale = false)
+        public static void PrintSuccess(string description, int newLineAfter = 0, bool greyScale = false, bool isSub = false)
         {
-            CommonFunctions.PrintOutputterType(OutputterPrintType.Success);
-            ConsoleEx.WriteLine(description, newLineAfter: newLineAfter, greyScale: greyScale);
+            if (isSub)
+            {
+                ConsoleEx.WriteLine($"\t* {description}", foregroundColor: ConsoleExColor.Green, greyScale: greyScale, newLineAfter: newLineAfter);
+            }
+            else
+            {
+                CommonFunctions.PrintOutputterType(OutputterPrintType.Success);
+                ConsoleEx.WriteLine(description, newLineAfter: newLineAfter, greyScale: greyScale);
+            }
         }
 
-        public static void PrintWarning(string description, int newLineAfter = 0, bool greyScale = false)
+        public static void PrintWarning(string description, int newLineAfter = 0, bool greyScale = false, bool isSub = false)
         {
-            CommonFunctions.PrintOutputterType(OutputterPrintType.Warning);
-            ConsoleEx.WriteLine(description, newLineAfter: newLineAfter, greyScale: greyScale);
+            if (isSub)
+            {
+                ConsoleEx.WriteLine($"\t* {description}", foregroundColor: ConsoleExColor.Yellow, greyScale: greyScale, newLineAfter: newLineAfter);
+            }
+            else
+            {
+                CommonFunctions.PrintOutputterType(OutputterPrintType.Warning);
+                ConsoleEx.WriteLine(description, newLineAfter: newLineAfter, greyScale: greyScale);
+            }
         }
 
-        public static void PrintError(string description, int newLineAfter = 0, bool greyScale = false)
+        public static void PrintError(string description, int newLineAfter = 0, bool greyScale = false, bool isSub = false)
         {
-            CommonFunctions.PrintOutputterType(OutputterPrintType.Error);
-            ConsoleEx.WriteLine(description, newLineAfter: newLineAfter, greyScale: greyScale);
+            if (isSub)
+            {
+                ConsoleEx.WriteLine($"\t* {description}", foregroundColor: ConsoleExColor.Red, greyScale: greyScale, newLineAfter: newLineAfter);
+            }
+            else
+            {
+                CommonFunctions.PrintOutputterType(OutputterPrintType.Error);
+                ConsoleEx.WriteLine(description, newLineAfter: newLineAfter, greyScale: greyScale);
+            }
         }
 
         public static void PrintFatal(string description)
@@ -36,9 +57,15 @@ namespace Utilities.Logger
             ConsoleEx.WriteLine(description, foregroundColor: ConsoleExColor.White, newLineAfter: 2);
         }
 
-        public static void PrintInfo(string description, int newLineAfter = 0, bool greyScale = false)
+        public static void PrintInfo(string description, int newLineAfter = 0, bool greyScale = false, bool isSub = false)
         {
             CommonFunctions.PrintOutputterType(OutputterPrintType.Information, greyScale: greyScale);
+            ConsoleEx.WriteLine(description, newLineAfter: newLineAfter);
+        }
+
+        public static void PrintBusy(string description, int newLineAfter = 0, bool greyScale = false, bool isSub = false)
+        {
+            CommonFunctions.PrintOutputterType(OutputterPrintType.Busy, greyScale: greyScale);
             ConsoleEx.WriteLine(description, newLineAfter: newLineAfter);
         }
     }

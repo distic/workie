@@ -1,6 +1,9 @@
-﻿using Workie.DeployHelper.Data;
-using static Workie.DeployHelper.Delegates.ModuleDelegates;
+﻿using Renci.SshNet;
+using System.Collections.Generic;
+using Workie.DeployHelper.Data;
+using Workie.DeployHelper.Models;
 using Workie.DeployHelper.Utilities;
+using static Workie.DeployHelper.Delegates.ModuleDelegates;
 
 namespace Workie.DeployHelper.Modules
 {
@@ -16,7 +19,20 @@ namespace Workie.DeployHelper.Modules
             {
                 DeployMessage = Properties.Resources.ChooseRemoteHostToDeployWorkieWebAdmin,
                 OnSshAuthenticateSuccess = new OnSshAuthenticateSuccess(OnSshAuthenticateSuccess),
-                OnSshAuthenticateFailure = new OnSshAuthenticateFailure(OnSshAuthenticateFailure)
+                OnSshAuthenticateFailure = new OnSshAuthenticateFailure(OnSshAuthenticateFailure),
+                OnSftpAuthenticateSuccess = new OnSftpAuthenticateSuccess(OnSftpAuthenticateSuccess),
+                OnSftpAuthenticateFailure = new OnSftpAuthenticateFailure(OnSftpAuthenticateFailure),
+                OnSftpDisconnect = new OnSftpDisconnect(OnSftpDisconnect),
+                OnSftpFileUploaded = new OnSftpFileUploaded(OnSftpFileUploaded),
+                UploadFileList = new List<UploadFileViewModel>
+                {
+                    new UploadFileViewModel
+                    {
+                        LocalhostFilename = Program.gApplicationViewModel.Localhost.DefaultZipFilename,
+                        RemotehostFilename = "setupZipFileName",
+                        IsRequired = true
+                    }
+                }
             };
 
             return DoWork(doWorkData);
@@ -28,6 +44,26 @@ namespace Workie.DeployHelper.Modules
         }
 
         public override void OnSshAuthenticateFailure()
+        {
+
+        }
+
+        public override void OnSftpAuthenticateSuccess(SftpClient sftpClient)
+        {
+
+        }
+
+        public override void OnSftpAuthenticateFailure()
+        {
+
+        }
+
+        public override void OnSftpDisconnect()
+        {
+
+        }
+
+        public override void OnSftpFileUploaded(SshClientEx remoteHost, UploadFileViewModel uploadFile)
         {
 
         }

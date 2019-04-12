@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Renci.SshNet;
+using System;
+using System.IO;
 using Utilities.Logger;
 using Utilities.Logger.Base;
 using Workie.DeployHelper.Data;
@@ -32,7 +34,7 @@ namespace Workie.DeployHelper.Utilities
 
         #endregion
 
-        #region --- Module Main Processor ---
+        #region --- Event Handlers ---
 
         public virtual void OnSshAuthenticateSuccess(SshClientEx remoteHost)
         {
@@ -42,6 +44,26 @@ namespace Workie.DeployHelper.Utilities
         public virtual void OnSshAuthenticateFailure()
         {
             // do nothing
+        }
+
+        public virtual void OnSftpAuthenticateSuccess(SftpClient sftpClient)
+        {
+            // do nothing
+        }
+
+        public virtual void OnSftpAuthenticateFailure()
+        {
+            // do nothing
+        }
+
+        public virtual void OnSftpDisconnect()
+        {
+            // do nothing.
+        }
+
+        public virtual void OnSftpFileUploaded(SshClientEx remoteHost, UploadFileViewModel uploadFile)
+        {
+            // do nothing.
         }
 
         #endregion
@@ -70,7 +92,7 @@ namespace Workie.DeployHelper.Utilities
 
             try
             {
-                LogOutputter.PrintInfo("Attempting to authenticate, please wait...");
+                LogOutputter.PrintBusy("Authenticating SSH session...");
 
                 using (var remoteHost = new SshClientEx(ServerInfo.IpAddress, ServerInfo.Username, ServerInfo.Password))
                 {
@@ -78,13 +100,67 @@ namespace Workie.DeployHelper.Utilities
 
                     if (!remoteHost.IsConnected)
                     {
-                        LogOutputter.PrintError("Failed to connect to the remote host!");
+                        LogOutputter.PrintError("Failed to connect to the remote host!", isSub: true);
                         doWorkData.OnSshAuthenticateFailure();
                     }
 
-                    LogOutputter.PrintSuccess($"Logged in as '{ServerInfo.Username}' on remote host '{ServerInfo.IpAddress}'");
+                    LogOutputter.PrintSuccess($"Logged in as '{ServerInfo.Username}' on remote host '{ServerInfo.IpAddress}'", isSub: true);
 
                     doWorkData.OnSshAuthenticateSuccess(remoteHost);
+
+                    if (doWorkData.UploadFileList != null)
+                    {
+                        if (doWorkData.UploadFileList.Count > 0)
+                        {
+                            LogOutputter.PrintBusy("Authenticating SFTP session...");
+                            using (var sftpClient = new SftpClient(remoteHost.ConnectionInfo))
+                            {
+                                sftpClient.Connect();
+
+                                if (!sftpClient.ConnectionInfo.IsAuthenticated)
+                                {
+                                    LogOutputter.PrintError("SFTP pipe cannot be opened.", isSub: true);
+                                    doWorkData.OnSftpAuthenticateFailure();
+                                    return new ModuleReport(ExecutionResult.Failure, isCompleted: false);
+                                }
+
+                                LogOutputter.PrintSuccess("SFTP pipe opened.", isSub: true);
+                                doWorkData.OnSftpAuthenticateSuccess(sftpClient);
+
+                                FileStream fileStream;
+
+                                foreach (var uploadFileInfo in doWorkData.UploadFileList)
+                                {
+                                    LogOutputter.PrintBusy($"Uploading file '{uploadFileInfo.LocalhostFilename}'...");
+
+                                    if (!File.Exists(uploadFileInfo.LocalhostFilename) && !uploadFileInfo.IsRequired)
+                                    {
+                                        LogOutputter.PrintWarning($"File not found, but skipped anyway.", isSub: true);
+                                        continue;
+                                    }
+
+                                    if ((fileStream = new FileStream(uploadFileInfo.LocalhostFilename, FileMode.Open)) == null)
+                                    {
+                                        if (!uploadFileInfo.IsRequired)
+                                        {
+                                            LogOutputter.PrintWarning($"Skipped.", isSub: true);
+                                            continue;
+                                        }
+
+                                        LogOutputter.PrintError("File stream problem, please try again later!", isSub: true);
+                                        return new ModuleReport(ExecutionResult.Failure, isCompleted: false);
+                                    }
+
+                                    sftpClient.UploadFile(fileStream, uploadFileInfo.RemotehostFilename);
+                                    LogOutputter.PrintWarning($"Assuming upload of '{uploadFileInfo.LocalhostFilename}' was successful.", isSub: true);
+                                    doWorkData.OnSftpFileUploaded(remoteHost, uploadFileInfo);
+                                }
+
+                                doWorkData.OnSftpDisconnect();
+                                sftpClient.Disconnect();
+                            }
+                        }
+                    }
                 }
             }
             catch (Exception ex)

@@ -6,6 +6,7 @@
         Warning,
         Error,
         Information,
-        Fatal
+        Fatal,
+        Busy
     }
 }
