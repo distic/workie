@@ -4,6 +4,16 @@ namespace Workie.DeployHelper.Modules
 {
     internal class SetupEnvironmentModule : ModuleBase
     {
+        public override ModuleReport Run()
+        {
+            var result = base.Run();
+            if (result != null) { return result; }
+
+            return null;
+        }
+
+        #region --- Validation Functions ---
+
         public override ConflictReport GetConflictsReport()
         {
             var report = new ConflictReport();
@@ -18,12 +28,6 @@ namespace Workie.DeployHelper.Modules
             return report;
         }
 
-        public override ModuleReport Run()
-        {
-            var result = base.Run();
-            if (result != null) { return result; }
-
-            return null;
-        }
+        #endregion
     }
 }

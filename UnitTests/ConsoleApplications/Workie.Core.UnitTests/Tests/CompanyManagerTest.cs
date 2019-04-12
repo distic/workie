@@ -1,5 +1,5 @@
-﻿using Utilities.Console;
-using Utilities.Console.Data.Enum;
+﻿using Utilities.Logger;
+using Utilities.Logger.Enums;
 using Workie.Core.BusinessLogic.Setup;
 using Workie.Core.Entities.Setup;
 
@@ -34,27 +34,27 @@ namespace Workie.Core.UnitTests.Tests
 
             if (string.IsNullOrEmpty(_id))
             {
-                return Outputter.LogError(AssemblyInfo.GetCurrentMethod(GetType().Name), "Failed to insert a new Company!");
+                return UnitTestOutputter.LogError(AssemblyInfo.GetCurrentMethod(GetType().Name), "Failed to insert a new Company!");
             }
 
-            return Outputter.LogSuccess(AssemblyInfo.GetCurrentMethod(GetType().Name), $"Successfully added new company with _id({_id})");
+            return UnitTestOutputter.LogSuccess(AssemblyInfo.GetCurrentMethod(GetType().Name), $"Successfully added new company with _id({_id})");
         }
 
         internal TestResultType Delete()
         {
             if (string.IsNullOrEmpty(_id))
             {
-                return Outputter.LogError(AssemblyInfo.GetCurrentMethod(GetType().Name), "_id parameter was not passed, possible failure occurred when inserting.");
+                return UnitTestOutputter.LogError(AssemblyInfo.GetCurrentMethod(GetType().Name), "_id parameter was not passed, possible failure occurred when inserting.");
             }
 
             _companyManager.Delete(_id);
 
             if (_companyManager.SelectById(_id) == null)
             {
-                return Outputter.LogSuccess(AssemblyInfo.GetCurrentMethod(GetType().Name), "Successfully deleted the company.");
+                return UnitTestOutputter.LogSuccess(AssemblyInfo.GetCurrentMethod(GetType().Name), "Successfully deleted the company.");
             }
 
-            return Outputter.LogWarning(AssemblyInfo.GetCurrentMethod(GetType().Name), "Delete failed.");
+            return UnitTestOutputter.LogWarning(AssemblyInfo.GetCurrentMethod(GetType().Name), "Delete failed.");
         }
 
         internal TestResultType SelectById()
@@ -63,9 +63,9 @@ namespace Workie.Core.UnitTests.Tests
 
             if (_companyEntity == null)
             {
-                return Outputter.LogError(AssemblyInfo.GetCurrentMethod(GetType().Name), $"Failed to retrieve the companyEntity with _id({_id})");
+                return UnitTestOutputter.LogError(AssemblyInfo.GetCurrentMethod(GetType().Name), $"Failed to retrieve the companyEntity with _id({_id})");
             }
-            return Outputter.LogSuccess(AssemblyInfo.GetCurrentMethod(GetType().Name), $"Successfully retrieved the companyEntity with _id({_id})");
+            return UnitTestOutputter.LogSuccess(AssemblyInfo.GetCurrentMethod(GetType().Name), $"Successfully retrieved the companyEntity with _id({_id})");
         }
     }
 }

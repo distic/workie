@@ -1,7 +1,7 @@
-﻿using Utilities.Console;
-using Workie.Core.Entities.Users;
-using Utilities.Console.Data.Enum;
+﻿using Utilities.Logger;
+using Utilities.Logger.Enums;
 using Workie.Core.BusinessLogic.Users;
+using Workie.Core.Entities.Users;
 
 namespace Workie.Core.UnitTests.Tests
 {
@@ -41,10 +41,10 @@ namespace Workie.Core.UnitTests.Tests
 
             if (string.IsNullOrEmpty(_id))
             {
-                return Outputter.LogError(AssemblyInfo.GetCurrentMethod(GetType().Name), "Failed to insert a new user!");
+                return UnitTestOutputter.LogError(AssemblyInfo.GetCurrentMethod(GetType().Name), "Failed to insert a new user!");
             }
 
-            return Outputter.LogSuccess(AssemblyInfo.GetCurrentMethod(GetType().Name), $"Successfully added new user with _id({_id})");
+            return UnitTestOutputter.LogSuccess(AssemblyInfo.GetCurrentMethod(GetType().Name), $"Successfully added new user with _id({_id})");
         }
 
         internal TestResultType SelectById()
@@ -53,9 +53,9 @@ namespace Workie.Core.UnitTests.Tests
 
             if (_userEntity == null)
             {
-                return Outputter.LogError(AssemblyInfo.GetCurrentMethod(GetType().Name), $"Failed to retrieve the userEntity with _id({_id})");
+                return UnitTestOutputter.LogError(AssemblyInfo.GetCurrentMethod(GetType().Name), $"Failed to retrieve the userEntity with _id({_id})");
             }
-            return Outputter.LogSuccess(AssemblyInfo.GetCurrentMethod(GetType().Name), $"Successfully retrieved the userEntity with _id({_id})");
+            return UnitTestOutputter.LogSuccess(AssemblyInfo.GetCurrentMethod(GetType().Name), $"Successfully retrieved the userEntity with _id({_id})");
         }
 
         internal TestResultType SelectByEmailAndPassword()
@@ -66,27 +66,27 @@ namespace Workie.Core.UnitTests.Tests
 
             if (obj == null)
             {
-                return Outputter.LogWarning(AssemblyInfo.GetCurrentMethod(GetType().Name), $"Either the user doesn't exist, or the password(\"{_mockPassword}\") didn't work. handle this!");
+                return UnitTestOutputter.LogWarning(AssemblyInfo.GetCurrentMethod(GetType().Name), $"Either the user doesn't exist, or the password(\"{_mockPassword}\") didn't work. handle this!");
             }
 
-            return Outputter.LogSuccess(AssemblyInfo.GetCurrentMethod(GetType().Name), "Successfully received user information.");
+            return UnitTestOutputter.LogSuccess(AssemblyInfo.GetCurrentMethod(GetType().Name), "Successfully received user information.");
         }
 
         internal TestResultType Delete()
         {
             if (string.IsNullOrEmpty(_id))
             {
-                return Outputter.LogError(AssemblyInfo.GetCurrentMethod(GetType().Name), "_id parameter was not passed, possible failure occurred when inserting.");
+                return UnitTestOutputter.LogError(AssemblyInfo.GetCurrentMethod(GetType().Name), "_id parameter was not passed, possible failure occurred when inserting.");
             }
 
             _userManager.Delete(_id);
 
             if (_userManager.Select(_id) == null)
             {
-                return Outputter.LogSuccess(AssemblyInfo.GetCurrentMethod(GetType().Name), "Successfully deleted the user.");
+                return UnitTestOutputter.LogSuccess(AssemblyInfo.GetCurrentMethod(GetType().Name), "Successfully deleted the user.");
             }
 
-            return Outputter.LogWarning(AssemblyInfo.GetCurrentMethod(GetType().Name), "Delete failed.");
+            return UnitTestOutputter.LogWarning(AssemblyInfo.GetCurrentMethod(GetType().Name), "Delete failed.");
         }
     }
 }

@@ -1,5 +1,5 @@
-﻿using Utilities.Console;
-using Utilities.Console.Data.Enum;
+﻿using Utilities.Logger;
+using Utilities.Logger.Enums;
 using Workie.Core.BusinessLogic.Environment;
 using Workie.Core.Entities.Environment;
 
@@ -34,27 +34,27 @@ namespace Workie.Core.UnitTests.Tests
 
             if (_id == 0)
             {
-                return Outputter.LogError(AssemblyInfo.GetCurrentMethod(GetType().Name), "Failed to insert a new OS Platform!");
+                return UnitTestOutputter.LogError(AssemblyInfo.GetCurrentMethod(GetType().Name), "Failed to insert a new OS Platform!");
             }
 
-            return Outputter.LogSuccess(AssemblyInfo.GetCurrentMethod(GetType().Name), $"Successfully added new platform with _id({_id})");
+            return UnitTestOutputter.LogSuccess(AssemblyInfo.GetCurrentMethod(GetType().Name), $"Successfully added new platform with _id({_id})");
         }
 
         internal TestResultType Delete()
         {
             if (_id == 0)
             {
-                return Outputter.LogError(AssemblyInfo.GetCurrentMethod(GetType().Name), "_id parameter was not passed, possible failure occurred when inserting.");
+                return UnitTestOutputter.LogError(AssemblyInfo.GetCurrentMethod(GetType().Name), "_id parameter was not passed, possible failure occurred when inserting.");
             }
 
             _osPlatformManager.Delete(_id);
 
             if (_osPlatformManager.Select(_id) == null)
             {
-                return Outputter.LogSuccess(AssemblyInfo.GetCurrentMethod(GetType().Name), "Successfully deleted the OS Platform.");
+                return UnitTestOutputter.LogSuccess(AssemblyInfo.GetCurrentMethod(GetType().Name), "Successfully deleted the OS Platform.");
             }
 
-            return Outputter.LogWarning(AssemblyInfo.GetCurrentMethod(GetType().Name), "Delete failed.");
+            return UnitTestOutputter.LogWarning(AssemblyInfo.GetCurrentMethod(GetType().Name), "Delete failed.");
         }
 
         internal TestResultType SelectById()
@@ -63,10 +63,10 @@ namespace Workie.Core.UnitTests.Tests
 
             if (_osPlatformEntity == null)
             {
-                return Outputter.LogError(AssemblyInfo.GetCurrentMethod(GetType().Name), $"Failed to retrieve the osPlatformEntity with _id({_id})");
+                return UnitTestOutputter.LogError(AssemblyInfo.GetCurrentMethod(GetType().Name), $"Failed to retrieve the osPlatformEntity with _id({_id})");
             }
 
-            return Outputter.LogSuccess(AssemblyInfo.GetCurrentMethod(GetType().Name), $"Successfully retrieved the osPlatformEntity with _id({_id})");
+            return UnitTestOutputter.LogSuccess(AssemblyInfo.GetCurrentMethod(GetType().Name), $"Successfully retrieved the osPlatformEntity with _id({_id})");
         }
     }
 }

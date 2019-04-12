@@ -1,6 +1,7 @@
-﻿using Utilities.Console;
-using Utilities.Console.Data.Enum;
-using Utilities.Console.Data.Struct;
+﻿using Utilities.Logger;
+using Utilities.Logger.Base;
+using Utilities.Logger.Data;
+using Utilities.Logger.Enums;
 using Workie.Core.UnitTests.Tests;
 
 namespace Workie.Core.UnitTests
@@ -158,8 +159,8 @@ namespace Workie.Core.UnitTests
         {
             _resultCounter = new int[3];
 
-            Outputter.PrintTitle(titleName: Properties.Resources.AppTitle, withUnderline: true);
-            Outputter.PrintNoInterruptionNotice(preDescription: Properties.Resources.PreDescription, withTimer: true);
+            ConsoleEx.PrintTitle(titleName: Properties.Resources.AppTitle, withUnderline: true);
+            ConsoleEx.PrintNoInterruptionNotice();
 
             //
             // Comment out the unnecessary ones...
@@ -175,11 +176,11 @@ namespace Workie.Core.UnitTests
 
             #region --- Result ---
 
-            Outputter.PrintFaultResult(ref _resultCounter);
+            UnitTestOutputter.PrintFaultResult(ref _resultCounter);
 
             #endregion
 
-            Outputter.PrintExitMessageAndHold();
+            ConsoleEx.PrintExitMessageAndHold();
         }
     }
 }

@@ -13,8 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Libraries\Internal\Utilities\Utilities.Console\Utilities.Console.csproj" />
     <ProjectReference Include="..\..\..\Libraries\Internal\Utilities\Utilities.Linux.Shell\Utilities.Linux.Shell.csproj" />
+    <ProjectReference Include="..\..\..\Libraries\Internal\Utilities\Utilities.Logger\Utilities.Logger.csproj" />
   </ItemGroup>
 
   <ItemGroup>

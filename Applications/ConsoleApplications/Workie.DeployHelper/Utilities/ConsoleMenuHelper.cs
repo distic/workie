@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Utilities.Console
+namespace Workie.DeployHelper.Utilities
 {
-    public class Menu
+    internal class ConsoleMenuHelper
     {
         public static int MultipleChoice(bool withNumbering, bool canCancel, string description, params string[] options)
         {
@@ -14,7 +14,7 @@ namespace Utilities.Console
             int startX = System.Console.CursorLeft;
             int startY = System.Console.CursorTop;
             const int optionsPerLine = 1;
-            const int spacingPerLine = 14;
+            const int spacingPerLine = 0;
 
             int currentSelection = 0;
 
@@ -36,7 +36,7 @@ namespace Utilities.Console
 
                     if (withNumbering)
                     {
-                        System.Console.Write("{0}) {1}...", i+1, options[i]);
+                        System.Console.Write("{0}) {1}...", i + 1, options[i]);
                     }
                     else
                     {

@@ -13,6 +13,10 @@ namespace Workie.DeployHelper.Utilities
         {
         }
 
+        #endregion
+
+        #region --- General Methods ---
+
         private void RunCommand(SshCommand command, bool output)
         {
             if (output)
@@ -24,10 +28,6 @@ namespace Workie.DeployHelper.Utilities
                 command.Execute();
             }
         }
-
-        #endregion
-
-        #region --- General Methods ---
 
         internal void SystemCtlStart(string fileName, bool sudo = false, bool output = false)
         {

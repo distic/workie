@@ -1,4 +1,5 @@
-﻿using Utilities.Console;
+﻿using System;
+using Utilities.Logger;
 using Workie.DeployHelper.Enums;
 using Workie.DeployHelper.Interfaces;
 using Workie.DeployHelper.Models;
@@ -13,6 +14,8 @@ namespace Workie.DeployHelper.Utilities
 
         #endregion
 
+        #region --- Validation Functions ---
+
         public virtual ConflictReport GetConflictsReport()
         {
             // Do nothing...
@@ -25,17 +28,27 @@ namespace Workie.DeployHelper.Utilities
             return null;
         }
 
+        #endregion
+
+        /// <summary>
+        /// Main routine.
+        /// </summary>
+        /// <returns></returns>
         public virtual ModuleReport Run()
         {
+            Console.Clear();
+
             GetRemoteHostStringFromUserInput(Properties.Resources.ChooseRemoteHostToDeployWorkieWebAdmin);
 
             if (string.IsNullOrEmpty(ServerInfo.IpAddress))
             {
+                LogOutputter.PrintError("User cancelled the operation!");
                 return new ModuleReport(ExecutionResult.UserCancel, isCompleted: false);
             }
 
             if (!GetRemoteHostAuthenticationFromUserInput(Properties.Resources.PleaseEnterTheRemoteHostLoginCredentials))
             {
+                LogOutputter.PrintError("Didn't get credentials!");
                 return new ModuleReport(ExecutionResult.Failure, isCompleted: false);
             }
 
@@ -58,7 +71,7 @@ namespace Workie.DeployHelper.Utilities
                 serverArray[i] = serverInfoList[i].IpAddress;
             }
 
-            var index = Menu.MultipleChoice(
+            var index = ConsoleMenuHelper.MultipleChoice(
                 withNumbering: false,
                 canCancel: true,
                 description: description,

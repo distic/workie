@@ -1,7 +1,8 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.IO;
-using Utilities.Console;
+using Utilities.Logger;
+using Utilities.Logger.Base;
 using Workie.DeployHelper.Enums;
 using Workie.DeployHelper.Models;
 using Workie.DeployHelper.Utilities;
@@ -20,14 +21,11 @@ namespace Workie.DeployHelper
         {
             const string jsonFile = "C:\\Users\\ahmad\\source\\repos\\workie-core\\Applications\\ConsoleApplications\\Workie.DeployHelper\\Workie.DeployHelper.Linux.json";
 
-            Outputter.PrintLicenseNotice();
+            ConsoleEx.PrintLicenseNotice();
 
-            Outputter.PrintNoInterruptionNotice(
-                preDescription: Properties.Resources.PreDescription,
-                withTimer: true,
-                preDescriptionNewLineAfter: true);
+            ConsoleEx.PrintNoInterruptionNotice();
 
-            Outputter.PrintTitle(Properties.Resources.AppTitle, withUnderline: true);
+            ConsoleEx.PrintTitle(Properties.Resources.AppTitle, withUnderline: true);
 
             using (StreamReader streamReader = new StreamReader(jsonFile))
             {
@@ -35,10 +33,11 @@ namespace Workie.DeployHelper
                 gApplicationViewModel = JsonConvert.DeserializeObject<ApplicationViewModel>(fileContent);
             }
 
-            Console.WriteLine("[ INFO ] {0}: {1}\n", Properties.Resources.IsSslEnabled, gApplicationViewModel.Security.UseSsl ? 
-                Properties.Resources.Yes : Properties.Resources.No);
+            var isSslEnabledString = gApplicationViewModel.Security.UseSsl ? Properties.Resources.Yes : Properties.Resources.No;
 
-            var userChoice = (MainMenuResult)Menu.MultipleChoice(withNumbering: true, canCancel: true,
+            LogOutputter.PrintInfo($"{Properties.Resources.IsSslEnabled} {isSslEnabledString}", newLineAfter: 1);
+
+            var userChoice = (MainMenuResult)ConsoleMenuHelper.MultipleChoice(withNumbering: true, canCancel: true,
                 description: string.Empty,
                 Properties.Resources.SetupEnvironment,
                 Properties.Resources.InstallOrUpdatePackages,

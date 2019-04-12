@@ -1,22 +1,18 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
+using System.Text;
 
-namespace Utilities.Console
+namespace Workie.Core.UnitTests
 {
-    public class AssemblyInfo
+    internal class AssemblyInfo
     {
         /// <summary>
-        /// Gets the Application Name
+        /// Gets the executing method name.
         /// </summary>
-        public static string GetApplicationName
-        {
-            get
-            {
-                return Assembly.GetExecutingAssembly().GetName().Name;
-            }
-        }
-
+        /// <param name="className"></param>
+        /// <returns></returns>
         [MethodImpl(MethodImplOptions.NoInlining)]
         public static string GetCurrentMethod(string className = "")
         {

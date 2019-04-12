@@ -1,4 +1,4 @@
-﻿namespace Utilities.Console.Data.Enum
+﻿namespace Utilities.Logger.Enums
 {
     public enum TestResultType
     {
