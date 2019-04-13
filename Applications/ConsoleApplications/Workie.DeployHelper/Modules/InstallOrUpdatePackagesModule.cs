@@ -16,6 +16,7 @@ namespace Workie.DeployHelper.Modules
         {
             var doWorkData = new DoWorkData
             {
+                ModuleCallerName = GetType().Name,
                 DeployMessage = Properties.Resources.ChooseRemoteHostToInstallOrUpdatePackages,
                 OnRunPackageScripts = new OnRunPackageScripts(OnRunPackageScripts),
                 OnResolvePrerequisites = new OnResolvePrerequisites(OnResolvePrerequisites),
@@ -48,7 +49,7 @@ namespace Workie.DeployHelper.Modules
             // Install .NET Runtime...
             LogOutputter.PrintInfo("Downloading and installing Microsoft .NET Core runtime...");
             remoteHost.RunCommandWithOutput("sudo rpm -Uvh https://packages.microsoft.com/config/rhel/7/packages-microsoft-prod.rpm");
-            
+
             remoteHost.RunCommandWithOutput("sudo yum -y install dotnet-sdk-2.1");
         }
 

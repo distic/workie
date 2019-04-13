@@ -1,6 +1,5 @@
 ﻿using Utilities.Linux.Shell.Security;
 using Utilities.Logger;
-using Utilities.Logger.Base;
 using Workie.DeployHelper.Data;
 using Workie.DeployHelper.Utilities;
 using static Workie.DeployHelper.Delegates.ModuleDelegates;
@@ -17,6 +16,7 @@ namespace Workie.DeployHelper.Modules
         {
             var doWorkData = new DoWorkData
             {
+                ModuleCallerName = GetType().Name,
                 DeployMessage = Properties.Resources.ChooseRemoteHostToSetupEnvironment,
                 OnRunPackageScripts = new OnRunPackageScripts(OnRunPackageScripts),
                 OnSftpDisconnect = new OnSftpDisconnect(OnSftpDisconnect),

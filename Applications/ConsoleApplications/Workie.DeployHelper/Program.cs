@@ -1,11 +1,12 @@
 ﻿using Newtonsoft.Json;
 using System.IO;
+using System.Reflection;
 using Utilities.Logger;
 using Utilities.Logger.Base;
 using Workie.DeployHelper.Data;
 using Workie.DeployHelper.Enums;
 using Workie.DeployHelper.Models;
-
+using Workie.DeployHelper.Utilities;
 namespace Workie.DeployHelper
 {
     class Program
@@ -16,17 +17,15 @@ namespace Workie.DeployHelper
 
         #endregion
 
-        const string jsonFile = @"C:\Users\ahmad\source\repos\workie-core\Applications\ConsoleApplications\Workie.DeployHelper\_InstallData\Workie.DeployHelper.Linux.json";
-
         static void Main(string[] args)
         {
             ConsoleEx.PrintLicenseNotice();
             ConsoleEx.PrintNoInterruptionNotice();
             ConsoleEx.PrintTitle(Properties.Resources.AppTitle, withUnderline: true);
 
-            using (StreamReader streamReader = new StreamReader(jsonFile))
+            using (StreamReader sr = new StreamReader(Globals.GetConfigFilename))
             {
-                var fileContent = streamReader.ReadToEnd();
+                var fileContent = sr.ReadToEnd();
                 gApplicationViewModel = JsonConvert.DeserializeObject<ApplicationViewModel>(fileContent);
             }
 

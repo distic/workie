@@ -1,11 +1,12 @@
 ﻿using Renci.SshNet;
 using System;
-using System.Diagnostics;
+using System.Collections.Generic;
 using System.IO;
 using Utilities.Logger;
 using Utilities.Logger.Base;
 using Workie.DeployHelper.Data;
 using Workie.DeployHelper.Enums;
+using Workie.DeployHelper.Extensions;
 using Workie.DeployHelper.Interfaces;
 using Workie.DeployHelper.Models;
 
@@ -14,6 +15,8 @@ namespace Workie.DeployHelper.Utilities
     internal class ModuleBase : IModule
     {
         #region --- Properties ---
+
+        internal List<UploadFileViewModel> UploadedFileList { get; set; }
 
         internal ServerInfoViewModel ServerInfo { get; set; }
 
@@ -75,8 +78,52 @@ namespace Workie.DeployHelper.Utilities
 
         public virtual void OnSftpFileUploaded(SshClientEx remoteHost, UploadFileViewModel uploadFile)
         {
-            // do nothing.
-            LogOutputter.PrintWarning($"Event '{AssemblyInfo.GetCurrentMethod()}' not handled, consider handling when necessary.");
+            // TODO: technique fails to identify attached variables. make sure to support it in later versions.
+
+            // e.g. %RemoteHostFilename%HelloWorld <---- this doesn't work, but....
+            // %RemoteHostFilename% HelloWorld <------------------------------ this works.
+            var remoteHostFilenameVariable = $"%{nameof(uploadFile.RemotehostFilename)}%";
+            var localHostFilenameVariable = $"%{nameof(uploadFile.LocalhostFilename)}%";
+
+            if (uploadFile.Scripts == null)
+            {
+                UploadedFileList.Add(uploadFile);
+                return;
+            }
+
+            if (UploadedFileList == null)
+            {
+                UploadedFileList = new List<UploadFileViewModel>();
+            }
+
+            int index = 0;
+
+            var newScripts = new List<string>();
+
+            foreach (var cmd in uploadFile.Scripts)
+            {
+                var cmdArray = cmd.Split(' ');
+
+                foreach (var cmdElem in cmdArray)
+                {
+                    if (cmdElem.Equals(remoteHostFilenameVariable))
+                    {
+                        cmdArray[index] = $"\"{uploadFile.RemotehostFilename}\"";
+                    }
+                    else if (cmdElem.Equals(localHostFilenameVariable))
+                    {
+                        cmdArray[index] = $"\"{uploadFile.LocalhostFilename}\"";
+                    }
+
+                    index++;
+                }
+
+                newScripts.Add(string.Join(" ", cmdArray));
+                index = 0;
+            }
+
+            uploadFile.Scripts = newScripts;
+            UploadedFileList.Add(uploadFile);
         }
 
         #endregion
@@ -121,6 +168,66 @@ namespace Workie.DeployHelper.Utilities
 
                     doWorkData.OnSshAuthenticateSuccess(remoteHost);
 
+                    LogOutputter.PrintBusy("Collecting module dependencies...");
+
+                    var moduleDependencyList = Program.gApplicationViewModel.ModuleDependencyList;
+
+                    if (moduleDependencyList == null)
+                    {
+                        LogOutputter.Print($"No prerequisite(s) found.", isSub: true);
+                    }
+                    else
+                    {
+                        if (moduleDependencyList.Count <= 0)
+                        {
+                            LogOutputter.Print($"No prerequisite(s) found.", isSub: true);
+                        }
+                        else
+                        {
+                            if (doWorkData.UploadFileList == null)
+                            {
+                                doWorkData.UploadFileList = new List<UploadFileViewModel>();
+
+                                foreach (var uploadFileInfo in moduleDependencyList)
+                                {
+                                    if (!doWorkData.ModuleCallerName.Equals(uploadFileInfo.LocalhostFilename.TryParseModuleDependencyVariable()))
+                                    {
+                                        continue;
+                                    }
+
+                                    uploadFileInfo.LocalhostFilename = uploadFileInfo.LocalhostFilename.ModuleDependencyAbsolutePath();
+
+
+                                    if (string.IsNullOrEmpty(uploadFileInfo.LocalhostFilename))
+                                    {
+                                        if (!uploadFileInfo.IsRequired)
+                                        {
+                                            LogOutputter.PrintWarning($"Skipped a prerequisite.", isSub: true);
+                                            continue;
+                                        }
+
+                                        throw new Exception($"One or more prerequisite(s) could not be identified.");
+                                    }
+
+                                    if (!File.Exists(uploadFileInfo.LocalhostFilename))
+                                    {
+                                        if (!uploadFileInfo.IsRequired)
+                                        {
+                                            LogOutputter.PrintWarning($"Skipped a prerequisite.", isSub: true);
+                                            continue;
+                                        }
+
+                                        throw new Exception($"One or more prerequisite(s) could not be found.");
+                                    }
+
+                                    LogOutputter.Print($"Found prerequisite '{uploadFileInfo.LocalhostFilename.Filename()}'", isSub: true);
+
+                                    doWorkData.UploadFileList.Add(uploadFileInfo);
+                                }
+                            }
+                        }
+                    }
+
                     if (doWorkData.UploadFileList != null)
                     {
                         if (doWorkData.UploadFileList.Count > 0)
@@ -144,7 +251,7 @@ namespace Workie.DeployHelper.Utilities
 
                                 foreach (var uploadFileInfo in doWorkData.UploadFileList)
                                 {
-                                    LogOutputter.PrintBusy($"Uploading file '{uploadFileInfo.LocalhostFilename}'...");
+                                    LogOutputter.PrintBusy($"Uploading file '{uploadFileInfo.LocalhostFilename.Filename()}'...");
 
                                     if (!File.Exists(uploadFileInfo.LocalhostFilename) && !uploadFileInfo.IsRequired)
                                     {
@@ -165,7 +272,7 @@ namespace Workie.DeployHelper.Utilities
                                     }
 
                                     sftpClient.UploadFile(fileStream, uploadFileInfo.RemotehostFilename);
-                                    LogOutputter.PrintWarning($"Assuming upload of '{uploadFileInfo.LocalhostFilename}' was successful.", isSub: true);
+                                    LogOutputter.PrintWarning($"Assuming upload of '{uploadFileInfo.LocalhostFilename.Filename()}' was successful.", isSub: true);
                                     doWorkData.OnSftpFileUploaded(remoteHost, uploadFileInfo);
                                 }
 

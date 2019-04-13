@@ -1,7 +1,5 @@
-﻿using Renci.SshNet;
-using System.Collections.Generic;
+﻿using Utilities.Logger;
 using Workie.DeployHelper.Data;
-using Workie.DeployHelper.Models;
 using Workie.DeployHelper.Utilities;
 using static Workie.DeployHelper.Delegates.ModuleDelegates;
 
@@ -17,6 +15,7 @@ namespace Workie.DeployHelper.Modules
         {
             var doWorkData = new DoWorkData
             {
+                ModuleCallerName = GetType().Name,
                 DeployMessage = Properties.Resources.ChooseRemoteHostToDeployWorkieWebAdmin,
                 OnRunPackageScripts = new OnRunPackageScripts(OnRunPackageScripts),
                 OnSftpDisconnect = new OnSftpDisconnect(OnSftpDisconnect),
@@ -24,16 +23,7 @@ namespace Workie.DeployHelper.Modules
                 OnSshAuthenticateFailure = new OnSshAuthenticateFailure(OnSshAuthenticateFailure),
                 OnSshAuthenticateSuccess = new OnSshAuthenticateSuccess(OnSshAuthenticateSuccess),
                 OnSftpAuthenticateFailure = new OnSftpAuthenticateFailure(OnSftpAuthenticateFailure),
-                OnSftpAuthenticateSuccess = new OnSftpAuthenticateSuccess(OnSftpAuthenticateSuccess),
-                UploadFileList = new List<UploadFileViewModel>
-                {
-                    new UploadFileViewModel
-                    {
-                        LocalhostFilename = Program.gApplicationViewModel.Localhost.DefaultZipFilename,
-                        RemotehostFilename = "setupZipFileName",
-                        IsRequired = true
-                    }
-                }
+                OnSftpAuthenticateSuccess = new OnSftpAuthenticateSuccess(OnSftpAuthenticateSuccess)
             };
 
             return DoWork(doWorkData);
@@ -41,7 +31,15 @@ namespace Workie.DeployHelper.Modules
 
         public override void OnRunPackageScripts(SshClientEx remoteHost)
         {
+            LogOutputter.Print("Running module dependency scripts...", isSub: true);
 
+            foreach (var uploadFileInfo in UploadedFileList)
+            {
+                foreach (var cmd in uploadFileInfo.Scripts)
+                {
+                    remoteHost.RunCommandWithOutput(cmd);
+                }
+            }
         }
 
         #region --- Validation Functions ---

@@ -15,10 +15,16 @@
   "Common": {
     "ServerConfigurationDirectoryName": "_ServerConfiguration"
   },
-  "ModulePrerequisites": [
+  "ModuleDependencyList": [
     {
-      "LocalhostFilename": "mongodb-org-4.0.repo",
+      "LocalhostFilename": "%InstallOrUpdatePackagesModule%/mongodb-org-4.0.repo",
       "RemotehostFilename": "/etc/yum.repos.d/mongodb-org-4.0.repo",
+      "IsRequired": true,
+      "IsOverwrite": true
+    },
+    {
+      "LocalhostFilename": "%DeployWorkieWebAdminModule%/Workie.Web.Admin.zip",
+      "RemotehostFilename": "/var/aspnetcore/webapps/Workie.Web.Admin",
       "IsRequired": true,
       "IsOverwrite": true
     }
@@ -26,13 +32,13 @@
   "ServerInfoList": [
     {
       "FriendlyName": "Ahmad's CentOS",
-      "IpAddress": "192.168.219.43",
+      "IpAddress": "192.168.219.40",
       "Username": "root",
       "Password": "12345"
     },
     {
       "FriendlyName": "Shereen's CentOS",
-      "IpAddress": "192.168.0.106",
+      "IpAddress": "192.168.0.101",
       "Username": "root",
       "Password": "12345"
     }

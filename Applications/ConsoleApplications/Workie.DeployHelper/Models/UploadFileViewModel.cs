@@ -1,4 +1,6 @@
-﻿namespace Workie.DeployHelper.Models
+﻿using System.Collections.Generic;
+
+namespace Workie.DeployHelper.Models
 {
     internal class UploadFileViewModel
     {
@@ -10,6 +12,6 @@
 
         public bool IsOverwrite { get; set; }
 
-        public string RequestingModule { get; set; }
+        public List<string> Scripts { get; set; }
     }
 }

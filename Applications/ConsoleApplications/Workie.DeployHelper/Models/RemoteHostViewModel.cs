@@ -2,8 +2,6 @@
 {
     internal class RemoteHostViewModel
     {
-        public string WorkieWebAdminDirectory { get; set; }
-
         public string HttpdConfDirectory { get; set; }
 
         public string SystemdSystemDirectory { get; set; }

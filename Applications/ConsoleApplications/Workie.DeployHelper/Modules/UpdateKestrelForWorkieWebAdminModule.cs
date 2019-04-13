@@ -1,6 +1,4 @@
-﻿using Renci.SshNet;
-using System.Collections.Generic;
-using Utilities.Logger;
+﻿using System.Collections.Generic;
 using Workie.DeployHelper.Data;
 using Workie.DeployHelper.Models;
 using Workie.DeployHelper.Utilities;
@@ -18,6 +16,7 @@ namespace Workie.DeployHelper.Modules
         {
             var doWorkData = new DoWorkData
             {
+                ModuleCallerName = GetType().Name,
                 DeployMessage = Properties.Resources.ChooseRemoteHostToUpdateKestrelForWorkieWebAdmin,
                 OnRunPackageScripts = new OnRunPackageScripts(OnRunPackageScripts),
                 OnSftpDisconnect = new OnSftpDisconnect(OnSftpDisconnect),
@@ -25,16 +24,7 @@ namespace Workie.DeployHelper.Modules
                 OnSshAuthenticateFailure = new OnSshAuthenticateFailure(OnSshAuthenticateFailure),
                 OnSshAuthenticateSuccess = new OnSshAuthenticateSuccess(OnSshAuthenticateSuccess),
                 OnSftpAuthenticateFailure = new OnSftpAuthenticateFailure(OnSftpAuthenticateFailure),
-                OnSftpAuthenticateSuccess = new OnSftpAuthenticateSuccess(OnSftpAuthenticateSuccess),
-                UploadFileList = new List<UploadFileViewModel>
-                {
-                    new UploadFileViewModel
-                    {
-                        LocalhostFilename = "",
-                        RemotehostFilename = "setupZipFileName",
-                        IsRequired = true
-                    }
-                }
+                OnSftpAuthenticateSuccess = new OnSftpAuthenticateSuccess(OnSftpAuthenticateSuccess)
             };
 
             return DoWork(doWorkData);
