@@ -53,13 +53,6 @@ namespace Workie.DeployHelper.Modules
             return report;
         }
 
-        public override DependencyReport GetDependencyReport()
-        {
-            var report = new DependencyReport();
-
-            return report;
-        }
-
         #endregion
     }
 }
