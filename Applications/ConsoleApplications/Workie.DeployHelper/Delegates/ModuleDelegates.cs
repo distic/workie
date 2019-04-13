@@ -38,5 +38,10 @@ namespace Workie.DeployHelper.Delegates
         /// <param name="uploadFile"></param>
         internal delegate void OnSftpFileUploaded(SshClientEx remoteHost, UploadFileViewModel uploadFile);
 
+        /// <summary>
+        /// Event occurs right after a successful authentication to the SSH session.
+        /// </summary>
+        /// <param name="remoteHost"></param>
+        internal delegate void OnRunPackageScripts(SshClientEx remoteHost);
     }
 }

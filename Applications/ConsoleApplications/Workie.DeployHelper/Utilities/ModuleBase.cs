@@ -1,5 +1,6 @@
 ﻿using Renci.SshNet;
 using System;
+using System.Diagnostics;
 using System.IO;
 using Utilities.Logger;
 using Utilities.Logger.Base;
@@ -36,34 +37,46 @@ namespace Workie.DeployHelper.Utilities
 
         #region --- Event Handlers ---
 
+        public virtual void OnRunPackageScripts(SshClientEx remoteHost)
+        {
+            // do nothing
+            LogOutputter.PrintWarning($"Event '{AssemblyInfo.GetCurrentMethod()}' not handled, consider handling when necessary.");
+        }
+
         public virtual void OnSshAuthenticateSuccess(SshClientEx remoteHost)
         {
             // do nothing
+            LogOutputter.PrintWarning($"Event '{AssemblyInfo.GetCurrentMethod()}' not handled, consider handling when necessary.");
         }
 
         public virtual void OnSshAuthenticateFailure()
         {
             // do nothing
+            LogOutputter.PrintWarning($"Event '{AssemblyInfo.GetCurrentMethod()}' not handled, consider handling when necessary.");
         }
 
         public virtual void OnSftpAuthenticateSuccess(SftpClient sftpClient)
         {
             // do nothing
+            LogOutputter.PrintWarning($"Event '{AssemblyInfo.GetCurrentMethod()}' not handled, consider handling when necessary.");
         }
 
         public virtual void OnSftpAuthenticateFailure()
         {
             // do nothing
+            LogOutputter.PrintWarning($"Event '{AssemblyInfo.GetCurrentMethod()}' not handled, consider handling when necessary.");
         }
 
         public virtual void OnSftpDisconnect()
         {
             // do nothing.
+            LogOutputter.PrintWarning($"Event '{AssemblyInfo.GetCurrentMethod()}' not handled, consider handling when necessary.");
         }
 
         public virtual void OnSftpFileUploaded(SshClientEx remoteHost, UploadFileViewModel uploadFile)
         {
             // do nothing.
+            LogOutputter.PrintWarning($"Event '{AssemblyInfo.GetCurrentMethod()}' not handled, consider handling when necessary.");
         }
 
         #endregion
@@ -161,6 +174,9 @@ namespace Workie.DeployHelper.Utilities
                             }
                         }
                     }
+
+                    LogOutputter.PrintBusy("Running package scripts...");
+                    doWorkData.OnRunPackageScripts(remoteHost);
                 }
             }
             catch (Exception ex)
@@ -244,7 +260,5 @@ namespace Workie.DeployHelper.Utilities
 
             return true;
         }
-
-
     }
 }

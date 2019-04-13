@@ -1,5 +1,6 @@
 ﻿using Renci.SshNet;
 using System.Collections.Generic;
+using Utilities.Logger;
 using Workie.DeployHelper.Data;
 using Workie.DeployHelper.Models;
 using Workie.DeployHelper.Utilities;
@@ -18,12 +19,13 @@ namespace Workie.DeployHelper.Modules
             var doWorkData = new DoWorkData
             {
                 DeployMessage = Properties.Resources.ChooseRemoteHostToUpdateKestrelForWorkieWebAdmin,
-                OnSshAuthenticateSuccess = new OnSshAuthenticateSuccess(OnSshAuthenticateSuccess),
-                OnSshAuthenticateFailure = new OnSshAuthenticateFailure(OnSshAuthenticateFailure),
-                OnSftpAuthenticateSuccess = new OnSftpAuthenticateSuccess(OnSftpAuthenticateSuccess),
-                OnSftpAuthenticateFailure = new OnSftpAuthenticateFailure(OnSftpAuthenticateFailure),
+                OnRunPackageScripts = new OnRunPackageScripts(OnRunPackageScripts),
                 OnSftpDisconnect = new OnSftpDisconnect(OnSftpDisconnect),
                 OnSftpFileUploaded = new OnSftpFileUploaded(OnSftpFileUploaded),
+                OnSshAuthenticateFailure = new OnSshAuthenticateFailure(OnSshAuthenticateFailure),
+                OnSshAuthenticateSuccess = new OnSshAuthenticateSuccess(OnSshAuthenticateSuccess),
+                OnSftpAuthenticateFailure = new OnSftpAuthenticateFailure(OnSftpAuthenticateFailure),
+                OnSftpAuthenticateSuccess = new OnSftpAuthenticateSuccess(OnSftpAuthenticateSuccess),
                 UploadFileList = new List<UploadFileViewModel>
                 {
                     new UploadFileViewModel
@@ -38,32 +40,7 @@ namespace Workie.DeployHelper.Modules
             return DoWork(doWorkData);
         }
 
-        public override void OnSshAuthenticateSuccess(SshClientEx remoteHost)
-        {
-
-        }
-
-        public override void OnSshAuthenticateFailure()
-        {
-
-        }
-
-        public override void OnSftpAuthenticateSuccess(SftpClient sftpClient)
-        {
-
-        }
-
-        public override void OnSftpAuthenticateFailure()
-        {
-
-        }
-
-        public override void OnSftpDisconnect()
-        {
-
-        }
-
-        public override void OnSftpFileUploaded(SshClientEx remoteHost, UploadFileViewModel uploadFile)
+        public override void OnRunPackageScripts(SshClientEx remoteHost)
         {
 
         }

@@ -1,4 +1,5 @@
 ﻿using Utilities.Logger;
+using Utilities.Logger.Base;
 using Utilities.Logger.Enums;
 using Workie.Core.BusinessLogic.Users;
 using Workie.Core.Entities.Users;

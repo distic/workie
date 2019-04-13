@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Runtime.CompilerServices;
-using System.Text;
 
-namespace Workie.Core.UnitTests
+namespace Utilities.Logger.Base
 {
-    internal class AssemblyInfo
+    public class AssemblyInfo
     {
         /// <summary>
         /// Gets the executing method name.

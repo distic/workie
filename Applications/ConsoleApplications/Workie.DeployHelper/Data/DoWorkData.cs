@@ -22,5 +22,7 @@ namespace Workie.DeployHelper.Data
 
         public OnSftpAuthenticateFailure OnSftpAuthenticateFailure { get; set; }
 
+        public OnRunPackageScripts OnRunPackageScripts { get; set; }
+
     }
 }

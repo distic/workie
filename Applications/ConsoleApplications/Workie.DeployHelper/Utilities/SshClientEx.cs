@@ -132,6 +132,13 @@ namespace Workie.DeployHelper.Utilities
             RunCommand(cmd, output);
         }
 
+        internal void RunCommandWithOutput(string command)
+        {
+            var cmd = CreateCommand(command);
+
+            RunCommand(cmd, output: true);
+        }
+
         #endregion
     }
 }

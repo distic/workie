@@ -32,5 +32,11 @@ namespace Workie.DeployHelper.Interfaces
         /// Event occurs when authentication to the remote host fails.
         /// </summary>
         void OnSshAuthenticateFailure();
+
+        /// <summary>
+        /// Event occurs when scripts need to be executed.
+        /// </summary>
+        /// <param name="remoteHost"></param>
+        void OnRunPackageScripts(SshClientEx remoteHost);
     }
 }

@@ -1,4 +1,5 @@
-﻿using Workie.DeployHelper.Data;
+﻿using Utilities.Logger;
+using Workie.DeployHelper.Data;
 using Workie.DeployHelper.Utilities;
 using static Workie.DeployHelper.Delegates.ModuleDelegates;
 
@@ -15,21 +16,33 @@ namespace Workie.DeployHelper.Modules
             var doWorkData = new DoWorkData
             {
                 DeployMessage = Properties.Resources.ChooseRemoteHostToInstallOrUpdatePackages,
+                OnRunPackageScripts = new OnRunPackageScripts(OnRunPackageScripts),
+                OnSftpDisconnect = new OnSftpDisconnect(OnSftpDisconnect),
+                OnSftpFileUploaded = new OnSftpFileUploaded(OnSftpFileUploaded),
+                OnSshAuthenticateFailure = new OnSshAuthenticateFailure(OnSshAuthenticateFailure),
                 OnSshAuthenticateSuccess = new OnSshAuthenticateSuccess(OnSshAuthenticateSuccess),
-                OnSshAuthenticateFailure = new OnSshAuthenticateFailure(OnSshAuthenticateFailure)
+                OnSftpAuthenticateFailure = new OnSftpAuthenticateFailure(OnSftpAuthenticateFailure),
+                OnSftpAuthenticateSuccess = new OnSftpAuthenticateSuccess(OnSftpAuthenticateSuccess)
             };
 
             return DoWork(doWorkData);
         }
 
-        public override void OnSshAuthenticateSuccess(SshClientEx remoteHost)
+        public override void OnRunPackageScripts(SshClientEx remoteHost)
         {
+            // Create folders...
+            LogOutputter.PrintInfo("Updating operating system packages...");
+            remoteHost.RunCommandWithOutput("sudo yum -y update");
 
-        }
+            // Install Apache Service...
+            LogOutputter.PrintInfo($"Downloading and installing Apache...");
+            remoteHost.RunCommandWithOutput("sudo yum -y install httpd mod_ssl");
 
-        public override void OnSshAuthenticateFailure()
-        {
-
+            // Install .NET Runtime...
+            LogOutputter.PrintInfo("Downloading and installing Microsoft .NET Core runtime...");
+            remoteHost.RunCommandWithOutput("sudo rpm -Uvh https://packages.microsoft.com/config/rhel/7/packages-microsoft-prod.rpm");
+            
+            remoteHost.RunCommandWithOutput("sudo yum -y install dotnet-sdk-2.1");
         }
 
         #region --- Validation Functions ---

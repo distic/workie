@@ -6,9 +6,16 @@ namespace Utilities.Logger
 {
     public static class LogOutputter
     {
-        public static void Print(string description)
+        public static void Print(string description, int newLineAfter = 0, bool greyScale = false, bool isSub = false)
         {
-            Console.WriteLine(description);
+            if (isSub)
+            {
+                ConsoleEx.WriteLine($"\t* {description}", foregroundColor: ConsoleExColor.White, greyScale: greyScale, newLineAfter: newLineAfter);
+            }
+            else
+            {
+                ConsoleEx.WriteLine(description);
+            }
         }
 
         public static void PrintSuccess(string description, int newLineAfter = 0, bool greyScale = false, bool isSub = false)
