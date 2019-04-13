@@ -1,4 +1,5 @@
-﻿using Workie.DeployHelper.Data;
+﻿using Renci.SshNet;
+using Workie.DeployHelper.Data;
 using Workie.DeployHelper.Utilities;
 
 namespace Workie.DeployHelper.Interfaces
@@ -21,7 +22,7 @@ namespace Workie.DeployHelper.Interfaces
         /// Identify what's missing and save it.
         /// </summary>
         /// <returns>The reported result of the operation.</returns>
-        DependencyReport GetDependencyReport();
+        void OnResolvePrerequisites(SftpClient sftpClient);
 
         /// <summary>
         /// Event occurs when the authentication to the remote host succeeds.

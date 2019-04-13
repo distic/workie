@@ -1,4 +1,5 @@
-﻿using Utilities.Logger;
+﻿using Renci.SshNet;
+using Utilities.Logger;
 using Workie.DeployHelper.Data;
 using Workie.DeployHelper.Utilities;
 using static Workie.DeployHelper.Delegates.ModuleDelegates;
@@ -17,6 +18,7 @@ namespace Workie.DeployHelper.Modules
             {
                 DeployMessage = Properties.Resources.ChooseRemoteHostToInstallOrUpdatePackages,
                 OnRunPackageScripts = new OnRunPackageScripts(OnRunPackageScripts),
+                OnResolvePrerequisites = new OnResolvePrerequisites(OnResolvePrerequisites),
                 OnSftpDisconnect = new OnSftpDisconnect(OnSftpDisconnect),
                 OnSftpFileUploaded = new OnSftpFileUploaded(OnSftpFileUploaded),
                 OnSshAuthenticateFailure = new OnSshAuthenticateFailure(OnSshAuthenticateFailure),
@@ -26,6 +28,11 @@ namespace Workie.DeployHelper.Modules
             };
 
             return DoWork(doWorkData);
+        }
+
+        public override void OnResolvePrerequisites(SftpClient sftpClient)
+        {
+
         }
 
         public override void OnRunPackageScripts(SshClientEx remoteHost)
@@ -50,13 +57,6 @@ namespace Workie.DeployHelper.Modules
         public override ConflictReport GetConflictsReport()
         {
             var report = new ConflictReport();
-
-            return report;
-        }
-
-        public override DependencyReport GetDependencyReport()
-        {
-            var report = new DependencyReport();
 
             return report;
         }

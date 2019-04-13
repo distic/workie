@@ -16,7 +16,7 @@ namespace Workie.DeployHelper
 
         #endregion
 
-        const string jsonFile = @"C:\Users\ahmad\source\repos\workie-core\Applications\ConsoleApplications\Workie.DeployHelper\Workie.DeployHelper.Linux.json";
+        const string jsonFile = @"C:\Users\ahmad\source\repos\workie-core\Applications\ConsoleApplications\Workie.DeployHelper\_InstallData\Workie.DeployHelper.Linux.json";
 
         static void Main(string[] args)
         {

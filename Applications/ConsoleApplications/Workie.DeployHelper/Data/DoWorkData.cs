@@ -10,6 +10,8 @@ namespace Workie.DeployHelper.Data
 
         public List<UploadFileViewModel> UploadFileList { get; set; }
 
+        public OnResolvePrerequisites OnResolvePrerequisites { get; set; }
+
         public OnSshAuthenticateSuccess OnSshAuthenticateSuccess { get; set; }
 
         public OnSshAuthenticateFailure OnSshAuthenticateFailure { get; set; }

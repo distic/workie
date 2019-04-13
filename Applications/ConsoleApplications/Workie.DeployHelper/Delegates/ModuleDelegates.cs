@@ -7,6 +7,12 @@ namespace Workie.DeployHelper.Delegates
     internal class ModuleDelegates
     {
         /// <summary>
+        /// Resolves prerequisits for files.
+        /// </summary>
+        /// <param name="sftpClient"></param>
+        internal delegate void OnResolvePrerequisites(SftpClient sftpClient);
+
+        /// <summary>
         /// Event occurs when authentication to SSH succeeds.
         /// </summary>
         /// <param name="remoteHost">Used to send command(s) to the connected host.</param>

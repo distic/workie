@@ -27,15 +27,15 @@ namespace Workie.DeployHelper.Utilities
             return null;
         }
 
-        public virtual DependencyReport GetDependencyReport()
-        {
-            // Do nothing...
-            return null;
-        }
-
         #endregion
 
         #region --- Event Handlers ---
+
+        public virtual void OnResolvePrerequisites(SftpClient sftpClient)
+        {
+            // do nothing.
+            LogOutputter.PrintWarning($"Event '{AssemblyInfo.GetCurrentMethod()}' not handled, consider handling when necessary.");
+        }
 
         public virtual void OnRunPackageScripts(SshClientEx remoteHost)
         {

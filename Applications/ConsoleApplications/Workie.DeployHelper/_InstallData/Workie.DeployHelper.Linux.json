@@ -15,16 +15,24 @@
   "Common": {
     "ServerConfigurationDirectoryName": "_ServerConfiguration"
   },
+  "ModulePrerequisites": [
+    {
+      "LocalhostFilename": "mongodb-org-4.0.repo",
+      "RemotehostFilename": "/etc/yum.repos.d/mongodb-org-4.0.repo",
+      "IsRequired": true,
+      "IsOverwrite": true
+    }
+  ],
   "ServerInfoList": [
     {
-      "FriendlyName": "Hyper-V CentOS",
+      "FriendlyName": "Ahmad's CentOS",
       "IpAddress": "192.168.219.43",
       "Username": "root",
       "Password": "12345"
     },
     {
-      "FriendlyName": "Local Server",
-      "IpAddress": "148.72.23.197",
+      "FriendlyName": "Shereen's CentOS",
+      "IpAddress": "192.168.0.106",
       "Username": "root",
       "Password": "12345"
     }

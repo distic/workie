@@ -12,6 +12,8 @@ namespace Workie.DeployHelper.Models
 
         public CommonViewModel Common { get; set; }
 
+        public List<UploadFileViewModel> ModulePrerequisites { get; set; }
+
         public List<ServerInfoViewModel> ServerInfoList { get; set; }
     }
 }
