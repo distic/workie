@@ -5,6 +5,7 @@
     <Authors>Ahmad Chatila</Authors>
     <Company>Distic</Company>
     <Copyright>Copyright (c) 2019 Distic. All rights reserved.</Copyright>
+    <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,10 +22,7 @@
 
   <ItemGroup>
     <Folder Include="Areas\Account\Models\Settings\" />
-    <Folder Include="Areas\Account\Models\Profile\" />
-    <Folder Include="Areas\Account\Views\Profile\UserControls\" />
     <Folder Include="wwwroot\mystic-kernel\dark\" />
-    <Folder Include="wwwroot\app\" />
     <Folder Include="wwwroot\img\" />
   </ItemGroup>
 
@@ -33,10 +31,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="Areas\Account\Views\Settings\UserControls\_NavBar.cshtml">
+    <Content Update="Areas\Account\Views\Profile\UserControls\_UserControls_EditProfile.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
-    <Content Update="Areas\Account\Views\Settings\UserControls\_SideBar.cshtml">
+    <Content Update="Areas\Account\Views\Settings\UserControls\_NavBar.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Areas\Account\Views\Shared\UserControls\_NavBar.cshtml">

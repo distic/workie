@@ -1,1 +1,38 @@
-﻿
+﻿@inject IViewLocalizer Localizer
+
+@{
+    ViewBag.Title = Localizer["Profile"].Value;
+    TimeSpan unixTime = DateTime.Now.ToUniversalTime() - new DateTime(1989, 7, 1, 0, 0, 0, DateTimeKind.Utc);
+}
+
+<form action="@Url.Action("EditProfile", "Profile", new { Area = "Account" } )"
+      data-ajax-mode="replace"
+      data-ajax="true"
+      data-ajax-begin="ProfileModule.onEditProfileSubmitBegin"
+      data-ajax-success="ProfileModule.onEditProfileSubmitSuccess"
+      data-ajax-failure="ProfileModule.onEditProfileSubmitFailure"
+      id="EditProfileTableForm"
+      data-ajax-update="#ProfileResult"
+      datetoavoidcache=@unixTime.TotalSeconds></form>
+
+<form action="@Url.Action("ViewProfile", "Profile", new { Area = "Account" } )"
+      data-ajax-mode="replace"
+      data-ajax="true"
+      data-ajax-begin="ProfileModule.onViewProfileSubmitBegin"
+      data-ajax-success="ProfileModule.onViewProfileSubmitSuccess"
+      data-ajax-failure="ProfileModule.onViewProfileSubmitFailure"
+      id="ViewProfileTableForm"
+      data-ajax-update="#ProfileResult"
+      datetoavoidcache=@unixTime.TotalSeconds></form>
+
+<div id="ProfileResult">
+    <div class="container text-muted">
+        <p class="text-muted small">
+            @Localizer["Loading profile info, please wait..."].Value
+        </p>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="@Url.Content("~/app/areas/account/views/profile/index.js")" type="text/javascript"></script>
+}

@@ -26,10 +26,9 @@
     <link rel="icon" type="image/png" sizes="32x32" href="~/mystic-kernel/light/assets/favicon.ico">
 </head>
 
-<body class="ms-body ms-aside-left-open ms-primary-theme">
+<body class="ms-body ms-primary-theme">
 
     <partial name="UserControls/_PreLoader" />
-    <partial name="UserControls/_SideBar" />
 
     <!-- Main Content -->
     <main class="body-content">
@@ -57,8 +56,11 @@
     <!-- Page Specific Scripts Finish -->
     <!-- Mystic core JavaScript -->
     <script src="~/mystic-kernel/light/assets/js/framework.js"></script>
+    <script src="~/lib/jquery.unobtrusive-ajax.min.js"></script>
     <!-- Settings -->
     <script src="~/mystic-kernel/light/assets/js/settings.js"></script>
+
+    @RenderSection("Scripts", required: false)
 </body>
 
 </html>

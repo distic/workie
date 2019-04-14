@@ -1,0 +1,22 @@
+﻿@inject IViewLocalizer Localizer
+
+@{
+    ViewBag.Title = Localizer["Registration Form"];
+}
+
+<form action="@Url.Action("VerifyEmail", "Register" , new { Area="Auth" } )"
+      data-ajax-mode="replace"
+      data-ajax="true"
+      data-ajax-begin="RegisterResultModule.onVerifyEmailSubmitBegin"
+      data-ajax-success="RegisterResultModule.onVerifyEmailSubmitSuccess"
+      data-ajax-failure="RegisterResultModule.onVerifyEmailSubmitFailure"
+      id="VerifyEmailTableForm"
+      data-ajax-update="#RegisterResult"></form>
+
+<div id="RegisterResult">
+    <partial name="UserControls/_UserControls_Register" />
+</div>
+
+@section Scripts {
+    <script src="@Url.Content("~/app/areas/auth/views/register/index.js")" type="text/javascript"></script>
+}

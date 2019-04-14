@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -6,10 +6,18 @@
     <Copyright>Copyright (c) 2019 Distic. All rights reserved.</Copyright>
     <Company>Distic</Company>
     <Authors>Ahmad Chatila</Authors>
+    <RunPostBuildEvent>Always</RunPostBuildEvent>
+    <Version>0.1.1904.1</Version>
+    <Description />
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Libraries\Internal\Utilities\Utilities.Console\Utilities.Console.csproj" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Libraries\Internal\Utilities\Utilities.Linux.Shell\Utilities.Linux.Shell.csproj" />
+    <ProjectReference Include="..\..\..\Libraries\Internal\Utilities\Utilities.Logger\Utilities.Logger.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,5 +34,9 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="xcopy $(ProjectDir)_InstallData\* $(ProjectDir)$(OutDir)\_InstallData /e /y /i /r" />
+  </Target>
 
 </Project>

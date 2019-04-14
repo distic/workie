@@ -16,7 +16,24 @@ namespace Workie.Web.Admin.Areas.Auth.Controllers
         {
             return View();
         }
-        
+
+        public IActionResult ResetPassword()
+        {
+            try
+            {
+                //TODO: Logic for reset password should execute at this point...
+
+                return Json(new
+                {
+                    result = true
+                });
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
         [HttpPost]
         public async Task<IActionResult> LoginAsync(string emailAddress, string password)
         {
@@ -31,7 +48,7 @@ namespace Workie.Web.Admin.Areas.Auth.Controllers
                 var userManager = new UserManager();
 
                 var userEntity = userManager.SelectByEmailAndPassword(emailAddress, password);
-                
+
                 if (userEntity == null)
                 {
                     //TODO: Sort this out.
@@ -45,7 +62,7 @@ namespace Workie.Web.Admin.Areas.Auth.Controllers
                     new Claim(CustomClaimTypes.FirstName, userEntity.FirstName),
                     new Claim(CustomClaimTypes.LastName, userEntity.LastName),
                     new Claim(CustomClaimTypes.SupportPin, string.Empty),
-                    new Claim(CustomClaimTypes.IsFirstLogin, userEntity.IsFirstLogin.ToString())
+                    new Claim(CustomClaimTypes.IsFirstLogin, userEntity.Attention.IsFirstLogin.ToString())
                 }, CookieAuthenticationDefaults.AuthenticationScheme);
 
                 var principal = new ClaimsPrincipal(identity);

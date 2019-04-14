@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using Workie.Core.BusinessLogic.Users;
 using Workie.Web.Admin.Filters;
 using Workie.Web.Admin.Models;
 using Workie.Web.Admin.Utilities;

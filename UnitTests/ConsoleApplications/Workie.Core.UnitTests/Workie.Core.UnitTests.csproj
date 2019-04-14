@@ -11,7 +11,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\Libraries\Internal\Core\Workie.Core.BusinessLogic\Workie.Core.BusinessLogic.csproj" />
     <ProjectReference Include="..\..\..\Libraries\Internal\Core\Workie.Core.Entities\Workie.Core.Entities.csproj" />
-    <ProjectReference Include="..\..\..\Libraries\Internal\Utilities\Utilities.Console\Utilities.Console.csproj" />
+    <ProjectReference Include="..\..\..\Libraries\Internal\Utilities\Utilities.Logger\Utilities.Logger.csproj" />
   </ItemGroup>
 
   <ItemGroup>
