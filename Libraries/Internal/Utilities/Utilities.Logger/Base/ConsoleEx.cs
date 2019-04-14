@@ -53,8 +53,6 @@ namespace Utilities.Logger.Base
         /// <param name="underlineChar"></param>
         public static void PrintTitle(string titleName = "", bool withUnderline = false, char underlineChar = '=')
         {
-            Console.WriteLine("");
-
             var title = string.IsNullOrEmpty(titleName) ? Assembly.GetExecutingAssembly().GetName().Name : titleName;
 
             Console.WriteLine(title);

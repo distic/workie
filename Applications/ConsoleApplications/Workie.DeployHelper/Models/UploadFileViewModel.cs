@@ -4,9 +4,9 @@ namespace Workie.DeployHelper.Models
 {
     internal class UploadFileViewModel
     {
-        public string LocalhostFilename { get; set; }
+        public string HostSourceFilename { get; set; }
 
-        public string RemotehostFilename { get; set; }
+        public string RemoteDestinationFilename { get; set; }
 
         public bool IsRequired { get; set; }
 

@@ -8,15 +8,29 @@ namespace Workie.DeployHelper.Modules
 {
     internal class SetupEnvironmentModule : ModuleBase
     {
+        #region --- Requests ---
+
+        public override string OnRequestingRoutedFilename(string filename)
+        {
+            return System.IO.Path.Combine(Globals.GetModuleDependenciesDirectory, GetType().Name, filename);
+        }
+
+        #endregion
+
+        #region --- Properties ---
+
+        public DoWorkData DoWorkData { get; set; }
+
+        #endregion
+
         /// <summary>
         /// Entry point of the routine.
         /// </summary>
         /// <returns></returns>
         internal ModuleReport Run()
         {
-            var doWorkData = new DoWorkData
+            DoWorkData = new DoWorkData
             {
-                ModuleCallerName = GetType().Name,
                 DeployMessage = Properties.Resources.ChooseRemoteHostToSetupEnvironment,
                 OnRunPackageScripts = new OnRunPackageScripts(OnRunPackageScripts),
                 OnSftpDisconnect = new OnSftpDisconnect(OnSftpDisconnect),
@@ -24,10 +38,12 @@ namespace Workie.DeployHelper.Modules
                 OnSshAuthenticateFailure = new OnSshAuthenticateFailure(OnSshAuthenticateFailure),
                 OnSshAuthenticateSuccess = new OnSshAuthenticateSuccess(OnSshAuthenticateSuccess),
                 OnSftpAuthenticateFailure = new OnSftpAuthenticateFailure(OnSftpAuthenticateFailure),
-                OnSftpAuthenticateSuccess = new OnSftpAuthenticateSuccess(OnSftpAuthenticateSuccess)
+                OnSftpAuthenticateSuccess = new OnSftpAuthenticateSuccess(OnSftpAuthenticateSuccess),
+                OnRequestingUploadFileList = new OnRequestingUploadFileList(OnRequestingUploadFileList),
+                OnRequestingRoutedFilename = new OnRequestingRoutedFilename(OnRequestingRoutedFilename)
             };
 
-            return DoWork(doWorkData);
+            return DoWork(DoWorkData);
         }
 
         public override void OnRunPackageScripts(SshClientEx remoteHost)

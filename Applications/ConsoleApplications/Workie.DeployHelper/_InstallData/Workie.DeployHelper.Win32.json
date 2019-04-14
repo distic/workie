@@ -1,4 +1,45 @@
 {
+  "DeployWorkieWebAdminModule": {
+    "Source": "D:\\workie-core\\Applications\\WebApplications\\Workie.Web.Admin",
+    "Publish": {
+      "Debug": "D:\\workie-core\\Applications\\WebApplications\\Workie.Web.Admin\\bin\\Debug\\netcoreapp2.1\\publish",
+      "Release": "D:\\workie-core\\Applications\\WebApplications\\Workie.Web.Admin\\bin\\Release\\netcoreapp2.1\\publish"
+    },
+    "UploadFileList": [
+      {
+        "HostSourceFilename": "Workie.Web.Admin.zip",
+        "RemoteDestinationFilename": "/var/aspnetcore/webapps/Workie.Web.Admin.zip",
+        "IsRequired": true,
+        "IsOverwrite": true,
+        "Scripts": [
+          "sudo unzip -o %RemoteDestinationFilename%",
+          "rm %RemoteDestinationFilename%"
+        ]
+      },
+      {
+        "HostSourceFilename": "httpd.conf",
+        "RemoteDestinationFilename": "/etc/httpd/conf.d",
+        "IsRequired": true,
+        "IsOverwrite": true
+      },
+      {
+        "HostSourceFilename": "kestrel-WorkieWebAdmin.service",
+        "RemoteDestinationFilename": "/etc/systemd/system",
+        "IsRequired": true,
+        "IsOverwrite": true
+      }
+    ]
+  },
+  "InstallOrUpdatePackagesModule": {
+    "UploadFileList": [
+      {
+        "HostSourceFilename": "mongodb-org-4.0.repo",
+        "RemoteDestinationFilename": "/etc/yum.repos.d/mongodb-org-4.0.repo",
+        "IsRequired": true,
+        "IsOverwrite": true
+      }
+    ]
+  },
   "RemoteHost": {
     "HttpdConfDirectory": "/etc/httpd/conf.d",
     "SystemdSystemDirectory": "/etc/systemd/system",
@@ -7,28 +48,10 @@
   "Security": {
     "UseSsl": true
   },
-  "ModuleDependencyList": [
-    {
-      "LocalhostFilename": "%InstallOrUpdatePackagesModule%/mongodb-org-4.0.repo",
-      "RemotehostFilename": "/etc/yum.repos.d/mongodb-org-4.0.repo",
-      "IsRequired": true,
-      "IsOverwrite": true
-    },
-    {
-      "LocalhostFilename": "%DeployWorkieWebAdminModule%/Workie.Web.Admin",
-      "RemotehostFilename": "/var/aspnetcore/webapps/Workie.Web.Admin.zip",
-      "IsRequired": true,
-      "IsOverwrite": true,
-      "Scripts": [
-        "sudo unzip %RemotehostFilename%",
-        "rm %RemotehostFilename%"
-      ]
-    }
-  ],
   "ServerInfoList": [
     {
       "FriendlyName": "Ahmad's CentOS",
-      "IpAddress": "192.168.219.40",
+      "IpAddress": "192.168.234.73",
       "Username": "root",
       "Password": "12345"
     },

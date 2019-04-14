@@ -1,5 +1,7 @@
 ﻿using Renci.SshNet;
+using System.Collections.Generic;
 using Workie.DeployHelper.Data;
+using Workie.DeployHelper.Models;
 using Workie.DeployHelper.Utilities;
 
 namespace Workie.DeployHelper.Interfaces
@@ -39,5 +41,20 @@ namespace Workie.DeployHelper.Interfaces
         /// </summary>
         /// <param name="remoteHost"></param>
         void OnRunPackageScripts(SshClientEx remoteHost);
+
+        /// <summary>
+        /// Event occurs when ModuleBase requests an upload list specific to the module.
+        /// </summary>
+        /// <returns>Upload list.</returns>
+        List<UploadFileViewModel> OnRequestingUploadFileList();
+
+        /// <summary>
+        /// Gets the absolute path of the host source file name.
+        /// </summary>
+        /// <param name="filename"></param>
+        /// <returns></returns>
+        string OnRequestingRoutedFilename(string filename);
+
+
     }
 }

@@ -6,6 +6,7 @@
     <Copyright>Copyright (c) 2019 Distic. All rights reserved.</Copyright>
     <Company>Distic</Company>
     <Authors>Ahmad Chatila</Authors>
+    <RunPostBuildEvent>Always</RunPostBuildEvent>
   </PropertyGroup>
 
   <ItemGroup>
@@ -32,11 +33,7 @@
     </EmbeddedResource>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="_InstallData\ModuleDependencies\DeployWorkieWebAdminModule\" />
-  </ItemGroup>
-
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
     <Exec Command="xcopy $(ProjectDir)_InstallData\* $(ProjectDir)$(OutDir)\_InstallData /e /y /i /r" />
   </Target>
 

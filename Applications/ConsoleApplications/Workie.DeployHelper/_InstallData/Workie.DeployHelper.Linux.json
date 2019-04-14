@@ -1,10 +1,34 @@
 {
-  "Localhost": {
-    "WorkieWebAdminDirectory": "D:\\Websites\\Workie.Web.Admin",
-    "DefaultZipFilename": "D:\\temp.zip"
+  "DeployWorkieWebAdminModule": {
+    "Source": "D:\\workie-core\\Applications\\WebApplications\\Workie.Web.Admin",
+    "Publish": {
+      "Debug": "D:\\workie-core\\Applications\\WebApplications\\Workie.Web.Admin\\bin\\Debug\\netcoreapp2.1\\publish",
+      "Release": "D:\\workie-core\\Applications\\WebApplications\\Workie.Web.Admin\\bin\\Release\\netcoreapp2.1\\publish"
+    },
+    "UploadFileList": [
+      {
+        "HostSourceFilename": "Workie.Web.Admin.zip",
+        "RemoteDestinationFilename": "/var/aspnetcore/webapps/Workie.Web.Admin.zip",
+        "IsRequired": true,
+        "IsOverwrite": true,
+        "Scripts": [
+          "sudo unzip -o %RemoteDestinationFilename%",
+          "rm %RemoteDestinationFilename%"
+        ]
+      }
+    ]
+  },
+  "InstallOrUpdatePackagesModule": {
+    "UploadFileList": [
+      {
+        "HostSourceFilename": "mongodb-org-4.0.repo",
+        "RemoteDestinationFilename": "/etc/yum.repos.d/mongodb-org-4.0.repo",
+        "IsRequired": true,
+        "IsOverwrite": true
+      }
+    ]
   },
   "RemoteHost": {
-    "WorkieWebAdminDirectory": "/var/aspnetcore/webapps/Workie.Web.Admin",
     "HttpdConfDirectory": "/etc/httpd/conf.d",
     "SystemdSystemDirectory": "/etc/systemd/system",
     "DefaultZipFilename": "/var/aspnetcore/setup.zip"
@@ -12,27 +36,10 @@
   "Security": {
     "UseSsl": true
   },
-  "Common": {
-    "ServerConfigurationDirectoryName": "_ServerConfiguration"
-  },
-  "ModuleDependencyList": [
-    {
-      "LocalhostFilename": "%InstallOrUpdatePackagesModule%/mongodb-org-4.0.repo",
-      "RemotehostFilename": "/etc/yum.repos.d/mongodb-org-4.0.repo",
-      "IsRequired": true,
-      "IsOverwrite": true
-    },
-    {
-      "LocalhostFilename": "%DeployWorkieWebAdminModule%/Workie.Web.Admin.zip",
-      "RemotehostFilename": "/var/aspnetcore/webapps/Workie.Web.Admin",
-      "IsRequired": true,
-      "IsOverwrite": true
-    }
-  ],
   "ServerInfoList": [
     {
       "FriendlyName": "Ahmad's CentOS",
-      "IpAddress": "192.168.219.40",
+      "IpAddress": "192.168.234.73",
       "Username": "root",
       "Password": "12345"
     },

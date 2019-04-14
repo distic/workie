@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using Utilities.Logger;
 using Utilities.Logger.Base;
+using Utilities.Logger.Enums;
 using Workie.DeployHelper.Data;
 using Workie.DeployHelper.Enums;
 using Workie.DeployHelper.Extensions;
@@ -76,24 +77,36 @@ namespace Workie.DeployHelper.Utilities
             LogOutputter.PrintWarning($"Event '{AssemblyInfo.GetCurrentMethod()}' not handled, consider handling when necessary.");
         }
 
+        public virtual List<UploadFileViewModel> OnRequestingUploadFileList()
+        {
+            // do nothing.
+            return null;
+        }
+
+        public virtual string OnRequestingRoutedFilename(string filename)
+        {
+            // Get routed path using the base.
+            return Path.Combine(Globals.GetModuleDependenciesDirectory, GetType().Name, filename);
+        }
+
         public virtual void OnSftpFileUploaded(SshClientEx remoteHost, UploadFileViewModel uploadFile)
         {
             // TODO: technique fails to identify attached variables. make sure to support it in later versions.
 
             // e.g. %RemoteHostFilename%HelloWorld <---- this doesn't work, but....
             // %RemoteHostFilename% HelloWorld <------------------------------ this works.
-            var remoteHostFilenameVariable = $"%{nameof(uploadFile.RemotehostFilename)}%";
-            var localHostFilenameVariable = $"%{nameof(uploadFile.LocalhostFilename)}%";
+            var remoteDestinationFilenameVariable = $"%{nameof(uploadFile.RemoteDestinationFilename)}%";
+            var hostSourceFilename = $"%{nameof(uploadFile.HostSourceFilename)}%";
+
+            if (UploadedFileList == null)
+            {
+                UploadedFileList = new List<UploadFileViewModel>();
+            }
 
             if (uploadFile.Scripts == null)
             {
                 UploadedFileList.Add(uploadFile);
                 return;
-            }
-
-            if (UploadedFileList == null)
-            {
-                UploadedFileList = new List<UploadFileViewModel>();
             }
 
             int index = 0;
@@ -106,13 +119,13 @@ namespace Workie.DeployHelper.Utilities
 
                 foreach (var cmdElem in cmdArray)
                 {
-                    if (cmdElem.Equals(remoteHostFilenameVariable))
+                    if (cmdElem.Equals(remoteDestinationFilenameVariable))
                     {
-                        cmdArray[index] = $"\"{uploadFile.RemotehostFilename}\"";
+                        cmdArray[index] = $"\"{uploadFile.RemoteDestinationFilename}\"";
                     }
-                    else if (cmdElem.Equals(localHostFilenameVariable))
+                    else if (cmdElem.Equals(hostSourceFilename))
                     {
-                        cmdArray[index] = $"\"{uploadFile.LocalhostFilename}\"";
+                        cmdArray[index] = $"\"{uploadFile.HostSourceFilename}\"";
                     }
 
                     index++;
@@ -170,7 +183,7 @@ namespace Workie.DeployHelper.Utilities
 
                     LogOutputter.PrintBusy("Collecting module dependencies...");
 
-                    var moduleDependencyList = Program.gApplicationViewModel.ModuleDependencyList;
+                    var moduleDependencyList = doWorkData.OnRequestingUploadFileList();
 
                     if (moduleDependencyList == null)
                     {
@@ -190,15 +203,9 @@ namespace Workie.DeployHelper.Utilities
 
                                 foreach (var uploadFileInfo in moduleDependencyList)
                                 {
-                                    if (!doWorkData.ModuleCallerName.Equals(uploadFileInfo.LocalhostFilename.TryParseModuleDependencyVariable()))
-                                    {
-                                        continue;
-                                    }
+                                    uploadFileInfo.HostSourceFilename = doWorkData.OnRequestingRoutedFilename(uploadFileInfo.HostSourceFilename);
 
-                                    uploadFileInfo.LocalhostFilename = uploadFileInfo.LocalhostFilename.ModuleDependencyAbsolutePath();
-
-
-                                    if (string.IsNullOrEmpty(uploadFileInfo.LocalhostFilename))
+                                    if (string.IsNullOrEmpty(uploadFileInfo.HostSourceFilename))
                                     {
                                         if (!uploadFileInfo.IsRequired)
                                         {
@@ -209,7 +216,7 @@ namespace Workie.DeployHelper.Utilities
                                         throw new Exception($"One or more prerequisite(s) could not be identified.");
                                     }
 
-                                    if (!File.Exists(uploadFileInfo.LocalhostFilename))
+                                    if (!File.Exists(uploadFileInfo.HostSourceFilename))
                                     {
                                         if (!uploadFileInfo.IsRequired)
                                         {
@@ -220,7 +227,7 @@ namespace Workie.DeployHelper.Utilities
                                         throw new Exception($"One or more prerequisite(s) could not be found.");
                                     }
 
-                                    LogOutputter.Print($"Found prerequisite '{uploadFileInfo.LocalhostFilename.Filename()}'", isSub: true);
+                                    LogOutputter.Print($"Found prerequisite '{uploadFileInfo.HostSourceFilename.Filename()}'", isSub: true);
 
                                     doWorkData.UploadFileList.Add(uploadFileInfo);
                                 }
@@ -251,15 +258,15 @@ namespace Workie.DeployHelper.Utilities
 
                                 foreach (var uploadFileInfo in doWorkData.UploadFileList)
                                 {
-                                    LogOutputter.PrintBusy($"Uploading file '{uploadFileInfo.LocalhostFilename.Filename()}'...");
+                                    LogOutputter.PrintBusy($"Uploading file '{uploadFileInfo.HostSourceFilename.Filename()}'...");
 
-                                    if (!File.Exists(uploadFileInfo.LocalhostFilename) && !uploadFileInfo.IsRequired)
+                                    if (!File.Exists(uploadFileInfo.HostSourceFilename) && !uploadFileInfo.IsRequired)
                                     {
                                         LogOutputter.PrintWarning($"File not found, but skipped anyway.", isSub: true);
                                         continue;
                                     }
 
-                                    if ((fileStream = new FileStream(uploadFileInfo.LocalhostFilename, FileMode.Open)) == null)
+                                    if ((fileStream = new FileStream(uploadFileInfo.HostSourceFilename, FileMode.Open)) == null)
                                     {
                                         if (!uploadFileInfo.IsRequired)
                                         {
@@ -271,8 +278,8 @@ namespace Workie.DeployHelper.Utilities
                                         return new ModuleReport(ExecutionResult.Failure, isCompleted: false);
                                     }
 
-                                    sftpClient.UploadFile(fileStream, uploadFileInfo.RemotehostFilename);
-                                    LogOutputter.PrintWarning($"Assuming upload of '{uploadFileInfo.LocalhostFilename.Filename()}' was successful.", isSub: true);
+                                    sftpClient.UploadFile(fileStream, uploadFileInfo.RemoteDestinationFilename);
+                                    LogOutputter.PrintWarning($"Assuming upload of '{uploadFileInfo.HostSourceFilename.Filename()}' was successful.", isSub: true);
                                     doWorkData.OnSftpFileUploaded(remoteHost, uploadFileInfo);
                                 }
 
@@ -288,7 +295,14 @@ namespace Workie.DeployHelper.Utilities
             }
             catch (Exception ex)
             {
-                LogOutputter.PrintFatal(ex.Message);
+                var errorLine1 = $"{Properties.Resources.SourceMin}:     {ex.Source}";
+                var errorLine2 = $"{Properties.Resources.MessageMin}:     {ex.Message}";
+
+                LogOutputter.PrintFatal($"\n{errorLine1}\n{errorLine2}");
+
+                ConsoleEx.WriteLine(Properties.Resources.StackTraceLoud, foregroundColor: ConsoleExColor.Red);
+                ConsoleEx.WriteLine(ex.StackTrace, foregroundColor: ConsoleExColor.White);
+
                 return new ModuleReport(ExecutionResult.Failure, isCompleted: false);
             }
 

@@ -153,6 +153,9 @@
   <data name="IsSslEnabled" xml:space="preserve">
     <value>Is SSL Enabled</value>
   </data>
+  <data name="MessageMin" xml:space="preserve">
+    <value>Msg</value>
+  </data>
   <data name="No" xml:space="preserve">
     <value>NO</value>
   </data>
@@ -164,6 +167,12 @@
   </data>
   <data name="SetupEnvironment" xml:space="preserve">
     <value>Setup environment</value>
+  </data>
+  <data name="SourceMin" xml:space="preserve">
+    <value>Src</value>
+  </data>
+  <data name="StackTraceLoud" xml:space="preserve">
+    <value>==== STACK TRACE ====</value>
   </data>
   <data name="UpdateKestrelForWorkieWebAdmin" xml:space="preserve">
     <value>Update Kestrel for Workie.Web.Admin</value>

@@ -1,4 +1,5 @@
 ﻿using Renci.SshNet;
+using System.Collections.Generic;
 using Workie.DeployHelper.Models;
 using Workie.DeployHelper.Utilities;
 
@@ -49,5 +50,18 @@ namespace Workie.DeployHelper.Delegates
         /// </summary>
         /// <param name="remoteHost"></param>
         internal delegate void OnRunPackageScripts(SshClientEx remoteHost);
+
+        /// <summary>
+        /// Event occurs when ModuleBase reqeuests an upload list specific to the module.
+        /// </summary>
+        /// <returns></returns>
+        internal delegate List<UploadFileViewModel> OnRequestingUploadFileList();
+
+        /// <summary>
+        /// Event occurs when ModuleBase requests the fully qualified path of an element in the UploadFileViewModel.
+        /// </summary>
+        /// <param name="filename"></param>
+        /// <returns></returns>
+        internal delegate string OnRequestingRoutedFilename(string filename);
     }
 }

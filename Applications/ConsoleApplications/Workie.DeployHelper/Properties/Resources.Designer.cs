@@ -169,6 +169,15 @@ namespace Workie.DeployHelper.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Msg.
+        /// </summary>
+        internal static string MessageMin {
+            get {
+                return ResourceManager.GetString("MessageMin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to NO.
         /// </summary>
         internal static string No {
@@ -201,6 +210,24 @@ namespace Workie.DeployHelper.Properties {
         internal static string SetupEnvironment {
             get {
                 return ResourceManager.GetString("SetupEnvironment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Src.
+        /// </summary>
+        internal static string SourceMin {
+            get {
+                return ResourceManager.GetString("SourceMin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ==== STACK TRACE ====.
+        /// </summary>
+        internal static string StackTraceLoud {
+            get {
+                return ResourceManager.GetString("StackTraceLoud", resourceCulture);
             }
         }
         
