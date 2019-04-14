@@ -12,7 +12,7 @@ namespace Workie.Core.DataAccess.Database.Mongo.Environment
         //
         // Collection Name
         //
-        private const string collectionName = "OSPlatform";
+        private const string collectionName = "WebBrowserPlatform";
 
         private readonly IMongoCollection<WebBrowserPlatformEntity> collection;
 

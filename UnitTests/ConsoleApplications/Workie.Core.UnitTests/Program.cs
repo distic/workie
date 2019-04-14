@@ -167,12 +167,12 @@ namespace Workie.Core.UnitTests
             //
 
             //var userTestResult = UserTest();
-            //var osPlatformTestResult = OSPlatformTest();
+            var osPlatformTestResult = OSPlatformTest();
             //var webBrowserPlatformTestResult = WebBrowserPlatformTest();
             //var companyTestResult = CompanyTest();
             //var countryTestResult = CountryTest();
             //var languageTestResult = LanguageTest();
-            var termsAndConditionsTest = TermsAndConditionsTest();
+            //var termsAndConditionsTest = TermsAndConditionsTest();
 
             #region --- Result ---
 
