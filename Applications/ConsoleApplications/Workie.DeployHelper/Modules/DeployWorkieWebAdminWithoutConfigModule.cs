@@ -1,4 +1,5 @@
-﻿using Workie.DeployHelper.Data;
+﻿using System;
+using Workie.DeployHelper.Data;
 using Workie.DeployHelper.Utilities;
 using static Workie.DeployHelper.Delegates.ModuleDelegates;
 
@@ -45,7 +46,7 @@ namespace Workie.DeployHelper.Modules
 
         public override void OnRunPackageScripts(SshClientEx remoteHost)
         {
-
+            throw new NotImplementedException();
         }
 
         #region --- Validation Functions ---

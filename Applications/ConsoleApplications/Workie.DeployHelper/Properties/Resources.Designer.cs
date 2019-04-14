@@ -241,6 +241,15 @@ namespace Workie.DeployHelper.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Version.
+        /// </summary>
+        internal static string Version {
+            get {
+                return ResourceManager.GetString("Version", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to YES.
         /// </summary>
         internal static string Yes {

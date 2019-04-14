@@ -5,28 +5,30 @@
       "Debug": "D:\\workie-core\\Applications\\WebApplications\\Workie.Web.Admin\\bin\\Debug\\netcoreapp2.1\\publish",
       "Release": "D:\\workie-core\\Applications\\WebApplications\\Workie.Web.Admin\\bin\\Release\\netcoreapp2.1\\publish"
     },
+    "RemotehostHttpdFilename": "/etc/httpd/conf/httpd.conf",
+    "RemotehostKestrelFilename": "/etc/systemd/system/kestrel-WorkieWebAdmin.service",
+    "RemotehostWorkieWebAdminDirectory": "/var/aspnetcore/webapps/Workie.Web.Admin",
     "UploadFileList": [
       {
         "HostSourceFilename": "Workie.Web.Admin.zip",
-        "RemoteDestinationFilename": "/var/aspnetcore/webapps/Workie.Web.Admin.zip",
+        "RemoteDestinationFilename": "/var/aspnetcore/webapps/Workie.Web.Admin/Workie.Web.Admin.zip",
         "IsRequired": true,
-        "IsOverwrite": true,
-        "Scripts": [
-          "sudo unzip -o %RemoteDestinationFilename%",
-          "rm %RemoteDestinationFilename%"
-        ]
+        "IsOverwrite": true
       },
       {
-        "HostSourceFilename": "httpd.conf",
-        "RemoteDestinationFilename": "/etc/httpd/conf.d",
+        "HostSourceFilename": "httpd.test.conf",
+        "RemoteDestinationFilename": "/etc/httpd/conf/httpd.conf",
         "IsRequired": true,
         "IsOverwrite": true
       },
       {
         "HostSourceFilename": "kestrel-WorkieWebAdmin.service",
-        "RemoteDestinationFilename": "/etc/systemd/system",
+        "RemoteDestinationFilename": "/etc/systemd/system/kestrel-WorkieWebAdmin.service",
         "IsRequired": true,
-        "IsOverwrite": true
+        "IsOverwrite": true,
+        "Scripts": [
+          "/usr/sbin/setsebool -P httpd_can_network_connect 1"
+        ]
       }
     ]
   },
@@ -51,7 +53,7 @@
   "ServerInfoList": [
     {
       "FriendlyName": "Ahmad's CentOS",
-      "IpAddress": "192.168.234.73",
+      "IpAddress": "172.17.121.83",
       "Username": "root",
       "Password": "12345"
     },

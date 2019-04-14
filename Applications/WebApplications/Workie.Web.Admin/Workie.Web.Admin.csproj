@@ -5,6 +5,7 @@
     <Authors>Ahmad Chatila</Authors>
     <Company>Distic</Company>
     <Copyright>Copyright (c) 2019 Distic. All rights reserved.</Copyright>
+    <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
 
   <ItemGroup>

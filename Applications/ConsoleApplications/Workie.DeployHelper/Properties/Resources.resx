@@ -177,6 +177,9 @@
   <data name="UpdateKestrelForWorkieWebAdmin" xml:space="preserve">
     <value>Update Kestrel for Workie.Web.Admin</value>
   </data>
+  <data name="Version" xml:space="preserve">
+    <value>Version</value>
+  </data>
   <data name="Yes" xml:space="preserve">
     <value>YES</value>
   </data>

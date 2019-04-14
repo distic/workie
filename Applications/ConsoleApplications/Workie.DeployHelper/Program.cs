@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.Diagnostics;
 using System.IO;
 using Utilities.Logger;
 using Utilities.Logger.Base;
@@ -30,6 +31,18 @@ namespace Workie.DeployHelper
 
             var isSslEnabledString = gApplicationViewModel.Security.UseSsl ? Properties.Resources.Yes : Properties.Resources.No;
 
+            var assembly = System.Reflection.Assembly.GetExecutingAssembly();
+            var fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
+
+            var versionArray = fvi.FileVersion.Split('.');
+            var versionString = $"{versionArray[0]}.{versionArray[1]} ({versionArray[2]}) ";
+
+            if (System.Convert.ToInt32(versionArray[3]) > 0)
+            {
+                versionString += "BETA " + versionArray[3];
+            }
+
+            LogOutputter.PrintInfo($"{Properties.Resources.Version}: {versionString}", greyScale: true);
             LogOutputter.PrintInfo($"{Properties.Resources.IsSslEnabled} {isSslEnabledString}", newLineAfter: 1, greyScale: true);
 
             var userChoice = (MainMenuResult)ConsoleEx.MultipleChoice(withNumbering: true, canCancel: true,

@@ -7,7 +7,7 @@ using Workie.DeployHelper.Utilities;
 using Workie.DeployHelper.Extensions;
 using static Workie.DeployHelper.Delegates.ModuleDelegates;
 using System.IO.Compression;
-using System.IO;
+using Utilities.Linux.Shell.Security;
 
 namespace Workie.DeployHelper.Modules
 {
@@ -19,7 +19,7 @@ namespace Workie.DeployHelper.Modules
 
         public override string OnRequestingRoutedFilename(string filename)
         {
-            return Path.Combine(Globals.GetModuleDependenciesDirectory, GetType().Name, filename);
+            return System.IO.Path.Combine(Globals.GetModuleDependenciesDirectory, GetType().Name, filename);
         }
 
         #endregion
@@ -83,7 +83,7 @@ namespace Workie.DeployHelper.Modules
             var workieWebAdminZip = OnRequestingRoutedFilename("Workie.Web.Admin.zip");
 
             // Delete old web app...
-            File.Delete(workieWebAdminZip);
+            System.IO.File.Delete(workieWebAdminZip);
 
             // Create a new compressed file.
             ZipFile.CreateFromDirectory(publishDirectory, workieWebAdminZip);
@@ -91,9 +91,23 @@ namespace Workie.DeployHelper.Modules
 
         public override void OnRunPackageScripts(SshClientEx remoteHost)
         {
+            var deployWorkieWebAdminModule = Program.gApplicationViewModel.DeployWorkieWebAdminModule;
+
+            var remotehostWorkieWebAdminDirectory = deployWorkieWebAdminModule.RemotehostWorkieWebAdminDirectory;
+
+            //TODO: HACK, make sure to keep this setting dynamic.
+            remoteHost.Unzip(zipFilename: "/var/aspnetcore/webapps/Workie.Web.Admin/Workie.Web.Admin.zip", dst: remotehostWorkieWebAdminDirectory, forceOverwrite: true, sudo: true, output: true);
+
+            remoteHost.CreateDirectory(remotehostWorkieWebAdminDirectory, sudo: true);
+
             foreach (var uploadFileInfo in UploadedFileList)
             {
                 LogOutputter.PrintInfo($"Now running scripts for object '{uploadFileInfo.HostSourceFilename.Filename()}'...", isSub: true);
+
+                if (uploadFileInfo.Scripts == null)
+                {
+                    continue;
+                }
 
                 foreach (var cmd in uploadFileInfo.Scripts)
                 {
@@ -102,9 +116,56 @@ namespace Workie.DeployHelper.Modules
                     remoteHost.RunCommandWithOutput(cmd);
                 }
             }
+
+            // Update permissions
+            LogOutputter.Print("Updating permissions...", isSub: true);
+
+
+            var dstKestrelFile = deployWorkieWebAdminModule.RemotehostKestrelFilename;
+            var dstHttpdConfFile = deployWorkieWebAdminModule.RemotehostHttpdFilename;
+
+            remoteHost.ResetPermission(dstKestrelFile, sudo: true);
+            remoteHost.ResetPermission(dstHttpdConfFile, sudo: true);
+
+            remoteHost.ChangeOwner(dstKestrelFile, "root", sudo: true);
+            remoteHost.ChangeGroup(dstKestrelFile, "root", sudo: true);
+
+            remoteHost.ChangeAttributes(dstKestrelFile, false, sudo: true,
+                user_permission: new FileAttributes { Read = true, Write = true, Execute = false },
+                group_permission: new FileAttributes { Read = true, Write = false, Execute = false },
+                other_permission: new FileAttributes { Read = true, Write = false, Execute = false });
+
+            remoteHost.ChangeOwner(dstHttpdConfFile, "root", sudo: true);
+            remoteHost.ChangeGroup(dstHttpdConfFile, "root", sudo: true);
+
+            remoteHost.ChangeAttributes(dstHttpdConfFile, false, sudo: true,
+                user_permission: new FileAttributes { Read = true, Write = true, Execute = false },
+                group_permission: new FileAttributes { Read = true, Write = false, Execute = false },
+                other_permission: new FileAttributes { Read = true, Write = false, Execute = false });
+
+            // ============================================================================================= //
+
+            remoteHost.ResetPermission(remotehostWorkieWebAdminDirectory, true, sudo: true);
+
+            remoteHost.ChangeAttributes(remotehostWorkieWebAdminDirectory,
+                recursive: true,
+                sudo: true,
+                user_permission: new FileAttributes { Read = true, Write = true, Execute = true },
+                group_permission: new FileAttributes { Read = true, Write = true, Execute = true });
+
+            remoteHost.ChangeGroup(remotehostWorkieWebAdminDirectory, "QzWorkieAdmin", true, sudo: true);
+            remoteHost.ChangeOwner(remotehostWorkieWebAdminDirectory, ServerInfo.Username, true, sudo: true);
+
+            // Start services
+            LogOutputter.Print("Starting services...", isSub: true);
+
+            remoteHost.SystemCtlEnable("httpd", sudo: true);
+            remoteHost.SystemCtlRestart("httpd", sudo: true);
+            remoteHost.SystemCtlEnable(dstKestrelFile, sudo: true);
+            remoteHost.SystemCtlStart(dstKestrelFile, sudo: true);
         }
 
-#region --- Validation Functions ---
+        #region --- Validation Functions ---
 
         public override ConflictReport GetConflictsReport()
         {
@@ -113,6 +174,6 @@ namespace Workie.DeployHelper.Modules
             return report;
         }
 
-#endregion
+        #endregion
     }
 }

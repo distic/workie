@@ -37,7 +37,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Workie.DeployHelper", "Appl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utilities.Linux.Shell", "Libraries\Internal\Utilities\Utilities.Linux.Shell\Utilities.Linux.Shell.csproj", "{7A382726-2C56-4C48-8568-DC5EB78AF477}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilities.Logger", "Libraries\Internal\Utilities\Utilities.Logger\Utilities.Logger.csproj", "{0B977A31-3610-4198-9CDF-430968223315}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utilities.Logger", "Libraries\Internal\Utilities\Utilities.Logger\Utilities.Logger.csproj", "{0B977A31-3610-4198-9CDF-430968223315}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

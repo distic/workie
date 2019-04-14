@@ -53,19 +53,16 @@ namespace Workie.DeployHelper.Modules
             remoteHost.CreateDirectory("/var/aspnetcore", sudo: true);
             remoteHost.CreateDirectory("/var/aspnetcore/webapps", sudo: true);
             remoteHost.CreateDirectory("/var/aspnetcore/webservices", sudo: true);
+            remoteHost.CreateDirectory("/var/aspnetcore/webapps/Workie.Web.Admin", sudo: true);
 
             // Add groups
             LogOutputter.Print("Creating groups...", isSub: true);
-            remoteHost.AddGroup("QzCustomerConsole");
-            remoteHost.AddGroup("QzCustomerFront");
-            remoteHost.AddGroup("QzCustomer");
+            remoteHost.AddGroup("QzWorkieAdmin");
             remoteHost.AddGroup("AspNetCore");
 
             // Add users to their groups
             LogOutputter.Print("Updating user groups...", isSub: true);
-            remoteHost.AddUserToGroup("apache", "QzCustomerFront", sudo: true);
-            remoteHost.AddUserToGroup("apache", "QzCustomerConsole", sudo: true);
-            remoteHost.AddUserToGroup("apache", "QzCustomer", sudo: true);
+            remoteHost.AddUserToGroup("apache", "QzWorkieAdmin", sudo: true);
             remoteHost.AddUserToGroup("apache", "AspNetCore", sudo: true);
 
             // Setup permissions...
