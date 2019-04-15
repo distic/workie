@@ -13,7 +13,7 @@ namespace Workie.DeployHelper.Modules
     {
         #region --- Requests ---
 
-        public override List<UploadFileViewModel> OnRequestingUploadFileList() { return Globals.gApplicationViewModel.InstallOrUpdatePackagesModule.UploadFileList; }
+        public override List<UploadFileViewModel> OnRequestingUploadFileList() { return Globals.gApplicationViewModel.ModulesConfig.InstallOrUpdatePackagesModule.UploadFileList; }
 
         public override string OnRequestingRoutedFilename(string filename)
         {

@@ -16,7 +16,7 @@ namespace Workie.DeployHelper.Modules
     {
         #region --- Requests ---
 
-        public override List<UploadFileViewModel> OnRequestingUploadFileList() { return Globals.gApplicationViewModel.DeployWorkieWebAdminModule.UploadFileList; }
+        public override List<UploadFileViewModel> OnRequestingUploadFileList() { return Globals.gApplicationViewModel.ModulesConfig.DeployWorkieWebAdminModule.UploadFileList; }
 
         public override string OnRequestingRoutedFilename(string filename)
         {
@@ -52,10 +52,10 @@ namespace Workie.DeployHelper.Modules
 
         public override void OnSshAuthenticateSuccess(SshClientEx remoteHost)
         {
-            var sourceToPublish = Globals.gApplicationViewModel.DeployWorkieWebAdminModule.Source;
+            var sourceToPublish = Globals.gApplicationViewModel.ModulesConfig.DeployWorkieWebAdminModule.Source;
 
 #if DEBUG
-            var publishDirectory = Globals.gApplicationViewModel.DeployWorkieWebAdminModule.Publish.Debug;
+            var publishDirectory = Globals.gApplicationViewModel.ModulesConfig.DeployWorkieWebAdminModule.Publish.Debug;
 #else
             var publishDirectory = Globals.gApplicationViewModel.DeployWorkieWebAdminModule.Publish.Release;
 #endif
@@ -90,7 +90,7 @@ namespace Workie.DeployHelper.Modules
         {
             base.OnRunPackageScripts(remoteHost);
 
-            var deployWorkieWebAdminModule = Globals.gApplicationViewModel.DeployWorkieWebAdminModule;
+            var deployWorkieWebAdminModule = Globals.gApplicationViewModel.ModulesConfig.DeployWorkieWebAdminModule;
 
             var remotehostWorkieWebAdminDirectory = deployWorkieWebAdminModule.RemotehostWorkieWebAdminDirectory;
 

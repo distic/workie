@@ -7,7 +7,7 @@
     <Company>Distic</Company>
     <Authors>Ahmad Chatila</Authors>
     <RunPostBuildEvent>Always</RunPostBuildEvent>
-    <Version>0.1.1904.1</Version>
+    <Version>0.1.1904.2</Version>
     <Description />
   </PropertyGroup>
 

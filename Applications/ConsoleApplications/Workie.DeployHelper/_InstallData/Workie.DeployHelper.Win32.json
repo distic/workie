@@ -1,4 +1,5 @@
 {
+  "UseSsl": true,
   "DeployWorkieWebAdminModule": {
     "Source": "D:\\workie-core\\Applications\\WebApplications\\Workie.Web.Admin",
     "Publish": {
@@ -41,14 +42,6 @@
         "IsOverwrite": true
       }
     ]
-  },
-  "RemoteHost": {
-    "HttpdConfDirectory": "/etc/httpd/conf.d",
-    "SystemdSystemDirectory": "/etc/systemd/system",
-    "DefaultZipFilename": "/var/aspnetcore/setup.zip"
-  },
-  "Security": {
-    "UseSsl": true
   },
   "ServerInfoList": [
     {

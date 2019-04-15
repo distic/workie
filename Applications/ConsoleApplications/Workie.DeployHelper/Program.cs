@@ -32,7 +32,7 @@ namespace Workie.DeployHelper
                 Globals.gApplicationViewModel = JsonConvert.DeserializeObject<ApplicationViewModel>(fileContent);
             }
 
-            var isSslEnabledString = Globals.gApplicationViewModel.Security.UseSsl ? Properties.Resources.Yes : Properties.Resources.No;
+            var isSslEnabledString = Globals.gApplicationViewModel.UseSsl ? Properties.Resources.Yes : Properties.Resources.No;
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
             var fvi = FileVersionInfo.GetVersionInfo(assembly.Location);

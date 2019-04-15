@@ -1,54 +1,49 @@
 {
-  "DeployWorkieWebAdminModule": {
-    "Source": "D:\\workie-core\\Applications\\WebApplications\\Workie.Web.Admin",
-    "Publish": {
-      "Debug": "D:\\workie-core\\Applications\\WebApplications\\Workie.Web.Admin\\bin\\Debug\\netcoreapp2.1\\publish",
-      "Release": "D:\\workie-core\\Applications\\WebApplications\\Workie.Web.Admin\\bin\\Release\\netcoreapp2.1\\publish"
+  "UseSsl": true,
+  "ModulesConfig": {
+    "DeployWorkieWebAdminModule": {
+      "Source": "D:\\workie-core\\Applications\\WebApplications\\Workie.Web.Admin",
+      "Publish": {
+        "Debug": "D:\\workie-core\\Applications\\WebApplications\\Workie.Web.Admin\\bin\\Debug\\netcoreapp2.1\\publish",
+        "Release": "D:\\workie-core\\Applications\\WebApplications\\Workie.Web.Admin\\bin\\Release\\netcoreapp2.1\\publish"
+      },
+      "RemotehostHttpdFilename": "/etc/httpd/conf/httpd.conf",
+      "RemotehostKestrelFilename": "/etc/systemd/system/kestrel-WorkieWebAdmin.service",
+      "RemotehostWorkieWebAdminDirectory": "/var/aspnetcore/webapps/Workie.Web.Admin",
+      "UploadFileList": [
+        {
+          "HostSourceFilename": "Workie.Web.Admin.zip",
+          "RemoteDestinationFilename": "/var/aspnetcore/webapps/Workie.Web.Admin/Workie.Web.Admin.zip",
+          "IsRequired": true,
+          "IsOverwrite": true
+        },
+        {
+          "HostSourceFilename": "httpd.test.conf",
+          "RemoteDestinationFilename": "/etc/httpd/conf/httpd.conf",
+          "IsRequired": true,
+          "IsOverwrite": true
+        },
+        {
+          "HostSourceFilename": "kestrel-WorkieWebAdmin.service",
+          "RemoteDestinationFilename": "/etc/systemd/system/kestrel-WorkieWebAdmin.service",
+          "IsRequired": true,
+          "IsOverwrite": true,
+          "Scripts": [
+            "/usr/sbin/setsebool -P httpd_can_network_connect 1"
+          ]
+        }
+      ]
     },
-    "RemotehostHttpdFilename": "/etc/httpd/conf/httpd.conf",
-    "RemotehostKestrelFilename": "/etc/systemd/system/kestrel-WorkieWebAdmin.service",
-    "RemotehostWorkieWebAdminDirectory": "/var/aspnetcore/webapps/Workie.Web.Admin",
-    "UploadFileList": [
-      {
-        "HostSourceFilename": "Workie.Web.Admin.zip",
-        "RemoteDestinationFilename": "/var/aspnetcore/webapps/Workie.Web.Admin/Workie.Web.Admin.zip",
-        "IsRequired": true,
-        "IsOverwrite": true
-      },
-      {
-        "HostSourceFilename": "httpd.test.conf",
-        "RemoteDestinationFilename": "/etc/httpd/conf/httpd.conf",
-        "IsRequired": true,
-        "IsOverwrite": true
-      },
-      {
-        "HostSourceFilename": "kestrel-WorkieWebAdmin.service",
-        "RemoteDestinationFilename": "/etc/systemd/system/kestrel-WorkieWebAdmin.service",
-        "IsRequired": true,
-        "IsOverwrite": true,
-        "Scripts": [
-          "/usr/sbin/setsebool -P httpd_can_network_connect 1"
-        ]
-      }
-    ]
-  },
-  "InstallOrUpdatePackagesModule": {
-    "UploadFileList": [
-      {
-        "HostSourceFilename": "mongodb-org-4.0.repo",
-        "RemoteDestinationFilename": "/etc/yum.repos.d/mongodb-org-4.0.repo",
-        "IsRequired": true,
-        "IsOverwrite": true
-      }
-    ]
-  },
-  "RemoteHost": {
-    "HttpdConfDirectory": "/etc/httpd/conf.d",
-    "SystemdSystemDirectory": "/etc/systemd/system",
-    "DefaultZipFilename": "/var/aspnetcore/setup.zip"
-  },
-  "Security": {
-    "UseSsl": true
+    "InstallOrUpdatePackagesModule": {
+      "UploadFileList": [
+        {
+          "HostSourceFilename": "mongodb-org-4.0.repo",
+          "RemoteDestinationFilename": "/etc/yum.repos.d/mongodb-org-4.0.repo",
+          "IsRequired": true,
+          "IsOverwrite": true
+        }
+      ]
+    }
   },
   "ServerInfoList": [
     {

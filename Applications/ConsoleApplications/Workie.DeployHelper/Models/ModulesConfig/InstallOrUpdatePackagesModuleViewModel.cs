@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Workie.DeployHelper.Models
+namespace Workie.DeployHelper.Models.ModulesConfig
 {
     internal class InstallOrUpdatePackagesModuleViewModel
     {
