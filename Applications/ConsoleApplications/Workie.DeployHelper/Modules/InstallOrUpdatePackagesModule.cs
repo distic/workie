@@ -1,7 +1,7 @@
-﻿using Renci.SshNet;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using Utilities.Logger;
+using Workie.DeployHelper.Base;
 using Workie.DeployHelper.Data;
 using Workie.DeployHelper.Models;
 using Workie.DeployHelper.Utilities;
@@ -13,7 +13,7 @@ namespace Workie.DeployHelper.Modules
     {
         #region --- Requests ---
 
-        public override List<UploadFileViewModel> OnRequestingUploadFileList() { return Program.gApplicationViewModel.InstallOrUpdatePackagesModule.UploadFileList; }
+        public override List<UploadFileViewModel> OnRequestingUploadFileList() { return Globals.gApplicationViewModel.InstallOrUpdatePackagesModule.UploadFileList; }
 
         public override string OnRequestingRoutedFilename(string filename)
         {
@@ -28,17 +28,12 @@ namespace Workie.DeployHelper.Modules
 
         #endregion
 
-        /// <summary>
-        /// Entry point of the routine.
-        /// </summary>
-        /// <returns></returns>
         internal ModuleReport Run()
         {
             DoWorkData = new DoWorkData
             {
                 DeployMessage = Properties.Resources.ChooseRemoteHostToInstallOrUpdatePackages,
                 OnRunPackageScripts = new OnRunPackageScripts(OnRunPackageScripts),
-                OnResolvePrerequisites = new OnResolvePrerequisites(OnResolvePrerequisites),
                 OnSftpDisconnect = new OnSftpDisconnect(OnSftpDisconnect),
                 OnSftpFileUploaded = new OnSftpFileUploaded(OnSftpFileUploaded),
                 OnSshAuthenticateFailure = new OnSshAuthenticateFailure(OnSshAuthenticateFailure),
@@ -52,15 +47,12 @@ namespace Workie.DeployHelper.Modules
             return DoWork(DoWorkData);
         }
 
-        public override void OnResolvePrerequisites(SftpClient sftpClient)
-        {
-
-        }
-
         public override void OnRunPackageScripts(SshClientEx remoteHost)
         {
+            base.OnRunPackageScripts(remoteHost);
+
             // Create folders...
-            LogOutputter.PrintInfo("Updating operating system packages...");
+            LogOutputter.PrintInfo("Updating OS packages...");
             remoteHost.RunCommandWithOutput("sudo yum -y update");
 
             // Install Apache Service...

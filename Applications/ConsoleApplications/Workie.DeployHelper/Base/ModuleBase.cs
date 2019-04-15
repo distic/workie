@@ -10,8 +10,9 @@ using Workie.DeployHelper.Enums;
 using Workie.DeployHelper.Extensions;
 using Workie.DeployHelper.Interfaces;
 using Workie.DeployHelper.Models;
+using Workie.DeployHelper.Utilities;
 
-namespace Workie.DeployHelper.Utilities
+namespace Workie.DeployHelper.Base
 {
     internal class ModuleBase : IModule
     {
@@ -35,16 +36,24 @@ namespace Workie.DeployHelper.Utilities
 
         #region --- Event Handlers ---
 
-        public virtual void OnResolvePrerequisites(SftpClient sftpClient)
-        {
-            // do nothing.
-            LogOutputter.PrintWarning($"Event '{AssemblyInfo.GetCurrentMethod()}' not handled, consider handling when necessary.");
-        }
-
         public virtual void OnRunPackageScripts(SshClientEx remoteHost)
         {
-            // do nothing
-            LogOutputter.PrintWarning($"Event '{AssemblyInfo.GetCurrentMethod()}' not handled, consider handling when necessary.");
+            foreach (var uploadFileInfo in UploadedFileList)
+            {
+                LogOutputter.PrintInfo($"Now running scripts for object '{uploadFileInfo.HostSourceFilename.Filename()}'...", isSub: true);
+
+                if (uploadFileInfo.Scripts == null)
+                {
+                    continue;
+                }
+
+                foreach (var cmd in uploadFileInfo.Scripts)
+                {
+                    LogOutputter.Print($"Executing '{cmd}'...", isSub: true);
+
+                    remoteHost.RunCommandWithOutput(cmd);
+                }
+            }
         }
 
         public virtual void OnSshAuthenticateSuccess(SshClientEx remoteHost)
@@ -316,7 +325,7 @@ namespace Workie.DeployHelper.Utilities
         /// <returns>TRUE if successful. FALSE, otherwise.</returns>
         private bool GetRemoteHostStringFromUserInput(string description)
         {
-            var serverInfoList = Program.gApplicationViewModel.ServerInfoList;
+            var serverInfoList = Globals.gApplicationViewModel.ServerInfoList;
 
             var serverArray = new string[serverInfoList.Count];
 

@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
-using Utilities.Logger;
-using Workie.DeployHelper.Data;
-using Workie.DeployHelper.Models;
-using Workie.DeployHelper.Utilities;
-using Workie.DeployHelper.Extensions;
-using static Workie.DeployHelper.Delegates.ModuleDelegates;
 using System.IO.Compression;
 using Utilities.Linux.Shell.Security;
+using Utilities.Logger;
+using Workie.DeployHelper.Base;
+using Workie.DeployHelper.Data;
+using Workie.DeployHelper.Extensions;
+using Workie.DeployHelper.Models;
+using Workie.DeployHelper.Utilities;
+using static Workie.DeployHelper.Delegates.ModuleDelegates;
 
 namespace Workie.DeployHelper.Modules
 {
@@ -15,7 +16,7 @@ namespace Workie.DeployHelper.Modules
     {
         #region --- Requests ---
 
-        public override List<UploadFileViewModel> OnRequestingUploadFileList() { return Program.gApplicationViewModel.DeployWorkieWebAdminModule.UploadFileList; }
+        public override List<UploadFileViewModel> OnRequestingUploadFileList() { return Globals.gApplicationViewModel.DeployWorkieWebAdminModule.UploadFileList; }
 
         public override string OnRequestingRoutedFilename(string filename)
         {
@@ -30,10 +31,6 @@ namespace Workie.DeployHelper.Modules
 
         #endregion
 
-        /// <summary>
-        /// Entry point of the routine.
-        /// </summary>
-        /// <returns></returns>
         internal ModuleReport Run()
         {
             DoWorkData = new DoWorkData
@@ -55,12 +52,12 @@ namespace Workie.DeployHelper.Modules
 
         public override void OnSshAuthenticateSuccess(SshClientEx remoteHost)
         {
-            var sourceToPublish = Program.gApplicationViewModel.DeployWorkieWebAdminModule.Source;
+            var sourceToPublish = Globals.gApplicationViewModel.DeployWorkieWebAdminModule.Source;
 
 #if DEBUG
-            var publishDirectory = Program.gApplicationViewModel.DeployWorkieWebAdminModule.Publish.Debug;
+            var publishDirectory = Globals.gApplicationViewModel.DeployWorkieWebAdminModule.Publish.Debug;
 #else
-            var publishDirectory = Program.gApplicationViewModel.DeployWorkieWebAdminModule.Publish.Release;
+            var publishDirectory = Globals.gApplicationViewModel.DeployWorkieWebAdminModule.Publish.Release;
 #endif
 
             LogOutputter.PrintBusy("Publishing Workie.Web.Admin...");
@@ -91,7 +88,9 @@ namespace Workie.DeployHelper.Modules
 
         public override void OnRunPackageScripts(SshClientEx remoteHost)
         {
-            var deployWorkieWebAdminModule = Program.gApplicationViewModel.DeployWorkieWebAdminModule;
+            base.OnRunPackageScripts(remoteHost);
+
+            var deployWorkieWebAdminModule = Globals.gApplicationViewModel.DeployWorkieWebAdminModule;
 
             var remotehostWorkieWebAdminDirectory = deployWorkieWebAdminModule.RemotehostWorkieWebAdminDirectory;
 
@@ -100,22 +99,6 @@ namespace Workie.DeployHelper.Modules
 
             remoteHost.CreateDirectory(remotehostWorkieWebAdminDirectory, sudo: true);
 
-            foreach (var uploadFileInfo in UploadedFileList)
-            {
-                LogOutputter.PrintInfo($"Now running scripts for object '{uploadFileInfo.HostSourceFilename.Filename()}'...", isSub: true);
-
-                if (uploadFileInfo.Scripts == null)
-                {
-                    continue;
-                }
-
-                foreach (var cmd in uploadFileInfo.Scripts)
-                {
-                    LogOutputter.Print($"Executing '{cmd}'...", isSub: true);
-
-                    remoteHost.RunCommandWithOutput(cmd);
-                }
-            }
 
             // Update permissions
             LogOutputter.Print("Updating permissions...", isSub: true);

@@ -117,8 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AlphaLoud" xml:space="preserve">
+    <value>ALPHA</value>
+  </data>
   <data name="AppTitle" xml:space="preserve">
     <value>Workie Deploy Helper Program</value>
+  </data>
+  <data name="BetaLoud" xml:space="preserve">
+    <value>BETA</value>
   </data>
   <data name="ChooseRemoteHostToDeployWorkieWebAdmin" xml:space="preserve">
     <value>Choose remote host to deploy Workie.Web.Admin</value>
@@ -147,6 +153,9 @@
   <data name="EnterUsername" xml:space="preserve">
     <value>Enter USERNAME</value>
   </data>
+  <data name="FinalLoud" xml:space="preserve">
+    <value>FINAL</value>
+  </data>
   <data name="InstallOrUpdatePackages" xml:space="preserve">
     <value>Install or update packages</value>
   </data>
@@ -155,6 +164,9 @@
   </data>
   <data name="MessageMin" xml:space="preserve">
     <value>Msg</value>
+  </data>
+  <data name="MultipleInstancesOfTheProgramCannotBeRun" xml:space="preserve">
+    <value>Multiple instances of the program cannot be run.</value>
   </data>
   <data name="No" xml:space="preserve">
     <value>NO</value>

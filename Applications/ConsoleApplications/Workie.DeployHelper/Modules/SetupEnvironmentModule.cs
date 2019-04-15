@@ -1,5 +1,6 @@
 ﻿using Utilities.Linux.Shell.Security;
 using Utilities.Logger;
+using Workie.DeployHelper.Base;
 using Workie.DeployHelper.Data;
 using Workie.DeployHelper.Utilities;
 using static Workie.DeployHelper.Delegates.ModuleDelegates;
@@ -23,10 +24,6 @@ namespace Workie.DeployHelper.Modules
 
         #endregion
 
-        /// <summary>
-        /// Entry point of the routine.
-        /// </summary>
-        /// <returns></returns>
         internal ModuleReport Run()
         {
             DoWorkData = new DoWorkData
@@ -48,6 +45,8 @@ namespace Workie.DeployHelper.Modules
 
         public override void OnRunPackageScripts(SshClientEx remoteHost)
         {
+            base.OnRunPackageScripts(remoteHost);
+
             // Create folders...
             LogOutputter.Print($"Creating directories...", isSub: true);
             remoteHost.CreateDirectory("/var/aspnetcore", sudo: true);

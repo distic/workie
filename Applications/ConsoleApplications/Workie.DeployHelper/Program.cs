@@ -1,22 +1,25 @@
 ﻿using Newtonsoft.Json;
+using System;
 using System.Diagnostics;
 using System.IO;
+using System.Threading;
 using Utilities.Logger;
 using Utilities.Logger.Base;
+using Workie.DeployHelper.Base;
 using Workie.DeployHelper.Data;
 using Workie.DeployHelper.Enums;
 using Workie.DeployHelper.Models;
-using Workie.DeployHelper.Utilities;
 namespace Workie.DeployHelper
 {
     class Program
     {
         #region --- Properties ---
 
-        internal static ApplicationViewModel gApplicationViewModel;
+        private static Mutex gMutex = new Mutex(true, "{F08FC4A6-B15A-4fd9-F7CF-FA8046EEBD82}");
 
         #endregion
 
+        [STAThread]
         static void Main(string[] args)
         {
             ConsoleEx.PrintLicenseNotice();
@@ -26,10 +29,10 @@ namespace Workie.DeployHelper
             using (StreamReader sr = new StreamReader(Globals.GetConfigFilename))
             {
                 var fileContent = sr.ReadToEnd();
-                gApplicationViewModel = JsonConvert.DeserializeObject<ApplicationViewModel>(fileContent);
+                Globals.gApplicationViewModel = JsonConvert.DeserializeObject<ApplicationViewModel>(fileContent);
             }
 
-            var isSslEnabledString = gApplicationViewModel.Security.UseSsl ? Properties.Resources.Yes : Properties.Resources.No;
+            var isSslEnabledString = Globals.gApplicationViewModel.Security.UseSsl ? Properties.Resources.Yes : Properties.Resources.No;
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
             var fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
@@ -37,12 +40,20 @@ namespace Workie.DeployHelper
             var versionArray = fvi.FileVersion.Split('.');
             var versionString = $"{versionArray[0]}.{versionArray[1]} ({versionArray[2]}) ";
 
-            if (System.Convert.ToInt32(versionArray[3]) > 0)
+            if (Convert.ToInt32(versionArray[3]) > 0)
             {
-                versionString += "BETA " + versionArray[3];
+                versionString += $"{Properties.Resources.BetaLoud} {versionArray[3]}";
             }
 
             LogOutputter.PrintInfo($"{Properties.Resources.Version}: {versionString}", greyScale: true);
+
+            // Handle singleton of the program.
+            if (!gMutex.WaitOne(TimeSpan.Zero, true))
+            {
+                LogOutputter.PrintFatal(Properties.Resources.MultipleInstancesOfTheProgramCannotBeRun);
+                return;
+            }
+
             LogOutputter.PrintInfo($"{Properties.Resources.IsSslEnabled} {isSslEnabledString}", newLineAfter: 1, greyScale: true);
 
             var userChoice = (MainMenuResult)ConsoleEx.MultipleChoice(withNumbering: true, canCancel: true,

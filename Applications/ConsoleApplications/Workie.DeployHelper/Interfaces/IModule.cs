@@ -21,12 +21,6 @@ namespace Workie.DeployHelper.Interfaces
         ConflictReport GetConflictsReport();
 
         /// <summary>
-        /// Identify what's missing and save it.
-        /// </summary>
-        /// <returns>The reported result of the operation.</returns>
-        void OnResolvePrerequisites(SftpClient sftpClient);
-
-        /// <summary>
         /// Event occurs when the authentication to the remote host succeeds.
         /// </summary>
         void OnSshAuthenticateSuccess(SshClientEx remoteHost);
@@ -54,7 +48,5 @@ namespace Workie.DeployHelper.Interfaces
         /// <param name="filename"></param>
         /// <returns></returns>
         string OnRequestingRoutedFilename(string filename);
-
-
     }
 }

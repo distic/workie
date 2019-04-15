@@ -1,11 +1,18 @@
 ﻿using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using Workie.DeployHelper.Models;
 
-namespace Workie.DeployHelper.Utilities
+namespace Workie.DeployHelper.Base
 {
     public static class Globals
     {
+        #region --- Properties ---
+
+        internal static ApplicationViewModel gApplicationViewModel;
+
+        #endregion
+
         /// <summary>
         /// Gets the _InstallData folder.
         /// </summary>

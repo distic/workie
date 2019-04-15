@@ -1,4 +1,5 @@
 ﻿using System;
+using Workie.DeployHelper.Base;
 using Workie.DeployHelper.Data;
 using Workie.DeployHelper.Utilities;
 using static Workie.DeployHelper.Delegates.ModuleDelegates;
@@ -22,10 +23,6 @@ namespace Workie.DeployHelper.Modules
 
         #endregion
 
-        /// <summary>
-        /// Entry point of the routine.
-        /// </summary>
-        /// <returns></returns>
         internal ModuleReport Run()
         {
             DoWorkData = new DoWorkData
@@ -46,6 +43,7 @@ namespace Workie.DeployHelper.Modules
 
         public override void OnRunPackageScripts(SshClientEx remoteHost)
         {
+            base.OnRunPackageScripts(remoteHost);
             throw new NotImplementedException();
         }
 

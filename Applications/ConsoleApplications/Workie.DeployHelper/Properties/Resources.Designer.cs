@@ -61,11 +61,29 @@ namespace Workie.DeployHelper.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ALPHA.
+        /// </summary>
+        internal static string AlphaLoud {
+            get {
+                return ResourceManager.GetString("AlphaLoud", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Workie Deploy Helper Program.
         /// </summary>
         internal static string AppTitle {
             get {
                 return ResourceManager.GetString("AppTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BETA.
+        /// </summary>
+        internal static string BetaLoud {
+            get {
+                return ResourceManager.GetString("BetaLoud", resourceCulture);
             }
         }
         
@@ -151,6 +169,15 @@ namespace Workie.DeployHelper.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to FINAL.
+        /// </summary>
+        internal static string FinalLoud {
+            get {
+                return ResourceManager.GetString("FinalLoud", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Install or update packages.
         /// </summary>
         internal static string InstallOrUpdatePackages {
@@ -174,6 +201,15 @@ namespace Workie.DeployHelper.Properties {
         internal static string MessageMin {
             get {
                 return ResourceManager.GetString("MessageMin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Multiple instances of the program cannot be run..
+        /// </summary>
+        internal static string MultipleInstancesOfTheProgramCannotBeRun {
+            get {
+                return ResourceManager.GetString("MultipleInstancesOfTheProgramCannotBeRun", resourceCulture);
             }
         }
         
