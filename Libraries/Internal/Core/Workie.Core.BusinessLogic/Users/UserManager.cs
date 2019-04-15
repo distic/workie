@@ -18,6 +18,11 @@ namespace Workie.Core.BusinessLogic.Users
             return new UserDB().Insert(userEntity);
         }
 
+        public UserEntity SelectbyEmail(string email)
+        {
+            return new UserDB().SelectByEmail(email);
+        }
+
         public UserEntity SelectByEmailAndPassword(string email, string password)
         {
             return new UserDB().SelectByEmailAndPassword(email, password);
@@ -36,6 +41,16 @@ namespace Workie.Core.BusinessLogic.Users
         public void Delete(string id)
         {
             new UserDB().Delete(id);
+        }
+
+        public void RaiseAttentionForResetPassword(string email)
+        {
+            new UserDB().RaiseAttentionForResetPassword(email);
+        }
+
+        public void RaiseAttentionForChangePassword(string id)
+        {
+            new UserDB().RaiseAttentionForChangePassword(id);
         }
     }
 }

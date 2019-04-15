@@ -59,6 +59,37 @@ namespace Workie.Core.UnitTests.Tests
             return UnitTestOutputter.LogSuccess(AssemblyInfo.GetCurrentMethod(GetType().Name), $"Successfully retrieved the userEntity with _id({_id})");
         }
 
+        internal TestResultType SelectByEmail()
+        {
+            var email = _userEntity.EmailAddress;
+
+            var obj = _userManager.SelectbyEmail(email);
+
+            if (obj == null)
+            {
+                return UnitTestOutputter.LogError(AssemblyInfo.GetCurrentMethod(GetType().Name), $"User doesn't exist '{email}'!");
+            }
+
+            return UnitTestOutputter.LogSuccess(AssemblyInfo.GetCurrentMethod(GetType().Name), "Successfully received user information.");
+        }
+
+        internal TestResultType RaiseAttentionForResetPassword()
+        {
+            var email = _userEntity.EmailAddress;
+
+            _userManager.RaiseAttentionForResetPassword(email);
+
+            return UnitTestOutputter.LogWarning(AssemblyInfo.GetCurrentMethod(GetType().Name), $"Reset password event should be raised, make sure to better handle this.");
+        }
+
+        internal TestResultType RaiseAttentionForChangePassword()
+        {
+      
+            _userManager.RaiseAttentionForChangePassword(_id);
+
+            return UnitTestOutputter.LogWarning(AssemblyInfo.GetCurrentMethod(GetType().Name), $"Change Password");
+        }
+
         internal TestResultType SelectByEmailAndPassword()
         {
             var email = _userEntity.EmailAddress;

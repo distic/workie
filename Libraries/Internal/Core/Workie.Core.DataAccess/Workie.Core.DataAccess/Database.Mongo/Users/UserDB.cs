@@ -2,6 +2,8 @@
 using MongoDB.Driver;
 using Workie.Core.DataAccess.Interfaces;
 using Workie.Core.Entities.Users;
+using Workie.Core.Entities.Login.AttentionDetails;
+using Workie.Core.Entities.Login;
 
 namespace Workie.Core.DataAccess.Database.Mongo.Users
 {
@@ -133,5 +135,99 @@ namespace Workie.Core.DataAccess.Database.Mongo.Users
 
             var result = collection.UpdateOne(model => model._id == userEntity._id, update);
         }
+
+        public UserEntity SelectByEmail(string email)
+        {
+            // Lets do this without async at the moment...
+            // TODO: make sure if async is necessary
+            var result = collection.Find(x => x.EmailAddress.Equals(email)).ToList();
+
+            #region --- Validations ---
+
+            if (result == null)
+            {
+                return null;
+            }
+
+            if (result.Count < 1)
+            {
+                return null;
+            }
+
+            #endregion
+
+            return result[0];
+        }
+
+        public void RaiseAttentionForResetPassword(string email)
+        {
+            var userEntity = SelectByEmail(email);
+
+            #region --- Validations ---
+
+            if (userEntity == null)
+            {
+                return;
+            }
+
+            if (userEntity.Attention == null)
+            {
+                userEntity.Attention = new Attention();
+            }
+
+            #endregion
+
+            var resetPasswordAttention = new ResetPasswordAttention
+            {
+                IPAddress = "127.0.0.1",
+                Location = "Beirut, Lebanon",
+                Time = 45354,
+                _osPlatformId = 1,
+                _webBrowswerPlatformId = 1
+            };
+
+            userEntity.Attention.ResetPassword = resetPasswordAttention;
+
+            var reset = Builders<UserEntity>.Update 
+                .Set(a => a.Attention.ResetPassword, resetPasswordAttention);
+
+            var result = collection.UpdateOne(model => model._id == userEntity._id , reset);
+        }
+
+        //TODO: change name of the function and change the parameteer to  to id
+        public void RaiseAttentionForChangePassword(string id)  
+        {
+            var userEntity =  Select(id);                 
+
+            #region --- Validations ---
+
+            if (userEntity == null)
+            {
+                return;
+            }
+
+            if (userEntity.Attention == null)
+            {
+                userEntity.Attention = new Attention();
+            }
+
+            #endregion
+
+            var changePasswordAttention =  new ChangePasswordAttention
+            {
+                LastChangedDate = 11.19 ,
+                DayThreshold = 50 ,
+            };
+
+            userEntity.Attention.ChangePassword = changePasswordAttention;
+
+            var change = Builders<UserEntity>.Update
+                .Set(a => a.Attention.ChangePassword , changePasswordAttention);
+
+            var result = collection.UpdateOne(model => model._id == userEntity._id , change);
+        }
+
+
+
     }
 }

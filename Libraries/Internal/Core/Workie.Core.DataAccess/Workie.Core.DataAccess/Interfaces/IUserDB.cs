@@ -37,5 +37,21 @@ namespace Workie.Core.DataAccess.Interfaces
         /// </summary>
         /// <param name="userEntity"></param>
         void Update(UserEntity userEntity);
+
+        #region --- Attention-based Functions ---
+
+        /// <summary>
+        /// Raises an event where the user chooses to reset his/her password from the Login page.
+        /// </summary>
+        /// <param name="email"> The targetted e-mail address. </param>
+        void RaiseAttentionForResetPassword(string email);
+
+        /// <summary>
+        /// Raises an event where the user chooses to change his/her password from the Account settings page.
+        /// </summary>
+        /// <param name="id"></param>
+        void RaiseAttentionForChangePassword(string id);
+
+        #endregion
     }
 }

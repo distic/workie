@@ -26,6 +26,9 @@ namespace Workie.Core.UnitTests
             _resultCounter[(int)userManagerTest.Insert()] += 1;
             _resultCounter[(int)userManagerTest.SelectById()] += 1;
             _resultCounter[(int)userManagerTest.SelectByEmailAndPassword()] += 1;
+            _resultCounter[(int)userManagerTest.SelectByEmail()] += 1;
+            _resultCounter[(int)userManagerTest.RaiseAttentionForResetPassword()] += 1;
+            _resultCounter[(int)userManagerTest.RaiseAttentionForChangePassword()] += 1;
             _resultCounter[(int)userManagerTest.Delete()] += 1;
 
             //
@@ -166,8 +169,8 @@ namespace Workie.Core.UnitTests
             // Comment out the unnecessary ones...
             //
 
-            //var userTestResult = UserTest();
-            var osPlatformTestResult = OSPlatformTest();
+            var userTestResult = UserTest();
+            //var osPlatformTestResult = OSPlatformTest();
             //var webBrowserPlatformTestResult = WebBrowserPlatformTest();
             //var companyTestResult = CompanyTest();
             //var countryTestResult = CountryTest();

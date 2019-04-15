@@ -17,11 +17,11 @@ namespace Workie.Web.Admin.Areas.Auth.Controllers
             return View();
         }
 
-        public IActionResult ResetPassword()
+        public IActionResult ResetPassword(string emailAddress)
         {
             try
             {
-                //TODO: Logic for reset password should execute at this point...
+                new UserManager().RaiseAttentionForResetPassword(emailAddress);
 
                 return Json(new
                 {
