@@ -23,6 +23,11 @@ namespace Workie.Core.BusinessLogic.Users
             return new UserDB().SelectByEmailAndPassword(email, password);
         }
 
+        public void Update(UserEntity userEntity)
+        {
+            new UserDB().Update(userEntity);
+        }
+
         public UserEntity Select(string id)
         {
             return new UserDB().Select(id);

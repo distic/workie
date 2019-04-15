@@ -123,5 +123,15 @@ namespace Workie.Core.DataAccess.Database.Mongo.Users
 
             return result[0];
         }
+
+        public void Update(UserEntity userEntity)
+        {
+            var update = Builders<UserEntity>.Update
+                .Set(a => a.FirstName, userEntity.FirstName)
+                .Set(a => a.LastName, userEntity.LastName)
+                .Set(a => a.EmailAddress, userEntity.EmailAddress);
+
+            var result = collection.UpdateOne(model => model._id == userEntity._id, update);
+        }
     }
 }

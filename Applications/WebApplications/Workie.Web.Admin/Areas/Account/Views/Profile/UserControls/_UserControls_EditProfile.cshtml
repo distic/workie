@@ -10,28 +10,34 @@
             </h6>
         </div>
         <div class="ms-panel-body">
-            <form>
+            <form asp-area="Account" asp-controller="Profile" asp-action="EditProfile"
+                  data-ajax-mode="replace"
+                  data-ajax="true"
+                  data-ajax-begin="ProfileModule.onEditProfileSubmitBegin"
+                  data-ajax-success="ProfileModule.onEditProfileSubmitSuccess"
+                  data-ajax-failure="ProfileModule.onEditProfileSubmitFailure">
+
                 <div class="form-group">
                     <label for="exampleEmail">
                         @Localizer["First Name"]
                     </label>
-                    <input id="FirstName" name="FirstName" class="form-control">
+                    <input id="FirstName" name="FirstName" value="@Model.FirstName" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="exampleEmail">
                         @Localizer["Last Name"]
                     </label>
-                    <input id="LastName" name="LastName" class="form-control">
+                    <input id="LastName" name="LastName" value="@Model.LastName" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="exampleEmail">
                         @Localizer["Email address"]
                     </label>
-                    <input id="EmailAddress" name="EmailAddress" type="email" class="form-control" placeholder="@Localizer["name@example.com"]">
+                    <input id="EmailAddress" name="EmailAddress" value="@Model.EmailAddress" type="email" class="form-control" placeholder="@Localizer["name@example.com"]">
                 </div>
 
                 <input type="submit" class="btn btn-dark mt-5" value="@Localizer["Save"]" name="btn0">
-                <input type="submit" class="btn btn-outline-primary mt-5 ml-2" value="@Localizer["Cancel"]" name="btn0">
+                <input type="button" onclick="ProfileModule.viewProfile()" class="btn btn-outline-primary mt-5 ml-2" value="@Localizer["Cancel"]" name="btn0">
             </form>
         </div>
     </div>

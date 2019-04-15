@@ -13,21 +13,15 @@
             <form>
                 <div class="form-group">
                     <label for="exampleEmail">
-                        @Localizer["First Name"]
+                        @Localizer["Full Name"]
                     </label>
-                    <input id="FirstName" name="FirstName" class="form-control" value="Ahmad" readonly="">
-                </div>
-                <div class="form-group">
-                    <label for="exampleEmail">
-                        @Localizer["Last Name"]
-                    </label>
-                    <input id="LastName" name="LastName" class="form-control" value="Chatila" readonly="">
+                    <input id="FullName" name="FullName" class="form-control" value="@Model.FullName" readonly="">
                 </div>
                 <div class="form-group">
                     <label for="exampleEmail">
                         @Localizer["Email address"]
                     </label>
-                    <input id="EmailAddress" name="EmailAddress" class="form-control" value="ahmadnshatila@hotmail.com" readonly="">
+                    <input id="EmailAddress" name="EmailAddress" class="form-control" value="@Model.Email" readonly="">
                 </div>
                 <input type="button" onclick="ProfileModule.editProfile()" class="btn btn-outline-primary d-block mt-5" value="@Localizer["Edit"]" name="btn0">
             </form>

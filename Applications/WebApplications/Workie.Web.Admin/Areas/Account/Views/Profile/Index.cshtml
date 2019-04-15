@@ -8,9 +8,9 @@
 <form action="@Url.Action("EditProfile", "Profile", new { Area = "Account" } )"
       data-ajax-mode="replace"
       data-ajax="true"
-      data-ajax-begin="ProfileModule.onEditProfileSubmitBegin"
-      data-ajax-success="ProfileModule.onEditProfileSubmitSuccess"
-      data-ajax-failure="ProfileModule.onEditProfileSubmitFailure"
+      data-ajax-begin="ProfileModule.onEditFromViewProfileSubmitBegin"
+      data-ajax-success="ProfileModule.onEditFromViewProfileSubmitSuccess"
+      data-ajax-failure="ProfileModule.onEditFromViewProfileSubmitFailure"
       id="EditProfileTableForm"
       data-ajax-update="#ProfileResult"
       datetoavoidcache=@unixTime.TotalSeconds></form>
@@ -34,5 +34,5 @@
 </div>
 
 @section Scripts {
-    <script src="@Url.Content("~/app/areas/account/views/profile/index.js")" type="text/javascript"></script>
+    <script src="~/app/areas/account/views/profile/index.js" type="text/javascript"></script>
 }

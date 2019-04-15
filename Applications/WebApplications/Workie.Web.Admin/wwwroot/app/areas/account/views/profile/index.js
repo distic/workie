@@ -24,9 +24,29 @@
     function onEditProfileSubmitSuccess(data) {
         //App.stopPageLoading();
         console.log('Submit Success!');
+        viewProfile();
     }
 
     function onEditProfileSubmitFailure(ajaxContext) {
+        //App.stopPageLoading();
+        console.log('Submit Failure, server error!');
+    }
+
+    ////////////////////////////////////
+    // EDIT FROM VIEW CALLBACKS
+    ////////////////////////////////////
+
+    function onEditFromViewProfileSubmitBegin() {
+        //App.startPageLoading();
+        console.log('Submit began...');
+    }
+
+    function onEditFromViewProfileSubmitSuccess(data) {
+        //App.stopPageLoading();
+        console.log('Submit Success!');
+    }
+
+    function onEditFromViewProfileSubmitFailure(ajaxContext) {
         //App.stopPageLoading();
         console.log('Submit Failure, server error!');
     }
@@ -83,7 +103,10 @@
         onViewProfileSubmitFailure: onViewProfileSubmitFailure,
         onUpdateProfileSubmitBegin: onUpdateProfileSubmitBegin,
         onUpdateProfileSubmitSuccess: onUpdateProfileSubmitSuccess,
-        onUpdateProfileSubmitFailure: onUpdateProfileSubmitFailure
+        onUpdateProfileSubmitFailure: onUpdateProfileSubmitFailure,
+        onEditFromViewProfileSubmitBegin: onEditFromViewProfileSubmitBegin,
+        onEditFromViewProfileSubmitSuccess: onEditFromViewProfileSubmitSuccess,
+        onEditFromViewProfileSubmitFailure: onEditFromViewProfileSubmitFailure
     };
 
 })();

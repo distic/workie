@@ -31,5 +31,11 @@ namespace Workie.Core.DataAccess.Interfaces
         /// <param name="id"></param>
         /// <returns>Returns the object if successful. Otherwise, null is returned.</returns>
         UserEntity Select(string id);
+
+        /// <summary>
+        /// Updates a record by Id.
+        /// </summary>
+        /// <param name="userEntity"></param>
+        void Update(UserEntity userEntity);
     }
 }

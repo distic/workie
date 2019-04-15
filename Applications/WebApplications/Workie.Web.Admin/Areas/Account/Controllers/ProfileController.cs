@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Authorization;
 using Workie.Web.Admin.Filters;
 using System;
 using Workie.Web.Admin.Areas.Account.Models.Profile;
+using Workie.Core.BusinessLogic.Users;
+using Workie.Core.Entities.Users;
 
 namespace Workie.Web.Admin.Areas.Account.Controllers
 {
@@ -23,11 +25,14 @@ namespace Workie.Web.Admin.Areas.Account.Controllers
         {
             try
             {
+                //TODO: dont do this, try getting the data from the View.
+                var user = new UserManager().Select(UserId);
+
                 var editProfileViewModel = new EditProfileViewModel
                 {
-                    FirstName = UserFirstName,
-                    LastName = UserLastName,
-                    EmailAddress = UserEmailAddress
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    EmailAddress = user.EmailAddress
                 };
 
                 //TODO: Get the data from the database and fill the editProfileViewModel variable.
@@ -45,6 +50,16 @@ namespace Workie.Web.Admin.Areas.Account.Controllers
         {
             try
             {
+                var userEntity = new UserEntity
+                {
+                    _id = UserId,
+                    FirstName = editProfileViewModel.FirstName,
+                    LastName = editProfileViewModel.LastName,
+                    EmailAddress = editProfileViewModel.EmailAddress
+                };
+
+                new UserManager().Update(userEntity);
+
                 // TODO: Will handle this procedure better, but for now this is fine as a starter.
                 return Json(new
                 {
@@ -71,12 +86,12 @@ namespace Workie.Web.Admin.Areas.Account.Controllers
 
         public IActionResult ViewProfile()
         {
-            //TODO: This should retrieve data from the cookies or from a server.
+            var user = new UserManager().Select(UserId);
 
             var viewProfileViewModel = new ViewProfileViewModel
             {
-                FullName = $"{UserFirstName} {UserLastName}",
-                Email = UserEmailAddress
+                FullName = $"{user.FirstName} {user.LastName}",
+                Email = user.EmailAddress
             };
 
             return PartialView("UserControls/_UserControls_ViewProfile", viewProfileViewModel);
