@@ -1,12 +1,18 @@
-﻿<div class="ms-content-wrapper text-center">
+﻿@inject IViewLocalizer Localizer
+
+<div class="ms-content-wrapper text-center">
     <div class="row">
         <div class="col">
-            <h3>A verification email has been sent to your inbox, please check your email.</h3>
+            <h3>
+                @Localizer["A verification email has been sent to your inbox, please check your email."]
+            </h3>
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <button type="button" class="btn btn-pill btn-primary btn-sm">Resend</button>
+            <button type="button" class="btn btn-pill btn-primary btn-sm">
+                @Localizer["Resend"]
+            </button>
         </div>
     </div>
 </div>
