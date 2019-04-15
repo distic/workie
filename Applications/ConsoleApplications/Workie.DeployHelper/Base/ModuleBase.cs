@@ -367,16 +367,16 @@ namespace Workie.DeployHelper.Base
 
             if (!string.IsNullOrEmpty(description))
             {
-                System.Console.WriteLine("-> {0}:", description);
+                Console.WriteLine("-> {0}:", description);
             }
 
-            System.Console.WriteLine();
+            Console.WriteLine();
 
-            System.Console.Write("{0}: ", Properties.Resources.EnterUsername);
-            ServerInfo.Username = System.Console.ReadLine();
+            Console.Write("{0}: ", Properties.Resources.EnterUsername);
+            ServerInfo.Username = Console.ReadLine();
 
-            System.Console.Write("{0}: ", Properties.Resources.EnterPassword);
-            ServerInfo.Password = System.Console.ReadLine();
+            Console.Write("{0}: ", Properties.Resources.EnterPassword);
+            ServerInfo.Password = Console.ReadLine();
 
             if (string.IsNullOrEmpty(ServerInfo.Username))
             {

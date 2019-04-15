@@ -59,10 +59,13 @@ namespace Workie.DeployHelper.Modules
             LogOutputter.PrintInfo($"Downloading and installing Apache...");
             remoteHost.RunCommandWithOutput("sudo yum -y install httpd mod_ssl");
 
+            // Install unzip...
+            LogOutputter.PrintInfo($"Downloading and installing unzip...");
+            remoteHost.RunCommandWithOutput("sudo yum -y install unzip");
+
             // Install .NET Runtime...
             LogOutputter.PrintInfo("Downloading and installing Microsoft .NET Core runtime...");
             remoteHost.RunCommandWithOutput("sudo rpm -Uvh https://packages.microsoft.com/config/rhel/7/packages-microsoft-prod.rpm");
-
             remoteHost.RunCommandWithOutput("sudo yum -y install dotnet-sdk-2.1");
         }
 
