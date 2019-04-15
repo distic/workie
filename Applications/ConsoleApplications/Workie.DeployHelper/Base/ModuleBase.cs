@@ -38,6 +38,11 @@ namespace Workie.DeployHelper.Base
 
         public virtual void OnRunPackageScripts(SshClientEx remoteHost)
         {
+            if (UploadedFileList == null)
+            {
+                return;
+            }
+
             foreach (var uploadFileInfo in UploadedFileList)
             {
                 LogOutputter.PrintInfo($"Now running scripts for object '{uploadFileInfo.HostSourceFilename.Filename()}'...", isSub: true);
