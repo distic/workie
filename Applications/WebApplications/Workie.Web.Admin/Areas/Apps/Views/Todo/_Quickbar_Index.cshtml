@@ -83,6 +83,10 @@
 
 <script type="text/javascript">
 
+    function getAddOrModifyTodoView(id) {
+        return '@Url.Action("AddOrModifyTodoView", "Todo", new { Area = "Apps" })?id=' + id;
+    }
+
     function getDeleteTodoUrl(id) {
         return '@Url.Action("DeleteTodo", "Todo", new { Area = "Apps" })?id=' + id;
     }

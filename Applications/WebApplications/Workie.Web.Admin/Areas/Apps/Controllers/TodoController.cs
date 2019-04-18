@@ -29,5 +29,23 @@ namespace Workie.Web.Admin.Areas.Apps.Controllers
                 });
             }
         }
+
+        public IActionResult DeleteTodo(string id)
+        {
+            try
+            {
+                return Json(new
+                {
+                    result = true
+                });
+            }
+            catch (Exception)
+            {
+                return Json(new
+                {
+                    result = false
+                });
+            }
+        }
     }
 }
