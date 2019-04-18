@@ -1,0 +1,63 @@
+﻿@inject IViewLocalizer Localizer
+
+<div role="tabpanel" class="tab-pane" id="qa-reminder">
+    <div class="ms-quickbar-container ms-reminders">
+
+        <ul class="ms-qa-options">
+            <li> <a href="#" data-toggle="modal" data-target="#reminder-modal"> <i class="flaticon-bell"></i> New Reminder </a> </li>
+        </ul>
+
+        <div class="ms-quickbar-container ms-scrollable ps">
+
+            <div class="ms-card ms-qa-card ms-deletable">
+                <div class="ms-card-body">
+                    <p> Developer Meeting in Block B </p>
+                    <span class="text-disabled fs-12"><i class="material-icons fs-14">access_time</i> Today - 3:45 pm</span>
+                </div>
+                <div class="ms-card-footer clearfix">
+
+                    <div class="ms-note-editor float-right">
+                        <a href="#" class="text-disabled mr-2" data-toggle="modal" data-target="#reminder-modal">
+                            <i class="flaticon-pencil"> </i>
+                            @Localizer["Edit"]
+                        </a>
+                        <a href="#" class="text-disabled  ms-delete-trigger">
+                            <i class="flaticon-trash"> </i>
+                            @Localizer["Delete"]
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="ms-card ms-qa-card ms-deletable">
+                <div class="ms-card-body">
+                    <p> Start adding change log to version 2 </p>
+                    <span class="text-disabled fs-12">
+                        <i class="material-icons fs-14">access_time</i>
+                        @Localizer["Tomorrow - 12:00 pm"]
+                    </span>
+                </div>
+                <div class="ms-card-footer clearfix">
+
+                    <div class="ms-note-editor float-right">
+                        <a href="#" class="text-disabled mr-2" data-toggle="modal" data-target="#reminder-modal">
+                            <i class="flaticon-pencil"> </i>
+                            @Localizer["Edit"]
+                        </a>
+                        <a href="#" class="text-disabled  ms-delete-trigger">
+                            <i class="flaticon-trash"> </i>
+                            @Localizer["Delete"]
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+                <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+            </div><div class="ps__rail-y" style="top: 0px; right: 0px;">
+                <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
+            </div>
+        </div>
+    </div>
+</div>

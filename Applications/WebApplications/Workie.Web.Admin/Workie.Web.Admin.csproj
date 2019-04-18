@@ -23,6 +23,13 @@
 
   <ItemGroup>
     <Folder Include="Areas\Account\Models\Settings\" />
+    <Folder Include="Areas\Apps\Models\Tasks\" />
+    <Folder Include="Areas\Apps\Views\Reminder\QuickbarControls\" />
+    <Folder Include="Areas\Apps\Views\Reminder\UserControls\" />
+    <Folder Include="Areas\Apps\Views\Shared\" />
+    <Folder Include="Areas\Apps\Views\Todo\UserControls\" />
+    <Folder Include="wwwroot\app\areas\apps\views\todo\quickbar-controls\" />
+    <Folder Include="wwwroot\app\areas\apps\views\todo\user-controls\" />
     <Folder Include="wwwroot\mystic-kernel\dark\" />
     <Folder Include="wwwroot\img\" />
   </ItemGroup>
@@ -45,6 +52,12 @@
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Areas\Account\Views\_ViewStart.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Apps\Views\_ViewImports.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Apps\Views\_ViewStart.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Areas\Auth\Views\Login\Index.cshtml">
