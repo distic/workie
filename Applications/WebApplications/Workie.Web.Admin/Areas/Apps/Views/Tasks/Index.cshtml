@@ -1,0 +1,247 @@
+﻿@inject IViewLocalizer Localizer
+
+
+<div class="ms-panel-body">
+    <ul class="nav nav-tabs tabs-bordered d-flex nav-justified mb-4" role="tablist">
+        <li role="presentation">
+            <a href="#tab1" aria-controls="tab1" class="active show" role="tab" data-toggle="tab">@Localizer["Tasks"]</a>
+        </li>
+        <li role="presentation">
+            <a href="#tab2" aria-controls="tab2" role="tab" data-toggle="tab">@Localizer["Calendar"]</a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active show fade in" id="tab1">
+            <div class="ms-panel-body">
+                <div class="ms-quickbar-container ms-todo-list-container ms-scrollable ps">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <ul class="ms-todo-list">
+                                <li class="ms-card ms-qa-card ms-deletable">
+
+                                    <div class="ms-card-header clearfix">
+                                        <h6 class="ms-card-title">
+                                            @Localizer["Monday"]
+                                        </h6>
+                                        <button data-toggle="tooltip" data-placement="left" title=@Localizer["Add a Task to this block"] class="ms-add-task-to-block ms-btn-icon float-right">
+                                            <i class="material-icons text-disabled">@Localizer["add"]</i>
+                                        </button>
+                                    </div>
+
+                                    <div class="ms-card-body">
+                                        <ul class="ms-list ms-task-block">
+                                            <li class="ms-list-item ms-to-do-task ms-deletable">
+                                                <label class="ms-checkbox-wrap ms-todo-complete">
+                                                    <input type="checkbox" value="">
+                                                    <i class="ms-checkbox-check"></i>
+                                                </label>
+                                                <span>
+                                                    @Localizer["Task to do"]
+                                                </span>
+                                                <button type="submit" class="close"><i class="flaticon-trash ms-delete-trigger"> </i></button>
+                                            </li>
+                                            <li class="ms-list-item ms-to-do-task ms-deletable">
+                                                <label class="ms-checkbox-wrap ms-todo-complete">
+                                                    <input type="checkbox" value="">
+                                                    <i class="ms-checkbox-check"></i>
+                                                </label>
+                                                <span>
+                                                    @Localizer["Task to do"]
+                                                </span>
+                                                <button type="submit" class="close"><i class="flaticon-trash ms-delete-trigger"> </i></button>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="ms-card-footer clearfix">
+                                        <a href="#" class="text-disabled mr-2">
+                                            <i class="flaticon-archive"> </i>
+                                            @Localizer["Archive"]
+                                        </a>
+                                        <a href="#" class="text-disabled  ms-delete-trigger float-right">
+                                            <i class="flaticon-trash"> </i>
+                                            @Localizer["Delete"]
+                                        </a>
+                                    </div>
+
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <ul class="ms-todo-list">
+                                <li class="ms-card ms-qa-card ms-deletable">
+
+                                    <div class="ms-card-header clearfix">
+                                        <h6 class="ms-card-title">
+                                            @Localizer["Tuesday"]
+                                        </h6>
+                                        <button data-toggle="tooltip" data-placement="left" title=@Localizer["Add a Task to this block"] class="ms-add-task-to-block ms-btn-icon float-right">
+                                            <i class="material-icons text-disabled">@Localizer["add"]</i>
+                                        </button>
+                                    </div>
+
+                                    <div class="ms-card-body">
+                                        <ul class="ms-list ms-task-block">
+                                            <li class="ms-list-item ms-to-do-task ms-deletable">
+                                                <label class="ms-checkbox-wrap ms-todo-complete">
+                                                    <input type="checkbox" value="">
+                                                    <i class="ms-checkbox-check"></i>
+                                                </label>
+                                                <span>
+                                                    @Localizer["Task to do"]
+                                                </span>
+                                                <button type="submit" class="close"><i class="flaticon-trash ms-delete-trigger"> </i></button>
+                                            </li>
+                                            <li class="ms-list-item ms-to-do-task ms-deletable">
+                                                <label class="ms-checkbox-wrap ms-todo-complete">
+                                                    <input type="checkbox" value="">
+                                                    <i class="ms-checkbox-check"></i>
+                                                </label>
+                                                <span>
+                                                    @Localizer["Task to do"]
+                                                </span>
+                                                <button type="submit" class="close"><i class="flaticon-trash ms-delete-trigger"> </i></button>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="ms-card-footer clearfix">
+                                        <a href="#" class="text-disabled mr-2">
+                                            <i class="flaticon-archive"> </i>
+                                            @Localizer["Archive"]
+                                        </a>
+                                        <a href="#" class="text-disabled  ms-delete-trigger float-right">
+                                            <i class="flaticon-trash"> </i>
+                                            @Localizer["Delete"]
+                                        </a>
+                                    </div>
+
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <ul class="ms-todo-list">
+                                <li class="ms-card ms-qa-card ms-deletable">
+
+                                    <div class="ms-card-header clearfix">
+                                        <h6 class="ms-card-title">
+                                            @Localizer["Wednesday"]
+                                        </h6>
+                                        <button data-toggle="tooltip" data-placement="left" title=@Localizer["Add a Task to this block"] class="ms-add-task-to-block ms-btn-icon float-right">
+                                            <i class="material-icons text-disabled">@Localizer["add"]</i>
+                                        </button>
+                                    </div>
+
+                                    <div class="ms-card-body">
+                                        <ul class="ms-list ms-task-block">
+                                            <li class="ms-list-item ms-to-do-task ms-deletable">
+                                                <label class="ms-checkbox-wrap ms-todo-complete">
+                                                    <input type="checkbox" value="">
+                                                    <i class="ms-checkbox-check"></i>
+                                                </label>
+                                                <span>
+                                                    @Localizer["Task to do"]
+                                                </span>
+                                                <button type="submit" class="close"><i class="flaticon-trash ms-delete-trigger"> </i></button>
+                                            </li>
+                                            <li class="ms-list-item ms-to-do-task ms-deletable">
+                                                <label class="ms-checkbox-wrap ms-todo-complete">
+                                                    <input type="checkbox" value="">
+                                                    <i class="ms-checkbox-check"></i>
+                                                </label>
+                                                <span>
+                                                    @Localizer["Task to do"]
+                                                </span>
+
+                                                <button type="submit" class="close"><i class="flaticon-trash ms-delete-trigger"> </i></button>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="ms-card-footer clearfix">
+                                        <a href="#" class="text-disabled mr-2">
+                                            <i class="flaticon-archive"> </i>
+                                            @Localizer["Archive"]
+                                        </a>
+                                        <a href="#" class="text-disabled  ms-delete-trigger float-right">
+                                            <i class="flaticon-trash"> </i>
+                                            @Localizer["Delete"]
+                                        </a>
+                                    </div>
+
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <ul class="ms-todo-list">
+                                <li class="ms-card ms-qa-card ms-deletable">
+
+                                    <div class="ms-card-header clearfix">
+                                        <h6 class="ms-card-title">
+                                            @Localizer["Thursday"]
+                                        </h6>
+                                        <button data-toggle="tooltip" data-placement="left" title=@Localizer["Add a Task to this block"] class="ms-add-task-to-block ms-btn-icon float-right">
+                                            <i class="material-icons text-disabled">@Localizer["add"]</i>
+                                        </button>
+                                    </div>
+                                    <div class="ms-card-body">
+                                        <ul class="ms-list ms-task-block">
+                                            <li class="ms-list-item ms-to-do-task ms-deletable">
+                                                <label class="ms-checkbox-wrap ms-todo-complete">
+                                                    <input type="checkbox" value="">
+                                                    <i class="ms-checkbox-check"></i>
+                                                </label>
+                                                <span>
+                                                    @Localizer["Task to do"]
+                                                </span>
+                                                <button type="submit" class="close"><i class="flaticon-trash ms-delete-trigger"> </i></button>
+                                            </li>
+                                            <li class="ms-list-item ms-to-do-task ms-deletable">
+                                                <label class="ms-checkbox-wrap ms-todo-complete">
+                                                    <input type="checkbox" value="">
+                                                    <i class="ms-checkbox-check"></i>
+                                                </label>
+                                                <span>
+                                                    @Localizer["Task to do"]
+                                                </span>
+
+                                                <button type="submit" class="close"><i class="flaticon-trash ms-delete-trigger"> </i></button>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="ms-card-footer clearfix">
+                                        <a href="#" class="text-disabled mr-2">
+                                            <i class="flaticon-archive"> </i>
+                                            @Localizer["Archive"]
+                                        </a>
+                                        <a href="#" class="text-disabled  ms-delete-trigger float-right">
+                                            <i class="flaticon-trash"> </i>
+                                            @Localizer["Delete"]
+                                        </a>
+                                    </div>
+
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+                        <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+                    </div>
+                    <div class="ps__rail-y" style="top: 0px; right: 0px;">
+                        <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="tab2">
+            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam urna nunc, congue nec laoreet sed, maximus non massa. Fusce vestibulum vel risus vitae tincidunt. </p>
+            <p> Cras egestas nisi vel tempor dignissim. Ut condimentum iaculis ex nec ornare. Vivamus sit amet elementum ante. Fusce eget erat volutpat </p>
+            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam urna nunc, congue nec laoreet sed, maximus non massa. Fusce vestibulum vel risus vitae tincidunt. </p>
+        </div>
+
+    </div>
+</div>
+

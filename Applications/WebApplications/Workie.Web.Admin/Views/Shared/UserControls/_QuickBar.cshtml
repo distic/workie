@@ -3,6 +3,14 @@
 <aside id="ms-quick-bar" class="ms-quick-bar fixed ms-d-block-lg">
 
     <ul class="nav nav-tabs ms-quick-bar-list ui-sortable ui-sortable-disabled" role="tablist">
+        <li class="ms-quick-bar-item ms-has-qa ui-sortable-handle ui-draggable ui-draggable-handle ui-draggable-disabled" role="presentation" data-toggle="tooltip" data-placement="left" title="@Localizer["Launch Team"]" data-title="@Localizer["Team Members"]">
+            <a href="#qa-toDo" aria-controls="qa-toDo" role="tab" data-toggle="tab">
+                <i class="fas fa-users"></i>
+                <span class="ms-quick-bar-label">
+                    @Localizer["Team"]
+                </span>
+            </a>
+        </li>
         <li class="ms-quick-bar-item ms-has-qa ui-sortable-handle ui-draggable ui-draggable-handle ui-draggable-disabled" role="presentation" data-toggle="tooltip" data-placement="left" title="@Localizer["Launch To-do-list"]" data-title="@Localizer["To-do-list"]">
             <a href="#qa-toDo" aria-controls="qa-toDo" role="tab" data-toggle="tab">
                 <i class="flaticon-list"></i>
@@ -64,223 +72,223 @@
 
             @*<div role="tabpanel" class="tab-pane" id="qa-notes">
 
-            <ul class="ms-qa-options">
-                <li>
-                    <a href="#" data-toggle="modal" data-target="#notes-modal">
-                        <i class="flaticon-sticky-note"></i>
-                        @Localizer["New Note"]
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="flaticon-excel"></i>
-                        @Localizer["Export to Excel"]
-                    </a>
-                </li>
-            </ul>
-
-            <div class="ms-quickbar-container ms-scrollable ps">
-
-                <div class="ms-card ms-qa-card ms-deletable">
-                    <div class="ms-card-header">
-                        <h6 class="ms-card-title">
-                            @Localizer["Don't forget to check with the designer"]
-                        </h6>
-                    </div>
-                    <div class="ms-card-body">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vulputate urna in faucibus venenatis. Etiam at dapibus neque,
-                            vel varius metus. Pellentesque eget orci malesuada, venenatis magna et
-                        </p>
-                        <ul class="ms-note-members clearfix mb-0">
-                            <li class="ms-deletable">
-                                <img src="~/mystic-kernel/light/assets/img/people/people-3.jpg" alt="member">
-                            </li>
-                            <li class="ms-deletable">
-                                <img src="~/mystic-kernel/light/assets/img/people/people-5.jpg" alt="member">
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="ms-card-footer clearfix">
-
-                        <div class="dropdown float-left">
-                            <a href="#" class="text-disabled" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="flaticon-share-1"></i>
-                                @Localizer["Share"]
+                    <ul class="ms-qa-options">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#notes-modal">
+                                <i class="flaticon-sticky-note"></i>
+                                @Localizer["New Note"]
                             </a>
-                            <ul class="dropdown-menu">
-                                <li class="dropdown-menu-header">
-                                    <h6 class="dropdown-header ms-inline m-0">
-                                        <span class="text-disabled">
-                                            @Localizer["Share With"]
-                                        </span>
-                                    </h6>
-                                </li>
-                                <li class="dropdown-divider"></li>
-                                <li class="ms-scrollable ms-dropdown-list ms-members-list ps">
-                                    <a class="media p-2" href="#">
-                                        <div class="mr-2 align-self-center">
-                                            <img src="~/mystic-kernel/light/assets/img/people/people-10.jpg" class="ms-img-round" alt="people">
-                                        </div>
-                                        <div class="media-body">
-                                            <span>
-                                                John Doe
-                                            </span>
-                                        </div>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="flaticon-excel"></i>
+                                @Localizer["Export to Excel"]
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="ms-quickbar-container ms-scrollable ps">
+
+                        <div class="ms-card ms-qa-card ms-deletable">
+                            <div class="ms-card-header">
+                                <h6 class="ms-card-title">
+                                    @Localizer["Don't forget to check with the designer"]
+                                </h6>
+                            </div>
+                            <div class="ms-card-body">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vulputate urna in faucibus venenatis. Etiam at dapibus neque,
+                                    vel varius metus. Pellentesque eget orci malesuada, venenatis magna et
+                                </p>
+                                <ul class="ms-note-members clearfix mb-0">
+                                    <li class="ms-deletable">
+                                        <img src="~/mystic-kernel/light/assets/img/people/people-3.jpg" alt="member">
+                                    </li>
+                                    <li class="ms-deletable">
+                                        <img src="~/mystic-kernel/light/assets/img/people/people-5.jpg" alt="member">
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="ms-card-footer clearfix">
+
+                                <div class="dropdown float-left">
+                                    <a href="#" class="text-disabled" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="flaticon-share-1"></i>
+                                        @Localizer["Share"]
                                     </a>
-                                    <a class="media p-2" href="#">
-                                        <div class="mr-2 align-self-center">
-                                            <img src="~/mystic-kernel/light/assets/img/people/people-9.jpg" class="ms-img-round" alt="people">
-                                        </div>
-                                        <div class="media-body">
-                                            <span>
-                                                Raymart Sandiago
-                                            </span>
-                                        </div>
+                                    <ul class="dropdown-menu">
+                                        <li class="dropdown-menu-header">
+                                            <h6 class="dropdown-header ms-inline m-0">
+                                                <span class="text-disabled">
+                                                    @Localizer["Share With"]
+                                                </span>
+                                            </h6>
+                                        </li>
+                                        <li class="dropdown-divider"></li>
+                                        <li class="ms-scrollable ms-dropdown-list ms-members-list ps">
+                                            <a class="media p-2" href="#">
+                                                <div class="mr-2 align-self-center">
+                                                    <img src="~/mystic-kernel/light/assets/img/people/people-10.jpg" class="ms-img-round" alt="people">
+                                                </div>
+                                                <div class="media-body">
+                                                    <span>
+                                                        John Doe
+                                                    </span>
+                                                </div>
+                                            </a>
+                                            <a class="media p-2" href="#">
+                                                <div class="mr-2 align-self-center">
+                                                    <img src="~/mystic-kernel/light/assets/img/people/people-9.jpg" class="ms-img-round" alt="people">
+                                                </div>
+                                                <div class="media-body">
+                                                    <span>
+                                                        Raymart Sandiago
+                                                    </span>
+                                                </div>
+                                            </a>
+                                            <a class="media p-2" href="#">
+                                                <div class="mr-2 align-self-center">
+                                                    <img src="~/mystic-kernel/light/assets/img/people/people-7.jpg" class="ms-img-round" alt="people">
+                                                </div>
+                                                <div class="media-body">
+                                                    <span>
+                                                        Heather Brown
+                                                    </span>
+                                                </div>
+                                            </a>
+                                            <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+                                                <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+                                            </div><div class="ps__rail-y" style="top: 0px; right: 0px;">
+                                                <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="ms-note-editor float-right">
+                                    <a href="#" class="text-disabled mr-2" data-toggle="modal" data-target="#notes-modal">
+                                        <i class="flaticon-pencil"> </i>
+                                        @Localizer["Edit"]
                                     </a>
-                                    <a class="media p-2" href="#">
-                                        <div class="mr-2 align-self-center">
-                                            <img src="~/mystic-kernel/light/assets/img/people/people-7.jpg" class="ms-img-round" alt="people">
-                                        </div>
-                                        <div class="media-body">
-                                            <span>
-                                                Heather Brown
-                                            </span>
-                                        </div>
+                                    <a href="#" class="text-disabled  ms-delete-trigger">
+                                        <i class="flaticon-trash"> </i>
+                                        @Localizer["Delete"]
                                     </a>
-                                    <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
-                                        <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
-                                    </div><div class="ps__rail-y" style="top: 0px; right: 0px;">
-                                        <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
-                                    </div>
-                                </li>
-                            </ul>
+                                </div>
+
+                            </div>
                         </div>
-                        <div class="ms-note-editor float-right">
-                            <a href="#" class="text-disabled mr-2" data-toggle="modal" data-target="#notes-modal">
-                                <i class="flaticon-pencil"> </i>
-                                @Localizer["Edit"]
-                            </a>
-                            <a href="#" class="text-disabled  ms-delete-trigger">
-                                <i class="flaticon-trash"> </i>
-                                @Localizer["Delete"]
-                            </a>
+
+                        <div class="ms-card ms-qa-card ms-deletable">
+                            <div class="ms-card-header">
+                                <h6 class="ms-card-title">Perform the required unit tests</h6>
+                            </div>
+                            <div class="ms-card-body">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vulputate urna in faucibus venenatis. Etiam at dapibus neque,
+                                    vel varius metus. Pellentesque eget orci malesuada, venenatis magna et
+                                </p>
+                                <ul class="ms-note-members clearfix mb-0">
+                                    <li class="ms-deletable"> <img src="~/mystic-kernel/img/people/people-9.jpg" alt="member"> </li>
+                                </ul>
+                            </div>
+                            <div class="ms-card-footer clearfix">
+
+                                <div class="dropdown float-left">
+                                    <a href="#" class="text-disabled" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="flaticon-share-1"></i>
+                                        @Localizer["Share"]
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li class="dropdown-menu-header">
+                                            <h6 class="dropdown-header ms-inline m-0">
+                                                <span class="text-disabled">
+                                                    @Localizer["Share With"]
+                                                </span>
+                                            </h6>
+                                        </li>
+                                        <li class="dropdown-divider"></li>
+                                        <li class="ms-scrollable ms-dropdown-list ms-members-list ps">
+                                            <a class="media p-2" href="#">
+                                                <div class="mr-2 align-self-center">
+                                                    <img src="~/mystic-kernel/light/assets/img/people/people-10.jpg" class="ms-img-round" alt="people">
+                                                </div>
+                                                <div class="media-body">
+                                                    <span>
+                                                        John Doe
+                                                    </span>
+                                                </div>
+                                            </a>
+                                            <a class="media p-2" href="#">
+                                                <div class="mr-2 align-self-center">
+                                                    <img src="~/mystic-kernel/img/people/people-9.jpg" class="ms-img-round" alt="people">
+                                                </div>
+                                                <div class="media-body">
+                                                    <span>
+                                                        Raymart Sandiago
+                                                    </span>
+                                                </div>
+                                            </a>
+                                            <a class="media p-2" href="#">
+                                                <div class="mr-2 align-self-center">
+                                                    <img src="~/mystic-kernel/img/people/people-7.jpg" class="ms-img-round" alt="people">
+                                                </div>
+                                                <div class="media-body">
+                                                    <span>
+                                                        Heather Brown
+                                                    </span>
+                                                </div>
+                                            </a>
+                                            <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+                                                <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+                                            </div><div class="ps__rail-y" style="top: 0px; right: 0px;">
+                                                <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;">
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="ms-note-editor float-right">
+                                    <a href="#" class="text-disabled mr-2" data-toggle="modal" data-target="#notes-modal">
+                                        <i class="flaticon-pencil"> </i>
+                                        @Localizer["Edit"]
+                                    </a>
+                                    <a href="#" class="text-disabled  ms-delete-trigger">
+                                        <i class="flaticon-trash"> </i>
+                                        @Localizer["Delete"]
+                                    </a>
+                                </div>
+
+                            </div>
                         </div>
 
+                        <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+                            <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+                        </div>
+                        <div class="ps__rail-y" style="top: 0px; right: 0px;">
+                            <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;">
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="ms-card ms-qa-card ms-deletable">
-                    <div class="ms-card-header">
-                        <h6 class="ms-card-title">Perform the required unit tests</h6>
-                    </div>
-                    <div class="ms-card-body">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vulputate urna in faucibus venenatis. Etiam at dapibus neque,
-                            vel varius metus. Pellentesque eget orci malesuada, venenatis magna et
-                        </p>
-                        <ul class="ms-note-members clearfix mb-0">
-                            <li class="ms-deletable"> <img src="~/mystic-kernel/img/people/people-9.jpg" alt="member"> </li>
-                        </ul>
-                    </div>
-                    <div class="ms-card-footer clearfix">
+                <div role="tabpanel" class="tab-pane" id="qa-invite">
 
-                        <div class="dropdown float-left">
-                            <a href="#" class="text-disabled" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="flaticon-share-1"></i>
-                                @Localizer["Share"]
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li class="dropdown-menu-header">
-                                    <h6 class="dropdown-header ms-inline m-0">
-                                        <span class="text-disabled">
-                                            @Localizer["Share With"]
-                                        </span>
-                                    </h6>
-                                </li>
-                                <li class="dropdown-divider"></li>
-                                <li class="ms-scrollable ms-dropdown-list ms-members-list ps">
-                                    <a class="media p-2" href="#">
-                                        <div class="mr-2 align-self-center">
-                                            <img src="~/mystic-kernel/light/assets/img/people/people-10.jpg" class="ms-img-round" alt="people">
-                                        </div>
-                                        <div class="media-body">
-                                            <span>
-                                                John Doe
-                                            </span>
-                                        </div>
-                                    </a>
-                                    <a class="media p-2" href="#">
-                                        <div class="mr-2 align-self-center">
-                                            <img src="~/mystic-kernel/img/people/people-9.jpg" class="ms-img-round" alt="people">
-                                        </div>
-                                        <div class="media-body">
-                                            <span>
-                                                Raymart Sandiago
-                                            </span>
-                                        </div>
-                                    </a>
-                                    <a class="media p-2" href="#">
-                                        <div class="mr-2 align-self-center">
-                                            <img src="~/mystic-kernel/img/people/people-7.jpg" class="ms-img-round" alt="people">
-                                        </div>
-                                        <div class="media-body">
-                                            <span>
-                                                Heather Brown
-                                            </span>
-                                        </div>
-                                    </a>
-                                    <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
-                                        <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
-                                    </div><div class="ps__rail-y" style="top: 0px; right: 0px;">
-                                        <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;">
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="ms-note-editor float-right">
-                            <a href="#" class="text-disabled mr-2" data-toggle="modal" data-target="#notes-modal">
-                                <i class="flaticon-pencil"> </i>
-                                @Localizer["Edit"]
-                            </a>
-                            <a href="#" class="text-disabled  ms-delete-trigger">
-                                <i class="flaticon-trash"> </i>
-                                @Localizer["Delete"]
-                            </a>
-                        </div>
-
+                    <div class="ms-quickbar-container text-center ms-invite-member">
+                        <i class="flaticon-network"></i>
+                        <p>@Localizer["Invite Team Members"]</p>
+                        <form>
+                            <div class="ms-form-group">
+                                <input type="text" placeholder="@Localizer["Member Email"]" class="form-control" name="invite-email" value="">
+                            </div>
+                            <div class="ms-form-group">
+                                <button type="submit" name="invite-member" class="btn btn-primary w-100">
+                                    @Localizer["Invite"]
+                                </button>
+                            </div>
+                        </form>
                     </div>
-                </div>
 
-                <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
-                    <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
-                </div>
-                <div class="ps__rail-y" style="top: 0px; right: 0px;">
-                    <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;">
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div role="tabpanel" class="tab-pane" id="qa-invite">
-
-            <div class="ms-quickbar-container text-center ms-invite-member">
-                <i class="flaticon-network"></i>
-                <p>@Localizer["Invite Team Members"]</p>
-                <form>
-                    <div class="ms-form-group">
-                        <input type="text" placeholder="@Localizer["Member Email"]" class="form-control" name="invite-email" value="">
-                    </div>
-                    <div class="ms-form-group">
-                        <button type="submit" name="invite-member" class="btn btn-primary w-100">
-                            @Localizer["Invite"]
-                        </button>
-                    </div>
-                </form>
-            </div>
-
-        </div>*@
+                </div>*@
 
         </div>
 
