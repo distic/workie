@@ -156,6 +156,96 @@ namespace Workie.Core.UnitTests
             };
         }
 
+        static TestResultInfo TaskTest()
+        {
+            var taskManagerTest = new TaskManagerTest();
+
+            _resultCounter[(int)taskManagerTest.Insert()] += 1;
+            _resultCounter[(int)taskManagerTest.Delete()] += 1;
+
+            //
+            // Wrap up the results and return...
+            //
+            return new TestResultInfo
+            {
+                ErrorCount = _resultCounter[(int)TestResultType.Error],
+                WarningCount = _resultCounter[(int)TestResultType.Warning],
+                SuccessCount = _resultCounter[(int)TestResultType.Success]
+            };
+        }
+
+        static TestResultInfo TeamRoleTest()
+        {
+            var teamRoleManagerTest = new TeamRoleManagerTest();
+
+            _resultCounter[(int)teamRoleManagerTest.Insert()] += 1;
+            _resultCounter[(int)teamRoleManagerTest.Delete()] += 1;
+
+            //
+            // Wrap up the results and return...
+            //
+            return new TestResultInfo
+            {
+                ErrorCount = _resultCounter[(int)TestResultType.Error],
+                WarningCount = _resultCounter[(int)TestResultType.Warning],
+                SuccessCount = _resultCounter[(int)TestResultType.Success]
+            };
+        }
+        static TestResultInfo TeamTest()
+        {
+            var teamManagerTest = new TeamManagerTest();
+
+            _resultCounter[(int)teamManagerTest.Insert()] += 1;
+            _resultCounter[(int)teamManagerTest.Delete()] += 1;
+
+            //
+            // Wrap up the results and return...
+            //
+            return new TestResultInfo
+            {
+                ErrorCount = _resultCounter[(int)TestResultType.Error],
+                WarningCount = _resultCounter[(int)TestResultType.Warning],
+                SuccessCount = _resultCounter[(int)TestResultType.Success]
+            };
+        }
+
+        static TestResultInfo RoleTest()
+        {
+            var roleManagerTest = new RoleManagerTest();
+
+            _resultCounter[(int)roleManagerTest.Insert()] += 1;
+            _resultCounter[(int)roleManagerTest.Delete()] += 1;
+
+            //
+            // Wrap up the results and return...
+            //
+            return new TestResultInfo
+            {
+                ErrorCount = _resultCounter[(int)TestResultType.Error],
+                WarningCount = _resultCounter[(int)TestResultType.Warning],
+                SuccessCount = _resultCounter[(int)TestResultType.Success]
+            };
+        }
+
+        static TestResultInfo SubTaskTest()
+        {
+            var SubTaskManagerTest = new SubtaskManagerTest();
+
+            _resultCounter[(int)SubTaskManagerTest.Insert()] += 1;
+            _resultCounter[(int)SubTaskManagerTest.Delete()] += 1;
+
+            //
+            // Wrap up the results and return...
+            //
+            return new TestResultInfo
+            {
+                ErrorCount = _resultCounter[(int)TestResultType.Error],
+                WarningCount = _resultCounter[(int)TestResultType.Warning],
+                SuccessCount = _resultCounter[(int)TestResultType.Success]
+            };
+        }
+
+
         #endregion
 
         static void Main(string[] args)
@@ -169,13 +259,18 @@ namespace Workie.Core.UnitTests
             // Comment out the unnecessary ones...
             //
 
-            var userTestResult = UserTest();
+            //var userTestResult = UserTest();
             //var osPlatformTestResult = OSPlatformTest();
             //var webBrowserPlatformTestResult = WebBrowserPlatformTest();
             //var companyTestResult = CompanyTest();
             //var countryTestResult = CountryTest();
             //var languageTestResult = LanguageTest();
             //var termsAndConditionsTest = TermsAndConditionsTest();
+            //var taskTest = TaskTest();
+            var subTaskTest = SubTaskTest();
+            //var roleTest = RoleTest();
+            //var teamRoleTest = TeamRoleTest();
+            //var teamTest = TeamTest();
 
             #region --- Result ---
 
