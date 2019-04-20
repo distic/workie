@@ -54,6 +54,10 @@ namespace Workie.DeployHelper.Base
                 {
                     return Path.Combine(GetInstallDataDirectory, $"{assembly}.Linux.json");
                 }
+                else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                {
+                    return Path.Combine(GetInstallDataDirectory, $"{assembly}.MacOS.json");
+                }
 
                 return string.Empty;
             }

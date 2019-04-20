@@ -1,0 +1,60 @@
+{
+  "UseSsl": true,
+  "DeployWorkieWebAdminModule": {
+    "Source": "/sources/workie-core/Applications/WebApplications/Workie.Web.Admin",
+    "Publish": {
+      "Debug": "/sources/workie-core/Applications/WebApplications/Workie.Web.Admin/bin/Debug/netcoreapp2.1/publish",
+      "Release": "sources/workie-core/Applications/WebApplications/Workie.Web.Admin/bin/Release/netcoreapp2.1/publish"
+    },
+    "RemotehostHttpdFilename": "/etc/httpd/conf/httpd.conf",
+    "RemotehostKestrelFilename": "/etc/systemd/system/kestrel-WorkieWebAdmin.service",
+    "RemotehostWorkieWebAdminDirectory": "/var/aspnetcore/webapps/Workie.Web.Admin",
+    "UploadFileList": [
+      {
+        "HostSourceFilename": "Workie.Web.Admin.zip",
+        "RemoteDestinationFilename": "/var/aspnetcore/webapps/Workie.Web.Admin/Workie.Web.Admin.zip",
+        "IsRequired": true,
+        "IsOverwrite": true
+      },
+      {
+        "HostSourceFilename": "httpd.test.conf",
+        "RemoteDestinationFilename": "/etc/httpd/conf/httpd.conf",
+        "IsRequired": true,
+        "IsOverwrite": true
+      },
+      {
+        "HostSourceFilename": "kestrel-WorkieWebAdmin.service",
+        "RemoteDestinationFilename": "/etc/systemd/system/kestrel-WorkieWebAdmin.service",
+        "IsRequired": true,
+        "IsOverwrite": true,
+        "Scripts": [
+          "/usr/sbin/setsebool -P httpd_can_network_connect 1"
+        ]
+      }
+    ]
+  },
+  "InstallOrUpdatePackagesModule": {
+    "UploadFileList": [
+      {
+        "HostSourceFilename": "mongodb-org-4.0.repo",
+        "RemoteDestinationFilename": "/etc/yum.repos.d/mongodb-org-4.0.repo",
+        "IsRequired": true,
+        "IsOverwrite": true
+      }
+    ]
+  },
+  "ServerInfoList": [
+    {
+      "FriendlyName": "Ahmad's CentOS",
+      "IpAddress": "172.17.121.83",
+      "Username": "root",
+      "Password": "12345"
+    },
+    {
+      "FriendlyName": "Shereen's CentOS",
+      "IpAddress": "192.168.0.101",
+      "Username": "root",
+      "Password": "12345"
+    }
+  ]
+}
