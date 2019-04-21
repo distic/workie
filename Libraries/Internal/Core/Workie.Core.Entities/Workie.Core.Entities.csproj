@@ -6,6 +6,7 @@
     <Company>Distic</Company>
     <Product>Workie.Core.BusinessLogic</Product>
     <Copyright>Copyright (c) 2019 Distic. All rights reserved.</Copyright>
+    <ReleaseVersion>0.12</ReleaseVersion>
   </PropertyGroup>
 
 </Project>

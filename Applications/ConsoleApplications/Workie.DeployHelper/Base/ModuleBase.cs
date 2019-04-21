@@ -21,7 +21,7 @@ namespace Workie.DeployHelper.Base
         internal List<UploadFileViewModel> UploadedFileList { get; set; }
 
         internal ServerInfoViewModel ServerInfo { get; set; }
-
+        
         #endregion
 
         #region --- Validation Functions ---

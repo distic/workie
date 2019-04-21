@@ -9,12 +9,13 @@
     <RunPostBuildEvent>Always</RunPostBuildEvent>
     <Version>0.1.1904.2</Version>
     <Description />
+    <ReleaseVersion>0.12</ReleaseVersion>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
   </ItemGroup>
-
+  
   <ItemGroup>
     <ProjectReference Include="..\..\..\Libraries\Internal\Utilities\Utilities.Linux.Shell\Utilities.Linux.Shell.csproj" />
     <ProjectReference Include="..\..\..\Libraries\Internal\Utilities\Utilities.Logger\Utilities.Logger.csproj" />
@@ -36,7 +37,7 @@
   </ItemGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="xcopy $(ProjectDir)_InstallData\* $(ProjectDir)$(OutDir)\_InstallData /e /y /i /r" />
+<!--    <Exec Command="xcopy $(ProjectDir)_InstallData\* $(ProjectDir)$(OutDir)\_InstallData /e /y /i /r" />-->
   </Target>
 
 </Project>

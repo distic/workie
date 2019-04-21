@@ -21,7 +21,6 @@ namespace Workie.DeployHelper.Base
             get
             {
                 var prefixPath = $"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}";
-
                 return Path.Combine(prefixPath, "_InstallData");
             }
         }

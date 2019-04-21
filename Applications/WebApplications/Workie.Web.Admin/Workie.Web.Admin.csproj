@@ -7,6 +7,7 @@
     <Copyright>Copyright (c) 2019 Distic. All rights reserved.</Copyright>
     <NoWin32Manifest>true</NoWin32Manifest>
     <Version>0.1.1904.2</Version>
+    <ReleaseVersion>0.12</ReleaseVersion>
   </PropertyGroup>
 
   <ItemGroup>
