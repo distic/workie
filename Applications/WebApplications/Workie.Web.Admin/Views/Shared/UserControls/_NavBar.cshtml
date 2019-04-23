@@ -6,6 +6,7 @@
 
     // Temporary mockups...
     var notificationCount = 2;
+    var appNewCount = 1;
 }
 
 <nav class="navbar ms-navbar">
@@ -78,8 +79,47 @@
                 </li>
             </ul>
         </li>
-        <li class="ms-nav-item">
-            <a href="#" class="text-disabled ms-toggler" data-target="#ms-recent-activity" data-toggle="slideRight"><i class="flaticon-menu"></i></a>
+        <li class="ms-nav-item dropdown">
+            <a href="#" class="text-disabled ms-has-notification" id="appsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="flaticon-menu"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="appsDropdown">
+                <li class="dropdown-menu-header">
+                    <h6 class="dropdown-header ms-inline m-0">
+                        <span class="text-disabled">
+                            @Localizer["Apps"]
+                        </span>
+                    </h6>
+                    <span class="badge badge-pill badge-info collapse">
+
+                    </span>
+                </li>
+                <li class="dropdown-divider"></li>
+                <li class="ms-scrollable ms-dropdown-list ps">
+                    <a class="media p-2" href="#">
+                        <div class="media-body">
+                            <span>
+                                Tasks
+                            </span>
+                        </div>
+                    </a>
+                </li>
+                <li class="ms-scrollable ms-dropdown-list ps">
+                    <a class="media p-2" href="#">
+                        <div class="media-body">
+                            <span>
+                                Calendar
+                            </span>
+                        </div>
+                    </a>
+                </li>
+                <li class="dropdown-divider"></li>
+                <li class="dropdown-menu-footer text-center">
+                    <a href="#">
+                        @Localizer["View all apps"]
+                    </a>
+                </li>
+            </ul>
         </li>
         <li class="ms-nav-item ms-nav-user dropdown">
             <a href="#" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

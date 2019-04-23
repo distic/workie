@@ -1,9 +1,10 @@
-﻿using MongoDB.Bson;
+﻿using System.Collections.Generic;
+using MongoDB.Bson;
 using MongoDB.Driver;
-using Workie.Core.DataAccess.Interfaces;
-using Workie.Core.Entities.Tasks;
+using Workie.Core.DataAccess.Interfaces.Apps.Todo;
+using Workie.Core.Entities.Apps.Todo;
 
-namespace Workie.Core.DataAccess.Database.Mongo.Tasks
+namespace Workie.Core.DataAccess.Database.Mongo.Apps.Todo
 {
     public class TaskDB : MongoBase, ITaskDB
     {
@@ -73,5 +74,16 @@ namespace Workie.Core.DataAccess.Database.Mongo.Tasks
             return result[0];
         }
 
+        public List<TaskEntity> SelectAllByTeamId(string teamId)
+        {
+            var result = collection.Find(x => x._teamId.Equals(teamId)).ToList();
+
+            return result;
+        }
+
+        TaskEntity ITaskDB.Select(string id)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

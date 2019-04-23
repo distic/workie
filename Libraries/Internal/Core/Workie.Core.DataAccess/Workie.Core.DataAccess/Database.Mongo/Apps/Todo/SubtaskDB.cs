@@ -1,11 +1,11 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Driver;
-using Workie.Core.DataAccess.Interfaces;
-using Workie.Core.Entities.SubTask;
+using Workie.Core.DataAccess.Interfaces.Apps.Todo;
+using Workie.Core.Entities.Apps.Todo;
 
-namespace Workie.Core.DataAccess.Database.Mongo.SubTask
+namespace Workie.Core.DataAccess.Database.Mongo.Apps.Todo
 {
-    public class SubtaskDB : MongoBase, ISubTask
+    public class SubtaskDB : MongoBase, ISubtask
     {
         #region Properties
 
@@ -26,6 +26,7 @@ namespace Workie.Core.DataAccess.Database.Mongo.SubTask
         }
 
         #endregion
+
         public void Delete(string id)
         {
             collection.DeleteOne(x => x._id.Equals(id));

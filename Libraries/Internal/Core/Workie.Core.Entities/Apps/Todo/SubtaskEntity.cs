@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Workie.Core.Entities.SubTask
+namespace Workie.Core.Entities.Apps.Todo
 {
     public class SubtaskEntity
     {

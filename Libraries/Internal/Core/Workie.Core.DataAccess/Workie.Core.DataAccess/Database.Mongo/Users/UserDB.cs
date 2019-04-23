@@ -177,6 +177,7 @@ namespace Workie.Core.DataAccess.Database.Mongo.Users
 
             #endregion
 
+            //TODO: Do not keep static copies of these.
             var resetPasswordAttention = new ResetPasswordAttention
             {
                 IPAddress = "127.0.0.1",

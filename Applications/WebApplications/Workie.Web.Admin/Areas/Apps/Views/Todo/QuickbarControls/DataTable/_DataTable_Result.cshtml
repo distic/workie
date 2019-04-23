@@ -1,0 +1,19 @@
+﻿@inject IViewLocalizer Localizer
+
+@{ TimeSpan unixTime = DateTime.Now.ToUniversalTime() - new DateTime(1989, 7, 1, 0, 0, 0, DateTimeKind.Utc); }
+
+<form asp-area="Apps" asp-controller="Todo" asp-action="RefreshTodoTable"
+      data-ajax-mode="replace"
+      data-ajax="true"
+      data-ajax-begin="QuickbarTodoIndexModule.onRefreshTodoTableSubmitBegin"
+      data-ajax-success="QuickbarTodoIndexModule.onRefreshTodoTableSubmitSuccess"
+      data-ajax-failure="QuickbarTodoIndexModule.onRefreshTodoTableSubmitFailure"
+      id="TodoTableForm"
+      data-ajax-update="#TodoResult"
+      datetoavoidcache=@unixTime.TotalSeconds></form>
+
+<div id="TodoResult">
+    <p class="text-muted small">
+        @Localizer["Please wait..."].Value
+    </p>
+</div>

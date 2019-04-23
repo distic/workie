@@ -267,10 +267,10 @@ namespace Workie.Core.UnitTests
             //var languageTestResult = LanguageTest();
             //var termsAndConditionsTest = TermsAndConditionsTest();
             //var taskTest = TaskTest();
-            var subTaskTest = SubTaskTest();
+            //var subTaskTest = SubTaskTest();
             //var roleTest = RoleTest();
+            var teamTest = TeamTest();
             //var teamRoleTest = TeamRoleTest();
-            //var teamTest = TeamTest();
 
             #region --- Result ---
 

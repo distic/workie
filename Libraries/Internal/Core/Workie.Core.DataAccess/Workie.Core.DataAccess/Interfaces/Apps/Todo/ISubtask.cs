@@ -1,8 +1,8 @@
-﻿using Workie.Core.Entities.SubTask;
+using Workie.Core.Entities.Apps.Todo;
 
-namespace Workie.Core.DataAccess.Interfaces
+namespace Workie.Core.DataAccess.Interfaces.Apps.Todo
 {
-    internal interface ISubTask
+    internal interface ISubtask
     {
         /// <summary>
         /// Inserts a record in the SubTask table/collection.

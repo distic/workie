@@ -1,8 +1,8 @@
 ﻿using Utilities.Logger;
 using Utilities.Logger.Base;
 using Utilities.Logger.Enums;
-using Workie.Core.BusinessLogic.Tasks;
-using Workie.Core.Entities.Tasks;
+using Workie.Core.BusinessLogic.Apps.Todo;
+using Workie.Core.Entities.Apps.Todo;
 
 namespace Workie.Core.UnitTests.Tests
 {

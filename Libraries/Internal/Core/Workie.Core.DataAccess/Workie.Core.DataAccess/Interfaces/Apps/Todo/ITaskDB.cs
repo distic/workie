@@ -1,6 +1,7 @@
-﻿using Workie.Core.Entities.Tasks;
+﻿using System.Collections.Generic;
+using Workie.Core.Entities.Apps.Todo;
 
-namespace Workie.Core.DataAccess.Interfaces
+namespace Workie.Core.DataAccess.Interfaces.Apps.Todo
 {
     internal interface ITaskDB
     {
@@ -23,6 +24,12 @@ namespace Workie.Core.DataAccess.Interfaces
         /// <param name="id"></param>
         /// <returns></returns>
         TaskEntity Select(string id);
+
+        /// <summary>
+        /// Selects all tasks by TeamId.
+        /// </summary>
+        /// <returns></returns>
+        List<TaskEntity> SelectAllByTeamId(string teamId);
 
     }
 }

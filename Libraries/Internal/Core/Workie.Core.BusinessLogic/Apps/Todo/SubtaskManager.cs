@@ -1,7 +1,7 @@
-﻿using Workie.Core.DataAccess.Database.Mongo.SubTask;
-using Workie.Core.Entities.SubTask;
+﻿using Workie.Core.DataAccess.Database.Mongo.Apps.Todo;
+using Workie.Core.Entities.Apps.Todo;
 
-namespace Workie.Core.BusinessLogic.SubTask
+namespace Workie.Core.BusinessLogic.Apps.Todo
 {
     public class SubtaskManager
     {

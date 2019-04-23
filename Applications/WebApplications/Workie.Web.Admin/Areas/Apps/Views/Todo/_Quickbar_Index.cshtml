@@ -1,12 +1,27 @@
 ﻿@inject IViewLocalizer Localizer
 
+@model Workie.Web.Admin.Areas.Apps.Models.Todo.QuickbarControls.QuickbarControlsTodoViewViewModel
+
+@{
+    TimeSpan unixTime = DateTime.Now.ToUniversalTime() - new DateTime(1989, 7, 1, 0, 0, 0, DateTimeKind.Utc);
+}
+
 <div role="tabpanel" class="tab-pane" id="qa-toDo">
     <div class="ms-quickbar-container ms-todo-list-container ms-scrollable ps">
 
-        <form class="ms-add-task-block">
+        <form asp-area="Apps" asp-controller="Todo" asp-action="AddOrModifyTodoView"
+              method="post"
+              data-ajax-mode="replace"
+              data-ajax="true"
+              data-ajax-begin="QuickbarTodoIndexModule.onAddOrModifyTodoViewSubmitBegin"
+              data-ajax-success="QuickbarTodoIndexModule.onAddOrModifyTodoViewSubmitSuccess"
+              data-ajax-failure="QuickbarTodoIndexModule.onAddOrModifyTodoViewSubmitFailure">
+
+            @Html.HiddenFor(model => model.Id)
+
             <div class="form-group mx-3 mt-0  fs-14 clearfix">
-                <input type="text" class="form-control fs-14 float-left" id="task-block" name="todo-block" placeholder="@Localizer[" Add Task Block"]" value="">
-                <button type="submit" onclick="QuickbarTodoIndexModule.addOrModifyTodoView()" class="ms-btn-icon bg-primary float-right">
+                <input type="text" class="form-control fs-14 float-left" id="task-block" name="Title" placeholder="@Localizer[" Add Task Block"]" value="">
+                <button type="submit" class="ms-btn-icon bg-primary float-right">
                     <i class="material-icons text-disabled">
                         @Localizer["add"]
                     </i>
@@ -14,69 +29,7 @@
             </div>
         </form>
 
-        <ul class="ms-todo-list">
-            <li class="ms-card ms-qa-card ms-deletable">
-
-                <div class="ms-card-header clearfix">
-                    <h6 class="ms-card-title">
-                        @Localizer["Task Block Title"]
-                    </h6>
-                    <button data-toggle="tooltip" data-placement="left" title="@Localizer[" Add a Task to this block"]" class="ms-add-task-to-block ms-btn-icon float-right">
-                        <i class="material-icons text-disabled">
-                            @Localizer["add"]
-                        </i>
-                    </button>
-                </div>
-
-                <div class="ms-card-body">
-                    <ul class="ms-list ms-task-block">
-                        <li class="ms-list-item ms-to-do-task ms-deletable">
-                            <label class="ms-checkbox-wrap ms-todo-complete">
-                                <input type="checkbox" value="">
-                                <i class="ms-checkbox-check"></i>
-                            </label>
-                            <span>
-                                @Localizer["Task to do"]
-                            </span>
-                            <button type="submit" class="close">
-                                <i class="flaticon-trash ms-delete-trigger">
-                                </i>
-                            </button>
-                        </li>
-                        <li class="ms-list-item ms-to-do-task ms-deletable">
-                            <label class="ms-checkbox-wrap ms-todo-complete">
-                                <input type="checkbox" value="">
-                                <i class="ms-checkbox-check"></i>
-                            </label>
-                            <span>
-                                @Localizer["Task to do"]
-                            </span>
-                            <button type="submit" class="close">
-                                <i class="flaticon-trash ms-delete-trigger">
-                                </i>
-                            </button>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="ms-card-footer clearfix">
-                    <a href="#" class="text-disabled mr-2">
-                        <i class="flaticon-archive"> </i>
-                        @Localizer["Archive"]
-                    </a>
-                    <a onclick="QuickbarTodoIndexModule.deleteTodo()" class="text-disabled  ms-delete-trigger float-right">
-                        <i class="flaticon-trash"> </i>
-                        @Localizer["Delete"]
-                    </a>
-                </div>
-
-            </li>
-        </ul>
-        <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
-            <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
-        </div><div class="ps__rail-y" style="top: 0px; right: 0px;">
-            <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
-        </div>
+        <partial name="QuickbarControls/DataTable/_DataTable_Result.cshtml" />
     </div>
 
 </div>
@@ -87,7 +40,5 @@
         return '@Url.Action("DeleteTodo", "Todo", new { Area = "Apps" })?id=' + id;
     }
 
-
 </script>
 
-<script type="text/javascript" src="~/app/areas/apps/views/todo/quickbar-todo-index.js"></script>

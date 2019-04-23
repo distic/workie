@@ -1,6 +1,4 @@
-﻿using Workie.Core.Entities.SubTask;
-
-namespace Workie.Core.Entities.Tasks
+﻿namespace Workie.Core.Entities.Apps.Todo
 {
     public class TaskEntity
     {

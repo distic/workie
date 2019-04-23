@@ -1,9 +1,9 @@
 ﻿using MongoDB.Bson;
-using Workie.Core.DataAccess.Database.Mongo.Tasks;
-using Workie.Core.Entities.SubTask;
-using Workie.Core.Entities.Tasks;
+using System.Collections.Generic;
+using Workie.Core.DataAccess.Database.Mongo.Apps.Todo;
+using Workie.Core.Entities.Apps.Todo;
 
-namespace Workie.Core.BusinessLogic.Tasks
+namespace Workie.Core.BusinessLogic.Apps.Todo
 {
     public class TaskManager
     {
@@ -26,6 +26,11 @@ namespace Workie.Core.BusinessLogic.Tasks
         public TaskEntity SelectById(string id)
         {
             return new TaskDB().Select(id);
+        }
+
+        public List<TaskEntity> SelectAllByTeamId(string teamId)
+        {
+            return new TaskDB().SelectAllByTeamId(teamId);
         }
 
     }
