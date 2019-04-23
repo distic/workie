@@ -45,7 +45,7 @@ namespace Workie.Web.Admin.Areas.Apps.Controllers
             }
         }
 
-        public IActionResult DeleteTodo(string id)
+        public IActionResult DeleteTodoById(string id)
         {
             try
             {

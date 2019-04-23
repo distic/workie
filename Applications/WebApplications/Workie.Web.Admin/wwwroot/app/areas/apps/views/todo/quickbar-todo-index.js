@@ -14,8 +14,20 @@
             '<i class="flaticon-trash"> </i> Delete </a> </div> </div>');
     }
 
-    function deleteById(id) {
+    function deleteTodoById(id) {
 
+        $.ajax({
+            url: window.getDeleteTodoByIdUrl(id),
+            success: function (result) {
+                $(this).remove();
+            }
+        });
+
+        //$('body').on('click', '.ms-delete-trigger', function () {
+        //    $(this).closest('.ms-deletable').slideUp('slow', function () {
+        //        $(this).closest('.ms-deletable').remove();
+        //    });
+        //});
     }
 
     function onRefreshTodoTableSubmitBegin() {
@@ -35,7 +47,7 @@
     }
 
     function onAddOrModifyTodoViewSubmitSuccess(data) {
-        
+
     }
 
     function onAddOrModifyTodoViewSubmitFailure(ajaxContent) {
@@ -45,7 +57,7 @@
     return {
         init: init,
         addTaskBlockQB: addTaskBlockQB,
-        deleteById: deleteById,
+        deleteTodoById: deleteTodoById,
         onRefreshTodoTableSubmitBegin: onRefreshTodoTableSubmitBegin,
         onRefreshTodoTableSubmitSuccess: onRefreshTodoTableSubmitSuccess,
         onRefreshTodoTableSubmitFailure: onRefreshTodoTableSubmitFailure,

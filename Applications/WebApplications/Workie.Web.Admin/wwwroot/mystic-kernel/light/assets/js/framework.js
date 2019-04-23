@@ -31,9 +31,7 @@
 
             notesMemberAppend();
             notesMemberRemove();
-            deletableItem();
 
-            //addTaskBlockQB();
             addTaskBlockApp();
             addTask();
             confirmTask();
@@ -347,13 +345,6 @@
         function notesMemberRemove() {
             $('.ms-note-members').on('click', '.ms-deletable', function () {
                 $(this).remove();
-            });
-        }
-
-        /* Notes Remove */
-        function deletableItem() {
-            $('body').on('click', '.ms-delete-trigger', function () {
-                $(this).closest('.ms-deletable').slideUp('slow', function () { $(this).closest('.ms-deletable').remove(); });
             });
         }
 
