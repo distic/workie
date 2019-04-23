@@ -45,6 +45,20 @@ namespace Workie.Web.Admin.Areas.Apps.Controllers
             }
         }
 
+        public IActionResult DeleteTodo(string id)
+        {
+            try
+            {
+                new TaskManager().Delete(id);
+
+                return Json(new { result = true });
+            }
+            catch (Exception)
+            {
+                return Json(new { result = false });
+            }
+        }
+
         [HttpPost]
         public IActionResult AddOrModifyTodoView(QuickbarControlsTodoViewViewModel quickbarControlsTodoViewViewModel)
         {

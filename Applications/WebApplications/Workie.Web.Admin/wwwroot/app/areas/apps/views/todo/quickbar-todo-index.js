@@ -14,6 +14,10 @@
             '<i class="flaticon-trash"> </i> Delete </a> </div> </div>');
     }
 
+    function deleteById(id) {
+
+    }
+
     function onRefreshTodoTableSubmitBegin() {
 
     }
@@ -41,6 +45,7 @@
     return {
         init: init,
         addTaskBlockQB: addTaskBlockQB,
+        deleteById: deleteById,
         onRefreshTodoTableSubmitBegin: onRefreshTodoTableSubmitBegin,
         onRefreshTodoTableSubmitSuccess: onRefreshTodoTableSubmitSuccess,
         onRefreshTodoTableSubmitFailure: onRefreshTodoTableSubmitFailure,
