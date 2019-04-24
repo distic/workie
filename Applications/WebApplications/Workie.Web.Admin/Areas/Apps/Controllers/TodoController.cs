@@ -14,7 +14,12 @@ namespace Workie.Web.Admin.Areas.Apps.Controllers
     [AuthorizeCurrentUser]
     public class TodoController : Controller
     {
+        /// <summary>
+        /// Temporary TeamID. Consider adding Team manipulation feature in the future.
+        /// </summary>
         const string teamId = "5cbed3cabadde6192c8f406d";
+
+        #region --- Tasks ---
 
         [HttpPost]
         public IActionResult RefreshTodoTable()
@@ -30,13 +35,14 @@ namespace Workie.Web.Admin.Areas.Apps.Controllers
                     quickList.Add(new QuickbarControlsTodoViewViewModel
                     {
                         Id = task._id,
-                        Title = task.Title
+                        Title = task.Title,
+                        SubtaskList = task.SubtaskList
                     });
                 }
 
                 return PartialView("QuickbarControls/DataTable/_DataTable_TableFormat", quickList);
             }
-            catch
+            catch (Exception ex)
             {
                 return Json(new
                 {
@@ -84,5 +90,70 @@ namespace Workie.Web.Admin.Areas.Apps.Controllers
                 return Json(new { result = false });
             }
         }
+
+        #endregion
+
+        #region --- Subtasks ---
+
+        public IActionResult AddEditSubtask(string taskId, string subtaskId, string name)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(taskId))
+                {
+                    return Json(new { result = false });
+                }
+
+                if (string.IsNullOrEmpty(name))
+                {
+                    return Json(new { result = false });
+                }
+
+                var subtaskEntity = new SubtaskEntity
+                {
+                    _id = subtaskId,
+                    Description = name,
+                    Owner_userIdsList = null
+                };
+
+                // Update...
+                if (!string.IsNullOrEmpty(subtaskId))
+                {
+                    new TaskManager().UpdateSubtask(taskId, subtaskEntity);
+
+                    return Json(new { result = true });
+                }
+
+                // Add...
+                subtaskEntity._id = new TaskManager().InsertSubtask(taskId, subtaskEntity);
+
+                if (string.IsNullOrEmpty(subtaskEntity._id))
+                {
+                    return Json(new { result = false });
+                }
+
+                return Json(new { result = true });
+            }
+            catch (Exception)
+            {
+                return Json(new { result = false });
+            }
+        }
+
+        public IActionResult DeleteSubtask(string taskId, string subtaskId)
+        {
+            try
+            {
+                new TaskManager().DeleteSubtask(taskId, subtaskId);
+
+                return Json(new { result = true });
+            }
+            catch (Exception)
+            {
+                return Json(new { result = false });
+            }
+        }
+
+        #endregion
     }
 }

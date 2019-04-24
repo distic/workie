@@ -30,6 +30,7 @@
         </form>
 
         <partial name="QuickbarControls/DataTable/_DataTable_Result.cshtml" />
+
     </div>
 
 </div>
@@ -38,6 +39,14 @@
 
     function getDeleteTodoByIdUrl(id) {
         return '@Url.Action("DeleteTodoById", "Todo", new { Area = "Apps" })?id=' + id;
+    }
+
+    function getDeleteSubtaskUrl(taskId, subtaskId) {
+        return '@Url.Action("DeleteSubtask", "Todo", new { Area = "Apps" })?taskId=' + taskId + '&subtaskId=' + subtaskId;
+    }
+
+    function getAddEditSubtaskUrl(taskId, subtaskId, name) {
+        return '@Url.Action("AddEditSubtask", "Todo", new { Area = "Apps" })?taskId=' + taskId + '&subtaskId=' + subtaskId + '&name=' + name;
     }
 
 </script>

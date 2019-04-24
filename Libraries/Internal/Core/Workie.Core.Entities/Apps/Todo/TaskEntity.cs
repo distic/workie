@@ -1,4 +1,6 @@
-﻿namespace Workie.Core.Entities.Apps.Todo
+﻿using System.Collections.Generic;
+
+namespace Workie.Core.Entities.Apps.Todo
 {
     public class TaskEntity
     {
@@ -18,9 +20,8 @@
         public string Title { get; set; }
 
         /// <summary>
-        /// Gets or sets the SubTask.
+        /// Gets or sets the SubtaskList.
         /// </summary>
-        public SubtaskEntity SubTask { get; set; }
-
+        public List<SubtaskEntity> SubtaskList { get; set; }
     }
 }

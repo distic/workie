@@ -12,6 +12,7 @@ namespace Workie.Core.UnitTests.Tests
 
         private readonly TaskManager _taskManager;
         private string _id;
+        private string _subtaskId;
 
         #endregion
 
@@ -24,7 +25,6 @@ namespace Workie.Core.UnitTests.Tests
         }
 
         #endregion
-
 
         internal TestResultType Insert()
         {
@@ -56,6 +56,34 @@ namespace Workie.Core.UnitTests.Tests
             }
 
             return UnitTestOutputter.LogWarning(AssemblyInfo.GetCurrentMethod(GetType().Name), "Delete failed.");
+        }
+
+        internal TestResultType InsertSubtask()
+        {
+            _subtaskId = _taskManager.InsertSubtask(_id, new SubtaskEntity
+            {
+                Description = "This is a random description",
+                Owner_userIdsList = null
+            });
+
+            if (string.IsNullOrEmpty(_subtaskId))
+            {
+                return UnitTestOutputter.LogError(AssemblyInfo.GetCurrentMethod(GetType().Name), "Failed to insert a new Subtask!");
+            }
+
+            return UnitTestOutputter.LogSuccess(AssemblyInfo.GetCurrentMethod(GetType().Name), $"Successfully added new Subtask with _id({_subtaskId}) in Task_id({_id})");
+        }
+
+        internal TestResultType UpdateSubtask()
+        {
+            _taskManager.UpdateSubtask(_id, new SubtaskEntity
+            {
+                _id = _subtaskId,
+                Description = "This is a random modified description",
+                Owner_userIdsList = null
+            });
+
+            return UnitTestOutputter.LogWarning(AssemblyInfo.GetCurrentMethod(GetType().Name), $"Modified subtask with _id({_subtaskId}) in Task_id({_id})");
         }
     }
 }

@@ -161,6 +161,8 @@ namespace Workie.Core.UnitTests
             var taskManagerTest = new TaskManagerTest();
 
             _resultCounter[(int)taskManagerTest.Insert()] += 1;
+            _resultCounter[(int)taskManagerTest.InsertSubtask()] += 1;
+            _resultCounter[(int)taskManagerTest.UpdateSubtask()] += 1;
             _resultCounter[(int)taskManagerTest.Delete()] += 1;
 
             //
@@ -227,25 +229,6 @@ namespace Workie.Core.UnitTests
             };
         }
 
-        static TestResultInfo SubTaskTest()
-        {
-            var SubTaskManagerTest = new SubtaskManagerTest();
-
-            _resultCounter[(int)SubTaskManagerTest.Insert()] += 1;
-            _resultCounter[(int)SubTaskManagerTest.Delete()] += 1;
-
-            //
-            // Wrap up the results and return...
-            //
-            return new TestResultInfo
-            {
-                ErrorCount = _resultCounter[(int)TestResultType.Error],
-                WarningCount = _resultCounter[(int)TestResultType.Warning],
-                SuccessCount = _resultCounter[(int)TestResultType.Success]
-            };
-        }
-
-
         #endregion
 
         static void Main(string[] args)
@@ -266,10 +249,9 @@ namespace Workie.Core.UnitTests
             //var countryTestResult = CountryTest();
             //var languageTestResult = LanguageTest();
             //var termsAndConditionsTest = TermsAndConditionsTest();
-            //var taskTest = TaskTest();
-            //var subTaskTest = SubTaskTest();
+            var taskTest = TaskTest();
             //var roleTest = RoleTest();
-            var teamTest = TeamTest();
+            //var teamTest = TeamTest();
             //var teamRoleTest = TeamRoleTest();
 
             #region --- Result ---

@@ -18,28 +18,44 @@
 }
 
 <ul class="ms-todo-list">
-    @foreach (var elem in Model)
+    @foreach (var task in Model)
     {
         <li class="ms-card ms-qa-card ms-deletable">
             <div class="ms-card-header clearfix">
                 <h6 class="ms-card-title">
-                    @elem.Title
+                    @task.Title
                 </h6>
-                <button data-toggle="tooltip" data-placement="left" title="@Localizer["Add a Task to this block"]" class="ms-add-task-to-block ms-btn-icon float-right">
+                <button data-toggle="tooltip" data-placement="left" title="@Localizer[" Add a Task to this block"]" class="ms-add-task-to-block ms-btn-icon float-right">
                     <i class="material-icons">
                         @Localizer["add"]
                     </i>
                 </button>
             </div>
             <div class="ms-card-body">
-                <ul class="ms-list ms-task-block"> </ul>
+                <ul class="ms-list ms-task-block">
+                    @foreach (var subtask in task.SubtaskList)
+                    {
+                        <li class="ms-list-item ms-to-do-task ms-deletable">
+                            <label class="ms-checkbox-wrap ms-todo-complete" for="">
+                                <input type="checkbox" name="" value="">
+                                <i class="ms-checkbox-check"></i>
+                            </label>
+                            <span>
+                                @subtask.Description
+                            </span>
+                            <button class="close">
+                                <i class="flaticon-trash ms-delete-trigger"> </i>
+                            </button>
+                        </li>
+                    }
+                </ul>
             </div>
             <div class="ms-card-footer clearfix">
                 <a href="#" class="text-disabled mr-2">
                     <i class="flaticon-archive"> </i>
                     @Localizer["Archive"]
                 </a>
-                <a value='@elem.Id' class="text-disabled ms-delete-trigger float-right">
+                <a value='@task.Id' class="text-disabled ms-delete-trigger float-right">
                     <i class="flaticon-trash"> </i>
                     @Localizer["Delete"]
                 </a>

@@ -9,12 +9,6 @@ namespace Workie.Core.BusinessLogic.Apps.Todo
     {
         public string Insert(TaskEntity taskEntity)
         {
-            taskEntity.SubTask = new SubtaskEntity
-            {
-                _id = ObjectId.GenerateNewId().ToString(),
-
-            };
-
             return new TaskDB().Insert(taskEntity);
         }
 
@@ -33,5 +27,19 @@ namespace Workie.Core.BusinessLogic.Apps.Todo
             return new TaskDB().SelectAllByTeamId(teamId);
         }
 
+        public string InsertSubtask(string taskId, SubtaskEntity subTaskEntity)
+        {
+            return new TaskDB().InsertSubtask(taskId, subTaskEntity);
+        }
+
+        public void UpdateSubtask(string taskId, SubtaskEntity subtaskEntity)
+        {
+            new TaskDB().UpdateSubtask(taskId, subtaskEntity);
+        }
+
+        public void DeleteSubtask(string taskId, string subtaskId)
+        {
+            new TaskDB().DeleteSubtask(taskId, subtaskId);
+        }
     }
 }
