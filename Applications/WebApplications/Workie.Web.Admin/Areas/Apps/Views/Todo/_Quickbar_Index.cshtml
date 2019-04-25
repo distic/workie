@@ -6,16 +6,19 @@
     TimeSpan unixTime = DateTime.Now.ToUniversalTime() - new DateTime(1989, 7, 1, 0, 0, 0, DateTimeKind.Utc);
 }
 
+<div id="TaskViewTemplate" class="collapse"><partial name="QuickbarControls/_QuickbarControls_TaskView.cshtml" /></div>
+<div id="SubtaskEditTemplate" class="collapse"><partial name="QuickbarControls/_QuickbarControls_SubtaskEdit.cshtml" /></div>
+
 <div role="tabpanel" class="tab-pane" id="qa-toDo">
     <div class="ms-quickbar-container ms-todo-list-container ms-scrollable ps">
 
-        <form asp-area="Apps" asp-controller="Todo" asp-action="AddOrModifyTodoView"
+        <form asp-area="Apps" asp-controller="Todo" asp-action="AddEditTask"
               method="post"
               data-ajax-mode="replace"
               data-ajax="true"
-              data-ajax-begin="QuickbarTodoIndexModule.onAddOrModifyTodoViewSubmitBegin"
-              data-ajax-success="QuickbarTodoIndexModule.onAddOrModifyTodoViewSubmitSuccess"
-              data-ajax-failure="QuickbarTodoIndexModule.onAddOrModifyTodoViewSubmitFailure">
+              data-ajax-begin="QuickbarTodoIndexModule.onAddEditTaskSubmitBegin"
+              data-ajax-success="QuickbarTodoIndexModule.onAddEditTaskSubmitSuccess"
+              data-ajax-failure="QuickbarTodoIndexModule.onAddEditTaskSubmitFailure">
 
             @Html.HiddenFor(model => model.Id)
 
@@ -32,7 +35,6 @@
         <partial name="QuickbarControls/DataTable/_DataTable_Result.cshtml" />
 
     </div>
-
 </div>
 
 <script type="text/javascript">

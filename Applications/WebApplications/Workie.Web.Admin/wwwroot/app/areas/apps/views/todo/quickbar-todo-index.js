@@ -1,5 +1,7 @@
 ﻿var QuickbarTodoIndexModule = (function () {
 
+    var taskIdArray;
+
     function init() {
         $('#TodoTableForm').submit();
         handleDeleteTodo();
@@ -8,28 +10,16 @@
     /* Add Task Block (QuickBar) */
     function addTaskBlockQB(title) {
         $('#dt-table-empty-part').remove();
-        $(".ms-quickbar-container .ms-todo-list").prepend(
-            '<div class="ms-card ms-qa-card ms-deletable"> <div class="ms-card-header clearfix">' +
-            '<h6 class="ms-card-title">' + title + '</h6> <button data-toggle="tooltip" data-placement="left" title="Add a Task to this block" class="ms-add-task-to-block ms-btn-icon float-right">' +
-            '<i class="material-icons">add</i> </button> </div> <div class="ms-card-body"> <ul class="ms-list ms-task-block"> </ul></div>' +
-            '<div class="ms-card-footer clearfix"><a href="#" class="text-disabled mr-2"> <i class="flaticon-archive"> </i> Archive </a><a value="0" href="#" class="text-disabled ms-delete-trigger float-right">' +
-            '<i class="flaticon-trash"> </i> Delete </a> </div> </div>');
+        var taskView = $('#TaskViewTemplate');
+        taskView.find('.ms-card-title').text(title);
+        $('.ms-quickbar-container .ms-todo-list').prepend(taskView.html());
     }
 
     /* Add a Task to Block */
     function addTask() {
         $('.ms-todo-list').on('click', '.ms-add-task-to-block', function () {
             var taskBlock = $(this).parent().next().find('.ms-task-block');
-            taskBlock.append(
-                '<li class="ms-list-item ms-to-do-task ms-deletable">' +
-                '<label class="ms-checkbox-wrap ms-todo-complete" for="">' +
-                '<input type="checkbox" name="" value="">' +
-                '<i class="ms-checkbox-check"></i>' +
-                '</label>' +
-                '<form class="ms-confirm-task-form"> <input type="text" class="ms-task-input ms-task-edit"/>' +
-                '<button type="submit" class="close"><i class="material-icons fs-16 ms-confirm-trigger">check</i></button></form>' +
-                '</li>'
-            );
+            taskBlock.append($('#SubtaskEditTemplate').html());
             taskBlock.find('.ms-task-edit').focus();
         });
     }
@@ -61,7 +51,7 @@
             confirmBtn.removeClass('material-icons fs-14 ms-confirm-trigger');
             confirmBtn.addClass('');
             confirmBtn.text('');
-            $(this).replaceWith('<span>' + taskInput.val() + '</span><button class="close"><i class="flaticon-trash ms-delete-trigger"> </i></button>');
+            $(this).replaceWith('<span>' + taskInput.val() + '</span><button class="close"><i class="flaticon-trash ms-delete-trigger"></i></button>');
 
             $.ajax({
                 url: window.getAddEditSubtaskUrl('', '', taskInput.val()),
@@ -112,7 +102,7 @@
 
     }
 
-    function onAddOrModifyTodoViewSubmitBegin() {
+    function onAddEditTaskSubmitBegin() {
         var taskBlock = $("#task-block");
 
         if (taskBlock.val() == '') {
@@ -124,11 +114,11 @@
         taskBlock.val('');
     }
 
-    function onAddOrModifyTodoViewSubmitSuccess(data) {
+    function onAddEditTaskSubmitSuccess(data) {
 
     }
 
-    function onAddOrModifyTodoViewSubmitFailure(ajaxContent) {
+    function onAddEditTaskSubmitFailure(ajaxContent) {
     }
 
     // Reveal public pointers to private functions and properties
@@ -143,9 +133,9 @@
         onRefreshTodoTableSubmitBegin: onRefreshTodoTableSubmitBegin,
         onRefreshTodoTableSubmitSuccess: onRefreshTodoTableSubmitSuccess,
         onRefreshTodoTableSubmitFailure: onRefreshTodoTableSubmitFailure,
-        onAddOrModifyTodoViewSubmitBegin: onAddOrModifyTodoViewSubmitBegin,
-        onAddOrModifyTodoViewSubmitSuccess: onAddOrModifyTodoViewSubmitSuccess,
-        onAddOrModifyTodoViewSubmitFailure: onAddOrModifyTodoViewSubmitFailure
+        onAddEditTaskSubmitBegin: onAddEditTaskSubmitBegin,
+        onAddEditTaskSubmitSuccess: onAddEditTaskSubmitSuccess,
+        onAddEditTaskSubmitFailure: onAddEditTaskSubmitFailure
     };
 
 })();

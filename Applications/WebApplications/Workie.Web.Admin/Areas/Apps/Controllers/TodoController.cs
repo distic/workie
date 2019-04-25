@@ -66,7 +66,7 @@ namespace Workie.Web.Admin.Areas.Apps.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddOrModifyTodoView(QuickbarControlsTodoViewViewModel quickbarControlsTodoViewViewModel)
+        public IActionResult AddEditTask(QuickbarControlsTodoViewViewModel quickbarControlsTodoViewViewModel)
         {
             try
             {
