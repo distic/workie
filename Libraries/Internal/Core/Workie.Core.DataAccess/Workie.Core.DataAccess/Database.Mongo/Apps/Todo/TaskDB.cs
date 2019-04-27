@@ -90,8 +90,13 @@ namespace Workie.Core.DataAccess.Database.Mongo.Apps.Todo
 
         public void DeleteSubtask(string taskId, string subtaskId)
         {
-            var filter = Builders<TaskEntity>.Filter.Where(x => x._id == taskId && x.SubtaskList.Any(i => i._id == subtaskId));
-            collection.DeleteOne(filter);
+            var update = Builders<TaskEntity>.Update.PullFilter(p => p.SubtaskList,
+                                                f => f._id == subtaskId);
+            var result = collection
+                .FindOneAndUpdateAsync(p => p._id == taskId, update).Result;
+
+            //var filter = Builders<TaskEntity>.Filter.Where(x => x._id == taskId && x.SubtaskList.Any(i => i._id == subtaskId));
+            //collection.DeleteOne(filter);
         }
 
         public string InsertSubtask(string taskId, SubtaskEntity subtaskEntity)

@@ -1,10 +1,11 @@
-﻿@inject  IViewLocalizer Localizer
+﻿@inject IViewLocalizer Localizer
+
+@model Workie.Web.Admin.Areas.Apps.Models.Todo.QuickbarControls.QuickbarControlsTaskViewViewModel
 
 <li class="ms-card ms-qa-card ms-deletable">
+    @Html.HiddenFor(Model => Model.TaskId)
     <div class="ms-card-header clearfix">
-        <h6 class="ms-card-title">
-            
-        </h6>
+        <h6 class="ms-card-title"></h6>
         <button data-toggle="tooltip" data-placement="left" title="@Localizer["Add a Task to this block"]" class="ms-add-task-to-block ms-btn-icon float-right">
             <i class="material-icons">
                 @Localizer["add"]
@@ -12,16 +13,14 @@
         </button>
     </div>
     <div class="ms-card-body">
-        <ul class="ms-list ms-task-block">
-
-        </ul>
+        <ul class="ms-list ms-task-block"></ul>
     </div>
     <div class="ms-card-footer clearfix">
         <a href="#" class="text-disabled mr-2">
             <i class="flaticon-archive"> </i>
             @Localizer["Archive"]
         </a>
-        <a value='' class="text-disabled ms-delete-trigger float-right">
+        <a onclick="QuickbarTodoIndexModule.deleteTodo(this)" class="text-disabled ms-delete-trigger float-right">
             <i class="flaticon-trash"> </i>
             @Localizer["Delete"]
         </a>

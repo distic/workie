@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 /*
 Template Name: Mystic - Multipurpose Bootstra 4 Admin Dashboard
 Author: Slidesigma
@@ -1325,9 +1325,9 @@ ul.ms-activity-log > li:hover .icon{
 }
 i.ms-delete-trigger:hover,
 a.ms-delete-trigger:hover,
-.ms-dark-theme a.ms-delete-trigger:hover{
-  color: #d9534f;
-  cursor: pointer;
+.ms-dark-theme a.ms-delete-trigger:hover {
+    color: #d9534f;
+    cursor: pointer;
 }
 .ms-deletable .close{
   color: #878793;
@@ -5235,7 +5235,7 @@ li .ms-count{
   margin-bottom: 0;
   width: 85%;
 }
-.ms-open-chat .ms-chat-user-info i.ms-delete-trigger{
+.ms-open-chat .ms-chat-user-info i.ms-delete-trigger {
   position: absolute;
   bottom: 0;
   right: 0;

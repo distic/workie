@@ -11,9 +11,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Areas\Apps\Models\Tasks\**" />
     <Compile Remove="Areas\Welcome\**" />
+    <Content Remove="Areas\Apps\Models\Tasks\**" />
     <Content Remove="Areas\Welcome\**" />
+    <EmbeddedResource Remove="Areas\Apps\Models\Tasks\**" />
     <EmbeddedResource Remove="Areas\Welcome\**" />
+    <None Remove="Areas\Apps\Models\Tasks\**" />
     <None Remove="Areas\Welcome\**" />
   </ItemGroup>
 
@@ -24,7 +28,6 @@
 
   <ItemGroup>
     <Folder Include="Areas\Account\Models\Settings\" />
-    <Folder Include="Areas\Apps\Models\Tasks\" />
     <Folder Include="Areas\Apps\Views\Reminder\QuickbarControls\" />
     <Folder Include="Areas\Apps\Views\Reminder\UserControls\" />
     <Folder Include="Areas\Apps\Views\Shared\" />

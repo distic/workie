@@ -3,7 +3,7 @@ using Workie.Core.Entities.Apps.Todo;
 
 namespace Workie.Web.Admin.Areas.Apps.Models.Todo.QuickbarControls
 {
-    public class QuickbarControlsTodoViewViewModel
+    public class QuickbarControlsTodoViewModel
     {
         public string Id { get; set; }
 

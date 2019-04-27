@@ -1,6 +1,6 @@
 ﻿@inject IViewLocalizer Localizer
 
-@model Workie.Web.Admin.Areas.Apps.Models.Todo.QuickbarControls.QuickbarControlsTodoViewViewModel
+@model Workie.Web.Admin.Areas.Apps.Models.Todo.QuickbarControls.QuickbarControlsTodoViewModel
 
 @{
     TimeSpan unixTime = DateTime.Now.ToUniversalTime() - new DateTime(1989, 7, 1, 0, 0, 0, DateTimeKind.Utc);
@@ -8,6 +8,7 @@
 
 <div id="TaskViewTemplate" class="collapse"><partial name="QuickbarControls/_QuickbarControls_TaskView.cshtml" /></div>
 <div id="SubtaskEditTemplate" class="collapse"><partial name="QuickbarControls/_QuickbarControls_SubtaskEdit.cshtml" /></div>
+<div id="SubtaskViewTemplate" class="collapse"><partial name="QuickbarControls/_QuickbarControls_SubtaskView.cshtml" /></div>
 
 <div role="tabpanel" class="tab-pane" id="qa-toDo">
     <div class="ms-quickbar-container ms-todo-list-container ms-scrollable ps">
@@ -33,7 +34,7 @@
         </form>
 
         <partial name="QuickbarControls/DataTable/_DataTable_Result.cshtml" />
-
+        <ul class="ms-todo-list"></ul>
     </div>
 </div>
 

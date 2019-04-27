@@ -1,14 +1,16 @@
 ﻿@inject IViewLocalizer Localizer
 
+@model Workie.Web.Admin.Areas.Apps.Models.Todo.QuickbarControls.QuickbarControlsSubtaskViewViewModel
+
 <li class="ms-list-item ms-to-do-task ms-deletable">
+    @Html.HiddenFor(Model => Model.SubtaskId)
     <label class="ms-checkbox-wrap ms-todo-complete" for="">
         <input type="checkbox" name="" value="">
         <i class="ms-checkbox-check"></i>
     </label>
-    <span>
-
+    <span id="subtask-description">
     </span>
-    <button class="close">
+    <button onclick="QuickbarTodoIndexModule.deleteSubtask(this)" class="close">
         <i class="flaticon-trash ms-delete-trigger"> </i>
     </button>
 </li>

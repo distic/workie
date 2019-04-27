@@ -28,11 +28,11 @@ namespace Workie.Web.Admin.Areas.Apps.Controllers
             {
                 var taskList = new TaskManager().SelectAllByTeamId(teamId);
 
-                var quickList = new List<QuickbarControlsTodoViewViewModel>();
+                var quickList = new List<QuickbarControlsTodoViewModel>();
 
                 foreach (var task in taskList)
                 {
-                    quickList.Add(new QuickbarControlsTodoViewViewModel
+                    quickList.Add(new QuickbarControlsTodoViewModel
                     {
                         Id = task._id,
                         Title = task.Title,
@@ -40,7 +40,13 @@ namespace Workie.Web.Admin.Areas.Apps.Controllers
                     });
                 }
 
-                return PartialView("QuickbarControls/DataTable/_DataTable_TableFormat", quickList);
+                return Json(new
+                {
+                    result = true,
+                    list = quickList
+                });
+
+               // return PartialView("QuickbarControls/DataTable/_DataTable_TableFormat", quickList);
             }
             catch (Exception ex)
             {
@@ -66,13 +72,13 @@ namespace Workie.Web.Admin.Areas.Apps.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddEditTask(QuickbarControlsTodoViewViewModel quickbarControlsTodoViewViewModel)
+        public IActionResult AddEditTask(QuickbarControlsTodoViewModel quickbarControlsTodoViewModel)
         {
             try
             {
                 var taskEntity = new TaskEntity
                 {
-                    Title = quickbarControlsTodoViewViewModel.Title,
+                    Title = quickbarControlsTodoViewModel.Title,
                     _teamId = teamId
                 };
 
